@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Invitados from "./Invitados";
+import User from "./User";
 
 function Home() {
   const [editingRow, setEditingRow] = useState(null);
@@ -224,9 +225,12 @@ function Home() {
   return (
     <div className="App">
       <header>
-        <Form form={form} onFinish={onFinish}>
+        {/* <Form form={form} onFinish={onFinish}>
           <Table columns={columns} dataSource={users}></Table>
-        </Form>
+        </Form> */}
+        <div>
+          <User></User>
+        </div>
         <div>
           <Invitados></Invitados>
         </div>

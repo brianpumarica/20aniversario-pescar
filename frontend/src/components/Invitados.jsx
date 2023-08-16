@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function Home() {
+function Invitados() {
   const [invitados, setInvitados] = useState([]);
 
   useEffect(() => {
@@ -58,4 +58,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Invitados;

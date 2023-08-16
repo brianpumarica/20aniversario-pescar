@@ -13,7 +13,7 @@ const db = mariadb.createPool({
   database: "db",
 });
 
-const id = 5;
+const id = 1;
 
 app.get("/", async (req, res) => {
   let conn;
