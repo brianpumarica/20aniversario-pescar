@@ -1,15 +1,13 @@
 import { Button, Table, Form, Input } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {useNavigate} from 'react-router-dom';
-import Invitados from './Invitados';
-
+import { useNavigate } from "react-router-dom";
+import Invitados from "./Invitados";
 
 function Home() {
   const [editingRow, setEditingRow] = useState(null);
   const [form] = Form.useForm();
-
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
   //atributos para editar
   const [nombreForm, setNombre] = useState();
   const [telefonoForm, setTelefono] = useState();
@@ -18,44 +16,47 @@ function Home() {
 
   useEffect(() => {
     if (editingRow !== null) {
-      setNombre(users.find(user => user.id === editingRow).nombreapellido);
-      setTelefono(users.find(user => user.id === editingRow).telefono);
-      setComida(users.find(user => user.id === editingRow).comida);
-      setHabilitado(users.find(user => user.id === editingRow).habilitado);
+      setNombre(users.find((user) => user.id === editingRow).nombreapellido);
+      setTelefono(users.find((user) => user.id === editingRow).telefono);
+      setComida(users.find((user) => user.id === editingRow).comida);
+      setHabilitado(users.find((user) => user.id === editingRow).habilitado);
     }
   }, [editingRow, users]);
-  const url = 'http://localhost:8081/';
+
+  const url = "http://localhost:8081/";
   useEffect(() => {
-        const config = {
-            params: {
-                server: '174.25.0.3',
-                username: 'admin',
-                db: 'db',
-            },
-        };
-        axios.get(url, config)
-        .then(res => setUsers(res.data))
-        .catch(err => console.log(err));
-    }, []) 
-    const navigate = useNavigate();
-    const handleOnClick = (userId) => {
-        axios.put(`${url}user/${userId}`,{
+    const config = {
+      params: {
+        server: "174.25.0.3",
+        username: "admin",
+        db: "db",
+      },
+    };
+    axios
+      .get(url, config)
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  const navigate = useNavigate();
+  const handleOnClick = (userId) => {
+    axios
+      .put(`${url}user/${userId}`, {
         id: userId,
         nombre: nombreForm,
         telefono: telefonoForm,
         comida: ComidaForm,
-        habilitado: habilitadoForm
-      }).then(response => {
+        habilitado: habilitadoForm,
+      })
+      .then((response) => {
         if (response.data.success) {
-          navigate('/');
+          navigate("/");
           window.location.reload(); // Recargar la página
-
         }
-      }).catch(error => {
-        console.error('Error al actualizar usuario:', error);
+      })
+      .catch((error) => {
+        console.error("Error al actualizar usuario:", error);
       });
-
-    };
+  };
 
   const columns = [
     {
@@ -96,9 +97,11 @@ function Home() {
                 },
               ]}
             >
-              <Input onChange={(e)=>{
+              <Input
+                onChange={(e) => {
                   setNombre(e.target.value);
-                }} />
+                }}
+              />
             </Form.Item>
           );
         } else {
@@ -113,9 +116,11 @@ function Home() {
         if (editingRow === record.id) {
           return (
             <Form.Item name="telefono">
-              <Input onChange={(e)=>{
+              <Input
+                onChange={(e) => {
                   setTelefono(e.target.value);
-                }} />
+                }}
+              />
             </Form.Item>
           );
         } else {
@@ -124,53 +129,57 @@ function Home() {
       },
     },
     {
-        title: "Empresa",
-        dataIndex: "empresa",
-        render: (text, record) => {
-          if (editingRow === record.id) {
-            return (
-              <Form.Item name="empresa">
-                <Input />
-              </Form.Item>
-            );
-          } else {
-            return <p>{text}</p>;
-          }
-        },
+      title: "Empresa",
+      dataIndex: "empresa",
+      render: (text, record) => {
+        if (editingRow === record.id) {
+          return (
+            <Form.Item name="empresa">
+              <Input />
+            </Form.Item>
+          );
+        } else {
+          return <p>{text}</p>;
+        }
+      },
     },
     {
-        title: "Comida",
-        dataIndex: "comida",
-        render: (text, record) => {
-          if (editingRow === record.id) {
-            return (
-              <Form.Item name="comida">
-                <Input onChange={(e)=>{
+      title: "Comida",
+      dataIndex: "comida",
+      render: (text, record) => {
+        if (editingRow === record.id) {
+          return (
+            <Form.Item name="comida">
+              <Input
+                onChange={(e) => {
                   setComida(e.target.value);
-                }} />
-              </Form.Item>
-            );
-          } else {
-            return <p>{text}</p>;
-          }
-        },
+                }}
+              />
+            </Form.Item>
+          );
+        } else {
+          return <p>{text}</p>;
+        }
+      },
     },
     {
-        title: "Estoy Habilitado",
-        dataIndex: "habilitado",
-        render: (text, record) => {
-          if (editingRow === record.id) {
-            return (
-              <Form.Item name="habilitado">
-                <Input onChange={(e)=>{
+      title: "Estoy Habilitado",
+      dataIndex: "habilitado",
+      render: (text, record) => {
+        if (editingRow === record.id) {
+          return (
+            <Form.Item name="habilitado">
+              <Input
+                onChange={(e) => {
                   setHabilitado(e.target.value);
-                }} />
-              </Form.Item>
-            );
-          } else {
-            return <p>{text}</p>;
-          }
-        },
+                }}
+              />
+            </Form.Item>
+          );
+        } else {
+          return <p>{text}</p>;
+        }
+      },
     },
     {
       title: "Actions",
@@ -193,7 +202,11 @@ function Home() {
             >
               Edit
             </Button>
-            <Button type="link" htmlType="submit" onClick={()=>handleOnClick(record.id)}>
+            <Button
+              type="link"
+              htmlType="submit"
+              onClick={() => handleOnClick(record.id)}
+            >
               Save
             </Button>
             {/* <button type="button"
@@ -206,16 +219,16 @@ function Home() {
     },
   ];
   const onFinish = (values) => {
-    console.log(values)
+    console.log(values);
   };
   return (
     <div className="App">
-      <header >
+      <header>
         <Form form={form} onFinish={onFinish}>
           <Table columns={columns} dataSource={users}></Table>
         </Form>
         <div>
-            <Invitados></Invitados>
+          <Invitados></Invitados>
         </div>
       </header>
     </div>
@@ -229,7 +242,7 @@ export default Home;
 // import axios from 'axios';
 
 // function Home() {
-    
+
 //     const [users, setUsers] = useState([])
 
 //     useEffect(()=>{
@@ -240,17 +253,16 @@ export default Home;
 //                 username: 'admin',
 //                 db: 'db',
 //             },
-            
+
 //             //headers: {
 //             //    Authorization: 'Bearer YOUR_ACCESS_TOKEN', // Reemplaza con tu método de autenticación
 //             //},
-            
+
 //         };
 //         axios.get(url, config)
 //         .then(res => setUsers(res.data))
 //         .catch(err => console.log(err));
 //     }, [])
-    
 
 //   return (
 //     <div>
@@ -270,7 +282,7 @@ export default Home;
 //                 </thead>
 //                 <tbody>
 //                     {users.map((user, index)=>{
-                        
+
 //                         return <tr key={index}>
 //                             <td>
 //                                 hi
@@ -293,7 +305,6 @@ export default Home;
 //         </form>
 
 //     </div>
-
 
 // )
 // }
