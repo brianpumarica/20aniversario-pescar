@@ -5,7 +5,6 @@ function User() {
     const [usuarios, setUsuarios] = useState([]);
     const [editingId, setEditingId] = useState(null);
     const [editedValues, setEditedValues] = useState({});
-
     const url = "http://localhost:8081";
 
     useEffect(() => {
@@ -52,7 +51,6 @@ function User() {
                 habilitado: editedValues.habilitado,
             })
             .then((response) => {
-                console.log(response);
                 if (response.data.success) {
                     setUsuarios((prevUsers) =>
                         prevUsers.map((user) =>

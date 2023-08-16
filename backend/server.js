@@ -32,22 +32,7 @@ app.get("/", async (req, res) => {
     }
   }
 });
-app.get("/invitados", async (req, res) => {
-  let conn;
-  try {
-    conn = await db.getConnection();
-    const sql = `SELECT * FROM invitados WHERE idReferenciado = ${id}`;
-    const result = await conn.query(sql);
-    res.json(result);
-  } catch (err) {
-    console.error("Error inside server:", err);
-    res.json({ Message: "Error inside server" });
-  } finally {
-    if (conn) {
-      conn.release(); // Liberar la conexión al grupo
-    }
-  }
-});
+
 // Ruta para actualizar un usuario por su ID
 app.put("/user/:id", async (req, res) => {
   const id = req.body.id;
@@ -71,6 +56,52 @@ app.put("/user/:id", async (req, res) => {
 
     console.log(result); // Imprime los resultados en la consola
     res.json({ success: true, message: "Usuario actualizado con éxito" });
+  } catch (err) {
+    console.error("Error dentro del servidor:", err);
+    res.status(500).json({ message: "Error interno del servidor" });
+  } finally {
+    if (conn) {
+      conn.release(); // Liberar la conexión al grupo
+    }
+  }
+});
+app.get("/invitados", async (req, res) => {
+  let conn;
+  try {
+    conn = await db.getConnection();
+    const sql = `SELECT * FROM invitados WHERE idReferenciado = ${id}`;
+    const result = await conn.query(sql);
+    res.json(result);
+  } catch (err) {
+    console.error("Error inside server:", err);
+    res.json({ Message: "Error inside server" });
+  } finally {
+    if (conn) {
+      conn.release(); // Liberar la conexión al grupo
+    }
+  }
+});
+// Ruta para actualizar un usuario por su ID
+app.put("/invitados/:id", async (req, res) => {
+  const id = req.body.id;
+  const nombre = req.body.nombre;
+  const comida = req.body.comida;
+  const habilitado = req.body.habilitado;
+
+  let conn;
+  try {
+    conn = await db.getConnection();
+    const sql =
+      "UPDATE invitados SET nombreapellido = ?, comida = ?, habilitado = ? WHERE id = ?";
+    const result = await conn.query(sql, [
+      nombre,
+      comida,
+      habilitado,
+      id,
+    ]);
+
+    console.log(result); // Imprime los resultados en la consola
+    res.json({ success: true, message: "Invitado actualizado con éxito" });
   } catch (err) {
     console.error("Error dentro del servidor:", err);
     res.status(500).json({ message: "Error interno del servidor" });

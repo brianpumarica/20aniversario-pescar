@@ -1,61 +1,147 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Invitados() {
-  const [invitados, setInvitados] = useState([]);
+    const [invitados, setInvitados] = useState([]);
+    const [editingId, setEditingId] = useState(null);
+    const [editedValues, setEditedValues] = useState({});
+    const url = "http://localhost:8081";
 
-  useEffect(() => {
-    const url = "http://localhost:8081/invitados";
-    const config = {
-      params: {
-        server: "174.25.0.3",
-        username: "admin",
-        db: "db",
-      },
+    useEffect(() => {
+        const config = {
+            params: {
+                server: "174.25.0.3",
+                username: "admin",
+                db: "db",
+            },
+        };
+        axios
+            .get(`${url}/invitados`, config)
+            .then((res) => setInvitados(res.data))
+            .catch((err) => console.log(err));
+    }, []);
+
+    const handleEdit = (id) => {
+        setEditingId(id);
+        const invitadoToEdit = invitados.find((invitado) => invitado.id === id);
+        setEditedValues({
+            nombreapellido: invitadoToEdit.nombreapellido,
+            comida: invitadoToEdit.comida,
+            empresa: invitadoToEdit.empresa,
+            habilitado: invitadoToEdit.habilitado,
+        });
     };
-    axios
-      .get(url, config)
-      .then((res) => setInvitados(res.data))
-      .catch((err) => console.log(err));
-  }, []);
 
-  return (
-    <div>
-      <form>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre y apellido</th>
-              <th>Comida</th>
-              <th>Empresa</th>
-              <th>Habilitado</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {invitados.map((invitado, index) => {
-              return (
-                <tr key={index}>
-                  {/* <input type='text' placeholder='Escriba Nombre' value={user.nombreapellido} ></input> */}
-                  {/* <input type='text' placeholder='Escriba Nombre' value={values.nombreapellido} onChange={e => setValues({...values, nombreapellido:e.target.value})}></input> */}
+    const handleInputChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        setEditedValues((prevValues) => ({
+            ...prevValues,
+            [name]: type === "checkbox" ? checked : value,
+        }));
+    };
 
-                  <td>{invitado.id}</td>
-                  <td>{invitado.nombreapellido}</td>
-                  <td>{invitado.comida}</td>
-                  <td>{invitado.empresa}</td>
-                  <td>{invitado.habilitado}</td>
-                  <td>
-                    <button>Edit</button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </form>
-    </div>
-  );
+    const handleSave = (id) => {
+        axios
+            .put(`${url}/invitados/${id}`, {
+                id: id,
+                nombre: editedValues.nombreapellido,
+                comida: editedValues.comida,
+                habilitado: editedValues.habilitado,
+            })
+            .then((response) => {
+                if (response.data.success) {
+                    setInvitados((prevInvitados) =>
+                      prevInvitados.map((invitado) =>
+                          invitado.id === id ? { ...invitado, ...editedValues } : invitado
+                        )
+                    );
+                    setEditingId(null);
+                    window.location.reload(); // Recargar la página
+                }
+            })
+            .catch((error) => {
+                console.error("Error al actualizar usuario:", error);
+            });
+    };
+
+    return (
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre y apellido</th>
+                        <th>Comida</th>
+                        <th>Empresa</th>
+                        <th>Habilitado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {invitados.map((invitado) => (
+                        <tr key={editingId === invitado.id ? `editing-${invitado.id}` : invitado.id}>
+                            <td>{invitado.id}</td>
+                            <td>
+                                {editingId === invitado.id ? (
+                                    <input
+                                        type="text"
+                                        name="nombreapellido"
+                                        value={editedValues.nombreapellido}
+                                        onChange={handleInputChange}
+                                    />
+                                ) : (
+                                  invitado.nombreapellido
+                                )}
+                            </td>
+                            <td>
+                                {editingId === invitado.id ? (
+                                    <input
+                                        type="text"
+                                        name="comida"
+                                        value={editedValues.comida}
+                                        onChange={handleInputChange}
+                                    />
+                                ) : (
+                                  invitado.comida
+                                )}
+                            </td>
+                            <td>
+                                {editingId === invitado.id ? (
+                                    <input
+                                        type="text"
+                                        name="empresa"
+                                        value={editedValues.empresa}
+                                        onChange={handleInputChange}
+                                    />
+                                ) : (
+                                  invitado.empresa
+                                )}
+                            </td>
+                            <td>
+                                {editingId === invitado.id ? (
+                                    <input
+                                        type="checkbox"
+                                        name="habilitado"
+                                        checked={editedValues.habilitado}
+                                        onChange={handleInputChange}
+                                    />
+                                ) : (
+                                  invitado.habilitado.toString()
+                                )}
+                            </td>
+                            <td>
+                                {editingId === invitado.id ? (
+                                    <button onClick={() => handleSave(invitado.id)}>Guardar</button>
+                                ) : (
+                                    <button onClick={() => handleEdit(invitado.id)}>Editar</button>
+                                )}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
 }
 
 export default Invitados;

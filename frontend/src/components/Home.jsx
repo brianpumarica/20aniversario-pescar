@@ -225,9 +225,6 @@ function Home() {
   return (
     <div className="App">
       <header>
-        {/* <Form form={form} onFinish={onFinish}>
-          <Table columns={columns} dataSource={users}></Table>
-        </Form> */}
         <div>
           <User></User>
         </div>
@@ -240,77 +237,3 @@ function Home() {
 }
 
 export default Home;
-
-// import React, { useEffect, useState } from 'react'
-// //import {useParams} from 'react-router-dom';
-// import axios from 'axios';
-
-// function Home() {
-
-//     const [users, setUsers] = useState([])
-
-//     useEffect(()=>{
-//         const url = 'http://localhost:8080/';
-//         const config = {
-//             params: {
-//                 server: '174.25.0.3',
-//                 username: 'admin',
-//                 db: 'db',
-//             },
-
-//             //headers: {
-//             //    Authorization: 'Bearer YOUR_ACCESS_TOKEN', // Reemplaza con tu método de autenticación
-//             //},
-
-//         };
-//         axios.get(url, config)
-//         .then(res => setUsers(res.data))
-//         .catch(err => console.log(err));
-//     }, [])
-
-//   return (
-//     <div>
-//         <form>
-//             <table>
-//                 <thead>
-//                     <tr>
-//                         <th>hi</th>
-//                         <th>ID</th>
-//                         <th>Nombre y apellido</th>
-//                         <th>Telefono</th>
-//                         <th>Comida</th>
-//                         <th>Admin</th>
-//                         <th>Habilitado</th>
-//                         <th>Acciones</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {users.map((user, index)=>{
-
-//                         return <tr key={index}>
-//                             <td>
-//                                 hi
-//                                 {/* <input type='text' placeholder='Escriba Nombre' value={user.nombreapellido} ></input> */}
-//                                 {/* <input type='text' placeholder='Escriba Nombre' value={values.nombreapellido} onChange={e => setValues({...values, nombreapellido:e.target.value})}></input> */}
-//                             </td>
-//                             <td>{user.id}</td>
-//                             <td>{user.nombreapellido}</td>
-//                             <td>{user.telefono}</td>
-//                             <td>{user.comida}</td>
-//                             <td>{user.admin}</td>
-//                             <td>{user.habilitado}</td>
-//                             <td>
-//                                 <button>Edit</button>
-//                             </td>
-//                         </tr>
-//                     })}
-//                 </tbody>
-//             </table>
-//         </form>
-
-//     </div>
-
-// )
-// }
-
-// export default Home
