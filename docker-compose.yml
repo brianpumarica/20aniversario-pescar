@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - 3310:3306
+    networks:
+      - mynetwork
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      
+            
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8061:8080
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 174.25.0.0/16
