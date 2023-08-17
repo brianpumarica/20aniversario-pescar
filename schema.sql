@@ -71,4 +71,3 @@ INSERT INTO usuarios (nombreapellido, telefono, empresa, comida, admin, habilita
 VALUES ('Mateo Pérez', NULL, 'SOSBA', 'vegetariano', false, true);
 INSERT INTO usuarios (nombreapellido, telefono, empresa, comida, admin, habilitado)
 VALUES ('Natalia Ramírez', NULL, 'SOSBA', 'vegano', false, true);
-

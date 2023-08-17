@@ -51,8 +51,8 @@ function Invitados() {
             .then((response) => {
                 if (response.data.success) {
                     setInvitados((prevInvitados) =>
-                      prevInvitados.map((invitado) =>
-                          invitado.id === id ? { ...invitado, ...editedValues } : invitado
+                        prevInvitados.map((invitado) =>
+                            invitado.id === id ? { ...invitado, ...editedValues } : invitado
                         )
                     );
                     setEditingId(null);
@@ -70,7 +70,7 @@ function Invitados() {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre y apellido</th>
+                        <th>Nombre</th>
                         <th>Comida</th>
                         <th>Empresa</th>
                         <th>Habilitado</th>
@@ -86,23 +86,27 @@ function Invitados() {
                                     <input
                                         type="text"
                                         name="nombreapellido"
+                                        placeholder="Nombre y apellido"
                                         value={editedValues.nombreapellido}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                  invitado.nombreapellido
+                                    invitado.nombreapellido ? invitado.nombreapellido : "Ingrese un nombre"
                                 )}
                             </td>
                             <td>
                                 {editingId === invitado.id ? (
-                                    <input
-                                        type="text"
+                                    <select
                                         name="comida"
                                         value={editedValues.comida}
                                         onChange={handleInputChange}
-                                    />
+                                    >
+                                        <option value="Sin restricciones" defaultValue>Sin restricciones</option>
+                                        <option value="vegetariano">Vegetariano</option>
+                                        <option value="vegano">Vegano</option>                                        
+                                    </select>
                                 ) : (
-                                  invitado.comida
+                                    invitado.comida 
                                 )}
                             </td>
                             <td>
@@ -110,11 +114,12 @@ function Invitados() {
                                     <input
                                         type="text"
                                         name="empresa"
+                                        placeholder="Empresa"
                                         value={editedValues.empresa}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                  invitado.empresa
+                                    invitado.empresa ? invitado.empresa : "Ingrese una empresa en tus datos personales"
                                 )}
                             </td>
                             <td>
@@ -126,7 +131,7 @@ function Invitados() {
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                  invitado.habilitado.toString()
+                                    invitado.habilitado.toString()
                                 )}
                             </td>
                             <td>

@@ -226,9 +226,11 @@ function Home() {
     <div className="App">
       <header>
         <div>
+          <h1>Datos Personales</h1>
           <User></User>
         </div>
         <div>
+          <h1>Mis Invitados</h1>
           <Invitados></Invitados>
         </div>
       </header>

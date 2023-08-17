@@ -72,7 +72,7 @@ function User() {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre y apellido</th>
+                        <th>Nombre</th>
                         <th>Telefono</th>
                         <th>Comida</th>
                         <th>Empresa</th>
@@ -89,11 +89,12 @@ function User() {
                                     <input
                                         type="text"
                                         name="nombreapellido"
+                                        placeholder="Nombre y apellido"
                                         value={editedValues.nombreapellido}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                    usuario.nombreapellido
+                                    usuario.nombreapellido ? usuario.nombreapellido : "Ingrese un nombre"
                                 )}
                             </td>
                             <td>
@@ -101,21 +102,25 @@ function User() {
                                     <input
                                         type="text"
                                         name="telefono"
+                                        placeholder="Telefono"
                                         value={editedValues.telefono}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                    usuario.telefono
+                                    usuario.telefono ? usuario.telefono : "Ingrese un teléfono"
                                 )}
                             </td>
                             <td>
                                 {editingId === usuario.id ? (
-                                    <input
-                                        type="text"
+                                    <select
                                         name="comida"
                                         value={editedValues.comida}
                                         onChange={handleInputChange}
-                                    />
+                                    >
+                                        <option value="Sin restricciones" defaultValue>Sin restricciones</option>
+                                        <option value="vegetariano">Vegetariano</option>
+                                        <option value="vegano">Vegano</option>                                        
+                                    </select>
                                 ) : (
                                     usuario.comida
                                 )}
@@ -125,11 +130,12 @@ function User() {
                                     <input
                                         type="text"
                                         name="empresa"
+                                        placeholder="Empresa"
                                         value={editedValues.empresa}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                    usuario.empresa
+                                    usuario.empresa ? usuario.empresa : "Ingrese una empresa"
                                 )}
                             </td>
                             <td>
