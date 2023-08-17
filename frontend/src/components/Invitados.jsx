@@ -24,7 +24,7 @@ function Invitados() {
             .get(`${backendURL}/invitados`, config)
             .then((res) => setInvitados(res.data))
             .catch((err) => console.log(err));
-    }, []);
+    }, [backendURL, dbHost, dbUser, dbName]);
 
     const handleEdit = (id) => {
         setEditingId(id);

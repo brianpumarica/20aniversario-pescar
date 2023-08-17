@@ -24,7 +24,8 @@ function User() {
             .get(backendURL, config)
             .then((res) => setUsuarios(res.data))
             .catch((err) => console.log(err));
-    }, []);
+    }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
+
 
     const handleEdit = (id) => {
         setEditingId(id);
