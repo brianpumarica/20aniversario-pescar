@@ -5,18 +5,23 @@ function User() {
     const [usuarios, setUsuarios] = useState([]);
     const [editingId, setEditingId] = useState(null);
     const [editedValues, setEditedValues] = useState({});
-    const url = "http://localhost:8081";
+    
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+    const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
+    const dbUser = process.env.REACT_APP_DB_USER || "admin";
+    const dbName = process.env.REACT_APP_DB_NAME || "db";
 
     useEffect(() => {
         const config = {
             params: {
-                server: "174.25.0.3",
-                username: "admin",
-                db: "db",
+                server: dbHost,
+                username: dbUser,
+                db: dbName,
             },
         };
         axios
-            .get(url, config)
+            .get(backendURL, config)
             .then((res) => setUsuarios(res.data))
             .catch((err) => console.log(err));
     }, []);
@@ -43,7 +48,7 @@ function User() {
 
     const handleSave = (id) => {
         axios
-            .put(`${url}/user/${id}`, {
+            .put(`${backendURL}/user/${id}`, {
                 id: id,
                 nombre: editedValues.nombreapellido,
                 telefono: editedValues.telefono,
