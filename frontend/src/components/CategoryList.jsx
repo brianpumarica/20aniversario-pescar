@@ -1,4 +1,3 @@
-import React from 'react'
 import { imgs , categories } from '../data'
 import CategoryCard from './CategoryCard'
 

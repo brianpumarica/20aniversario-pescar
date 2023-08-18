@@ -1,25 +1,31 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function User() {
     const [usuarios, setUsuarios] = useState([]);
     const [editingId, setEditingId] = useState(null);
     const [editedValues, setEditedValues] = useState({});
-    const url = "http://localhost:8081";
+    
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+    const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
+    const dbUser = process.env.REACT_APP_DB_USER || "admin";
+    const dbName = process.env.REACT_APP_DB_NAME || "db";
 
     useEffect(() => {
         const config = {
             params: {
-                server: "174.25.0.3",
-                username: "admin",
-                db: "db",
+                server: dbHost,
+                username: dbUser,
+                db: dbName,
             },
         };
         axios
-            .get(url, config)
+            .get(backendURL, config)
             .then((res) => setUsuarios(res.data))
             .catch((err) => console.log(err));
-    }, []);
+    }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
+
 
     const handleEdit = (id) => {
         setEditingId(id);
@@ -43,7 +49,7 @@ function User() {
 
     const handleSave = (id) => {
         axios
-            .put(`${url}/user/${id}`, {
+            .put(`${backendURL}/user/${id}`, {
                 id: id,
                 nombre: editedValues.nombreapellido,
                 telefono: editedValues.telefono,
@@ -72,7 +78,7 @@ function User() {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre y apellido</th>
+                        <th>Nombre</th>
                         <th>Telefono</th>
                         <th>Comida</th>
                         <th>Empresa</th>
@@ -89,11 +95,12 @@ function User() {
                                     <input
                                         type="text"
                                         name="nombreapellido"
+                                        placeholder="Nombre y apellido"
                                         value={editedValues.nombreapellido}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                    usuario.nombreapellido
+                                    usuario.nombreapellido ? usuario.nombreapellido : "Ingrese un nombre"
                                 )}
                             </td>
                             <td>
@@ -101,21 +108,25 @@ function User() {
                                     <input
                                         type="text"
                                         name="telefono"
+                                        placeholder="Telefono"
                                         value={editedValues.telefono}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                    usuario.telefono
+                                    usuario.telefono ? usuario.telefono : "Ingrese un teléfono"
                                 )}
                             </td>
                             <td>
                                 {editingId === usuario.id ? (
-                                    <input
-                                        type="text"
+                                    <select
                                         name="comida"
                                         value={editedValues.comida}
                                         onChange={handleInputChange}
-                                    />
+                                    >
+                                        <option value="Sin restricciones" defaultValue>Sin restricciones</option>
+                                        <option value="vegetariano">Vegetariano</option>
+                                        <option value="vegano">Vegano</option>                                        
+                                    </select>
                                 ) : (
                                     usuario.comida
                                 )}
@@ -125,11 +136,12 @@ function User() {
                                     <input
                                         type="text"
                                         name="empresa"
+                                        placeholder="Empresa"
                                         value={editedValues.empresa}
                                         onChange={handleInputChange}
                                     />
                                 ) : (
-                                    usuario.empresa
+                                    usuario.empresa ? usuario.empresa : "Ingrese una empresa"
                                 )}
                             </td>
                             <td>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types';
 import Results from './Results'
 
 const Question = ({ filteredQuestion, setIndexQuestion, indexQuestion, questionsFiltered, setActiveQuiz,
@@ -46,6 +47,23 @@ const Question = ({ filteredQuestion, setIndexQuestion, indexQuestion, questions
     setActiveQuiz(false);
     setIndexQuestion(0)
   }
+
+  Question.propTypes = {
+    filteredQuestion: PropTypes.shape({
+      incorrect_answers: PropTypes.arrayOf(PropTypes.string),
+      correct_answer: PropTypes.string,
+      difficulty: PropTypes.string,
+      question: PropTypes.string,
+    }).isRequired,
+    setIndexQuestion: PropTypes.func.isRequired,
+    indexQuestion: PropTypes.number.isRequired,
+    questionsFiltered: PropTypes.arrayOf(
+      PropTypes.shape({
+        // Define aquí las propiedades de cada pregunta
+      })
+    ).isRequired,
+    setActiveQuiz: PropTypes.func.isRequired,
+  };
 
   return (
     <>

@@ -1,19 +1,25 @@
 const express = require("express");
 const cors = require("cors");
 const mariadb = require("mariadb");
+require('dotenv').config(); // Carga las variables de entorno desde .env
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+const dbHost = process.env.DB_HOST || "174.25.0.2";
+const dbUser = process.env.DB_USER || "admin";
+const dbPassword = process.env.DB_PASSWORD || "admin";
+const dbName = process.env.DB_NAME || "db";
+
 const db = mariadb.createPool({
-  host: "174.25.0.3",
-  user: "admin",
-  password: "admin",
-  database: "db",
+  host: dbHost,
+  user: dbUser,
+  password: dbPassword,
+  database: dbName,
 });
 
-const id = 1;
+const id = process.env.IDUSUARIOTEST || 2;
 
 app.get("/", async (req, res) => {
   let conn;
@@ -112,7 +118,7 @@ app.put("/invitados/:id", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 8081; // Puerto en el que se ejecutará la aplicación
+const port = process.env.PORT || 8082; // Puerto en el que se ejecutará la aplicación
 
 // Iniciar el servidor
 app.listen(port, () => {

@@ -1,38 +1,70 @@
-# Poke-Quiz!
+# Getting Started with Create React App
 
-¿Cuánto sabes de Pokémon? App de preguntas y respuestas de opción multiple, creada con REACT y usando TAILWIND para darle estilo.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Pasos para la creación de la app:
+## Available Scripts
 
-1. Vamos a usar el framework de VITE, por lo que empezamos instalando: 
-$npm create vite
-Usaremos React con JavaScript.
+In the project directory, you can run:
 
-2. Usaremos Tailwind, por lo que instalamos desde la consola:
-Todo el proceso y los pasos, estan en la documentación: https://tailwindcss.com/docs/guides/vite
-$npm install -D tailindcss postcss autoprefixer
+### `npm start`
 
-3. Necesitaremos usar Router Dom, por lo que usaremos el comando:
-$npm install react-router-dom
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-4. Configuramos las rutas del archivo tailwind.config.js:
-    Reemplazamos todo lo que ya estaba, por la siguiente configuración (según la documentacion de tw):
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-    /** @type {import('tailwindcss').Config} */
-    export default {
-    content: [
-        "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-        extend: {},
-    },
-    plugins: [],
-    }
+### `npm test`
 
-5. Agregamos las directivas de TW al css.
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-6. Recordar detener el servidor (si ya esta corriendo) con ctrl + c, y volver a iniciarlo con npm run dev, para que tome los estilos de tailwind.
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import CategoryList from '../components/CategoryList';
 
@@ -16,9 +15,9 @@ export const HomePage = () => {
             </div>
 
             <div className="mt-4">
-                <Link to="/information">
+                <Link to="/home">
                     <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                        Ir a INFORMACION
+                        Informacion de usuarios/invitados
                     </button>
                 </Link>
             </div>

@@ -1,24 +1,24 @@
-/* Este archivo nos servirá de punto de entrada de las rutas. */
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { HomePage, CategoryPage, SignIn } from './pages'; /* Aqui lo importo desde la carpeta pages, gracias al archivo index.js contenida en la misma. */
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa BrowserRouter y Route
+import { HomePage, CategoryPage, SignIn , NotFound } from './pages';
 import { Navbar } from './components/Navbar';
-import { InformationTable } from './components/InformationTable';
+import Home from './components/Home';
 
 const AppRouter = () => {
     return (
-        <>
-            <Navbar/>
+        <Router basename="/">
+            <>
+                <Navbar/>
+                <Routes>
+                    <Route path='/' element={<HomePage/>}/> {/* Pagina de inicio */}
+                    <Route path='/category/:category' element={<CategoryPage/>}/> {/* Página de juego Quiz */}
+                    <Route path='/signin' element={<SignIn/>} /> {/* Formulario de Inicio de sesión */}
+                    <Route path='/home' element={<Home/>}/> {/* Renderizado de base de datos en tablas */}
+                    <Route path='*' element={<NotFound/>}/> {/* Ruta, en caso de que no exista la pagina */}
+                </Routes>
 
-            <Routes>
-                <Route path='/' element={<HomePage/>}/>
-                <Route path='/category/:category' element={<CategoryPage/>}/>
-                <Route path='/signin' element= {<SignIn/>} />
-                <Route path='/information' element={<InformationTable/>}/>
-            </Routes>
-
-            {/* Aqui se debería agregar el FOOTER */}
-        </>
+                {/* Aquí se debería agregar el FOOTER */}
+            </>
+        </Router>
     )
 }
 

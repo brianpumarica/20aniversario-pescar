@@ -13,15 +13,6 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: db
       MYSQL_USER: admin
-      
-            
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8061:8080
-    networks:
-      - mynetwork
 
 networks:
   mynetwork:
