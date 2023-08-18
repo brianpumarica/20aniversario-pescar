@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
     conn = await db.getConnection();
     const sql = `SELECT * FROM usuarios WHERE id = ${id}`;
     const result = await conn.query(sql);
-    console.log(result); // Imprime los resultados en la consola
+    //console.log(result); // Imprime los resultados en la consola
     res.json(result); // Devuelve los resultados como respuesta al cliente
   } catch (err) {
     console.error("Error inside server:", err);
