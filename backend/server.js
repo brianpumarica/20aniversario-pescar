@@ -19,7 +19,7 @@ const db = mariadb.createPool({
   database: dbName,
 });
 
-const id = process.env.IDUSUARIOTEST || 6;
+const id = process.env.IDUSUARIOTEST || 2;
 
 app.get("/", async (req, res) => {
   let conn;
@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
     conn = await db.getConnection();
     const sql = `SELECT * FROM usuarios WHERE id = ${id}`;
     const result = await conn.query(sql);
-    //console.log(result); // Imprime los resultados en la consola
+    console.log(result); // Imprime los resultados en la consola
     res.json(result); // Devuelve los resultados como respuesta al cliente
   } catch (err) {
     console.error("Error inside server:", err);
@@ -118,7 +118,7 @@ app.put("/invitados/:id", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 8081; // Puerto en el que se ejecutará la aplicación
+const port = process.env.PORT || 8082; // Puerto en el que se ejecutará la aplicación
 
 // Iniciar el servidor
 app.listen(port, () => {
