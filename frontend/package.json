@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "antd": "^5.8.3",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.15.0",
+    "sweet-alert": "^2.0.5",
+    "sweetalert2": "^11.7.23"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
