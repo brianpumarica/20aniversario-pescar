@@ -1,15 +1,26 @@
-import "./App.css";
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+// import "./App.css";
+// import React from "react";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Home from "./components/Home";
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+import AppRouter from "./AppRouter";
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    <>
+      <AppRouter/>
+    </>
+  )
 }
 
 export default App;
