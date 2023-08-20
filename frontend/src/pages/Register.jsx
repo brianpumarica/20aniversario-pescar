@@ -1,4 +1,4 @@
-function Register() {
+export const Register = () => {
     return (
         <div>
             <div>
@@ -47,5 +47,3 @@ function Register() {
         </div>
     );
 }
-
-export default Register;

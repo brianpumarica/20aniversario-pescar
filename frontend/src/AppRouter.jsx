@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa BrowserRouter y Route
-import { HomePage, CategoryPage, SignIn } from './pages';
+import { HomePage, CategoryPage, SignIn , Register} from './pages';
 import { Navbar } from './components/Navbar';
 import Home from './components/Home';
-import Register from './components/Register';
 
 const AppRouter = () => {
     return (
