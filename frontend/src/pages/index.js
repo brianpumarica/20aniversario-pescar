@@ -2,5 +2,5 @@
 
 export * from "./HomePage"
 export * from "./CategoryPage"
-export * from "./SignIn"
+export * from "./Login"
 export * from "./Register"

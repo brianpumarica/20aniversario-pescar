@@ -2,29 +2,28 @@ import {useRef} from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-export const SignIn = () => {
+export const Login = () => {
 
-    let mail = useRef()
+    let user = useRef()
     let password = useRef()
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     async function handleSubmit(event) {
             event.preventDefault()
 
             let data = {
-                [mail.current.name]: mail.current.value,
+                [user.current.name]: user.current.value,
                 [password.current.name]: password.current.value
             }
-            //console.log(data)
-            // let url_signIn = 'https://minga-back-446z.onrender.com/auth/signin'
-            let url_signIn = '#'
+            console.log(data)
             try {
-                await axios.post(url_signIn, data)
+                await axios.post(`${backendURL}/login`, data)
                 .then(res => {
                     console.log(res)
                     localStorage.setItem('token', res.data.token)
                     localStorage.setItem('user', JSON.stringify({
                         name: res.data.name,
-                        mail: res.data.mail,
+                        user: res.data.user,
                         photo: res.data.photo
                     }))
                     })
@@ -51,12 +50,12 @@ export const SignIn = () => {
         <div className="bg-gray-100 min-h-screen flex justify-center items-center">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
             <fieldset className="mb-4">
-                <legend className="block text-gray-700 font-bold mb-2">Email</legend>
+                <legend className="block text-gray-700 font-bold mb-2">Nombre de Usuario</legend>
                 <input
-                    ref={mail}
-                    type="email"
+                    ref={user}
+                    type="text"
                     className="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    name="mail"
+                    name="user"
                     required
                 />
             </fieldset>
