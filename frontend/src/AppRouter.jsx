@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import { HomePage, CategoryPage, SignIn } from './pages';
 import { Navbar } from './components/Navbar';
 import Home from './components/Home';
+import Register from './components/Register';
 
 const AppRouter = () => {
     return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
                     <Route path='/category/:category' element={<CategoryPage/>}/>
                     <Route path='/signin' element={<SignIn/>} />
                     <Route path='/home' element={<Home/>}/>
+                    <Route path='/register' element={<Register/>}/>
                 </Routes>
 
                 {/* Aquí se debería agregar el FOOTER */}
