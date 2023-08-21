@@ -30,14 +30,16 @@ const db = mariadb.createPool({
   password: dbPassword,
   database: dbName,
 });
-
-const id = process.env.IDUSUARIOTEST || 2;
+const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
 app.get("/", async (req, res) => {
   let conn;
-  try {
+  const token = req.cookies.token;
+  const decodedToken = jwt.verify(token, jwtSecretKey);
+  const userId = decodedToken.id; // Acceder al ID del usuario desde el token decodificado
+    try {
     conn = await db.getConnection();
-    const sql = `SELECT * FROM usuarios WHERE id = ${id}`;
+    const sql = `SELECT * FROM usuarios WHERE id = ${userId}`;
     const result = await conn.query(sql);
     //console.log(result); // Imprime los resultados en la consola
     res.json(result); // Devuelve los resultados como respuesta al cliente
@@ -85,9 +87,12 @@ app.put("/user/:id", async (req, res) => {
 });
 app.get("/invitados", async (req, res) => {
   let conn;
+  const token = req.cookies.token;
+  const decodedToken = jwt.verify(token, jwtSecretKey);
+  const userId = decodedToken.id; // Acceder al ID del usuario desde el token decodificado
   try {
     conn = await db.getConnection();
-    const sql = `SELECT * FROM invitados WHERE idReferenciado = ${id}`;
+    const sql = `SELECT * FROM invitados WHERE idReferenciado = ${userId}`;
     const result = await conn.query(sql);
     res.json(result);
   } catch (err) {
@@ -160,7 +165,6 @@ app.post("/register", async (req, res) => {
 
 //POST ==>> login
 app.post("/login", async (req, res) => {
-  const jwtSecretKey = process.env.JWT_SECRET_KEY;
   try {
     const sql = "SELECT * FROM usuarios WHERE user = ?";
     const data = await db.query(sql, [req.body.user]);
@@ -171,11 +175,14 @@ app.post("/login", async (req, res) => {
         data[0].password
       );
       if (passwordMatched) {
-        const user = data[0].user;
-        const token = jwt.sign({ user }, jwtSecretKey, {
+        const id = data[0].id;
+        const token = jwt.sign({ id }, jwtSecretKey, {
           expiresIn: "1d",
         });
-        res.cookie("token", token);
+        res.cookie("token", token,{ 
+          secure: true, // Solo se enviará la cookie en conexiones HTTPS
+          maxAge: 24 * 60 * 60 * 1000, // Tiempo de expiración de la cookie
+        });
         return res.json({ Status: "Success" });
       } else {
         return res.status(401).json({ message: "Contraseña incorrecta" });
@@ -186,6 +193,39 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     console.error("An error occurred:", error);
     return res.status(401).json({ message: "Error en el servidor" });
+  }
+});
+
+const verifyUser = (req, res, next) =>{
+  const token = req.cookies.token;
+  if(!token){
+    return res.json({Error: "No estas autenticado"});
+  }
+  else{
+    jwt.verify(token, jwtSecretKey, (err,decoded)=>{
+      if(err){
+        return res.json({Error: "Token is not ok"});
+      }
+      else{
+        req.id = decoded.id;
+        next();
+      }
+    })
+  }
+}
+
+app.get('/verify',verifyUser, (req,res)=>{
+  return res.json({Status:"Success",id:req.id})
+})
+app.post("/saveId", (req, res) => {
+  try {
+    const idFromClient = req.body.id;
+    id = idFromClient;
+
+    return res.json({ Status: "Id saved successfully" });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return res.json({ Error: "Error saving id in server" });
   }
 });
 
