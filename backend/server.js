@@ -64,7 +64,7 @@ app.put("/user/:id", async (req, res) => {
       id,
     ]);
 
-    console.log(result); // Imprime los resultados en la consola
+    //console.log(result); // Imprime los resultados en la consola
     res.json({ success: true, message: "Usuario actualizado con éxito" });
   } catch (err) {
     console.error("Error dentro del servidor:", err);
@@ -105,7 +105,7 @@ app.put("/invitados/:id", async (req, res) => {
       "UPDATE invitados SET nombreapellido = ?, comida = ?, habilitado = ? WHERE id = ?";
     const result = await conn.query(sql, [nombre, comida, habilitado, id]);
 
-    console.log(result); // Imprime los resultados en la consola
+    //console.log(result); // Imprime los resultados en la consola
     res.json({ success: true, message: "Invitado actualizado con éxito" });
   } catch (err) {
     console.error("Error dentro del servidor:", err);
@@ -134,12 +134,7 @@ app.post("/register", async (req, res) => {
     
     const userResult = await db.query(userSql, userValues);
     const userId = userResult.insertId;
-    console.log('Inserted into usuarios table:', userId);
-    
     const invitadosNumber = req.body.listaInvitados;
-    const newInvitado = {
-      idReferenciado: userId,
-    };
     const invitadosInsertSql = "INSERT INTO invitados (idReferenciado) VALUES (?)";
     
     for (let i = 0; i < invitadosNumber; i++) {
