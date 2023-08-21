@@ -2,12 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const mariadb = require("mariadb");
 const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config(); // Carga las variables de entorno desde .env
 const salt = 10;
 
+const FRONTEND_URL = process.env.FRONTEND_URL;
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [FRONTEND_URL],
+    methods: ["GET", "POST", "PUT"], // Aquí incluyes los métodos que tu aplicación utiliza
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -121,7 +129,7 @@ app.put("/invitados/:id", async (req, res) => {
 app.post("/register", async (req, res) => {
   try {
     const hash = await bcrypt.hash(req.body.password.toString(), salt);
-    
+
     const userValues = [
       req.body.user,
       hash,
@@ -130,23 +138,58 @@ app.post("/register", async (req, res) => {
       req.body.empresa,
       req.body.comida,
     ];
-    const userSql = "INSERT INTO usuarios (user, password, nombreapellido, telefono, empresa, comida) VALUES (?, ?, ?, ?, ?, ?)";
-    
+    const userSql =
+      "INSERT INTO usuarios (user, password, nombreapellido, telefono, empresa, comida) VALUES (?, ?, ?, ?, ?, ?)";
+
     const userResult = await db.query(userSql, userValues);
     const userId = userResult.insertId;
     const invitadosNumber = req.body.listaInvitados;
-    const invitadosInsertSql = "INSERT INTO invitados (idReferenciado) VALUES (?)";
-    
+    const invitadosInsertSql =
+      "INSERT INTO invitados (idReferenciado) VALUES (?)";
+
     for (let i = 0; i < invitadosNumber; i++) {
       await db.query(invitadosInsertSql, [userId]);
     }
-    
+
     return res.json({ Status: "Success" });
   } catch (error) {
     console.error("An error occurred:", error);
     return res.json({ Error: "An error occurred on the server" });
   }
 });
+
+//POST ==>> login
+app.post("/login", async (req, res) => {
+  const jwtSecretKey = process.env.JWT_SECRET_KEY;
+  try {
+    const sql = "SELECT * FROM usuarios WHERE user = ?";
+    const data = await db.query(sql, [req.body.user]);
+
+    if (data.length > 0) {
+      const passwordMatched = await bcrypt.compare(
+        req.body.password.toString(),
+        data[0].password
+      );
+      if (passwordMatched) {
+        const user = data[0].user;
+        const token = jwt.sign({ user }, jwtSecretKey, {
+          expiresIn: "1d",
+        });
+        res.cookie("token", token);
+        return res.json({ Status: "Success" });
+      } else {
+        return res.status(401).json({ message: "Contraseña incorrecta" });
+      }
+    } else {
+      return res.status(401).json({ message: "User no existe" });
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return res.status(401).json({ message: "Error en el servidor" });
+  }
+});
+
+
 
 
 const port = process.env.PORT || 8082; // Puerto en el que se ejecutará la aplicación
