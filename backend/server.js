@@ -118,12 +118,11 @@ app.put("/invitados/:id", async (req, res) => {
 });
 
 //POST ==>> Register
-app.post("/register", (req, res) => {
-  const sql =
-    "INSERT INTO usuarios (`user`, `password`,`nombreapellido`, `telefono`,`empresa`, `comida`) VALUES (?)";
-  bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
-    if (err) return res.json({ Error: "Error for hassing password" });
-    const values = [
+app.post("/register", async (req, res) => {
+  try {
+    const hash = await bcrypt.hash(req.body.password.toString(), salt);
+    
+    const userValues = [
       req.body.user,
       hash,
       req.body.nombreapellido,
@@ -131,13 +130,29 @@ app.post("/register", (req, res) => {
       req.body.empresa,
       req.body.comida,
     ];
-
-    db.query(sql, [values], (err, result) => {
-      if (err) return res.json({ Error: "Inserting data Errorr in server" });
-      return res.json({ Status: "Success" });
-    });
-  });
+    const userSql = "INSERT INTO usuarios (user, password, nombreapellido, telefono, empresa, comida) VALUES (?, ?, ?, ?, ?, ?)";
+    
+    const userResult = await db.query(userSql, userValues);
+    const userId = userResult.insertId;
+    console.log('Inserted into usuarios table:', userId);
+    
+    const invitadosNumber = req.body.listaInvitados;
+    const newInvitado = {
+      idReferenciado: userId,
+    };
+    const invitadosInsertSql = "INSERT INTO invitados (idReferenciado) VALUES (?)";
+    
+    for (let i = 0; i < invitadosNumber; i++) {
+      await db.query(invitadosInsertSql, [userId]);
+    }
+    
+    return res.json({ Status: "Success" });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return res.json({ Error: "An error occurred on the server" });
+  }
 });
+
 
 const port = process.env.PORT || 8082; // Puerto en el que se ejecutará la aplicación
 

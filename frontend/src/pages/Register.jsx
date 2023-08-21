@@ -5,11 +5,11 @@ export const Register = () => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     const [values, setValues] = useState({
-        nombreapellido:'',
-        telefono:'',
-        listaInvitados:'',
-        empresa:'',
-        comida:'Sin restricciones',
+        nombreapellido: '',
+        telefono: '',
+        listaInvitados: '',
+        empresa: '',
+        comida: 'Sin restricciones',
         user: '',
         password: ''
     })
@@ -25,7 +25,7 @@ export const Register = () => {
         console.log(values);
         axios.post(`${backendURL}/register`, values)
             .then(res => console.log(res))
-            .then(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     return (
