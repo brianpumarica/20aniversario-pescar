@@ -43,7 +43,7 @@ export const Register = () => {
                     </div>
                     <div>
                         <label htmlFor="listaInvitados"><strong>Lista de Invitados</strong></label>
-                        <input type="text" placeholder='Ingrese la lista de invitados' name='listaInvitados' onChange={handleChange} />
+                        <input type="number" placeholder='Ingrese la lista de invitados' name='listaInvitados' onChange={handleChange} />
                     </div>
                     <div>
                         <label htmlFor="empresa"><strong>Empresa</strong></label>
