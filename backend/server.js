@@ -1,11 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const mariadb = require("mariadb");
-require('dotenv').config(); // Carga las variables de entorno desde .env
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt");
+require("dotenv").config(); // Carga las variables de entorno desde .env
+const salt = 10;
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 const dbHost = process.env.DB_HOST || "174.25.0.2";
 const dbUser = process.env.DB_USER || "admin";
@@ -99,12 +103,7 @@ app.put("/invitados/:id", async (req, res) => {
     conn = await db.getConnection();
     const sql =
       "UPDATE invitados SET nombreapellido = ?, comida = ?, habilitado = ? WHERE id = ?";
-    const result = await conn.query(sql, [
-      nombre,
-      comida,
-      habilitado,
-      id,
-    ]);
+    const result = await conn.query(sql, [nombre, comida, habilitado, id]);
 
     console.log(result); // Imprime los resultados en la consola
     res.json({ success: true, message: "Invitado actualizado con éxito" });
@@ -116,6 +115,28 @@ app.put("/invitados/:id", async (req, res) => {
       conn.release(); // Liberar la conexión al grupo
     }
   }
+});
+
+//POST ==>> Register
+app.post("/register", (req, res) => {
+  const sql =
+    "INSERT INTO usuarios (`user`, `password`,`nombreapellido`, `telefono`,`empresa`, `comida`) VALUES (?)";
+  bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
+    if (err) return res.json({ Error: "Error for hassing password" });
+    const values = [
+      req.body.user,
+      hash,
+      req.body.nombreapellido,
+      req.body.telefono,
+      req.body.empresa,
+      req.body.comida,
+    ];
+
+    db.query(sql, [values], (err, result) => {
+      if (err) return res.json({ Error: "Inserting data Errorr in server" });
+      return res.json({ Status: "Success" });
+    });
+  });
 });
 
 const port = process.env.PORT || 8082; // Puerto en el que se ejecutará la aplicación

@@ -3,7 +3,7 @@ CREATE TABLE usuarios (
     user VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     nombreapellido VARCHAR(255),
-    telefono INTEGER,
+    telefono VARCHAR(255),
     empresa VARCHAR(255),
     comida VARCHAR(255) DEFAULT 'Sin restricciones',
     habilitado BOOLEAN DEFAULT true
