@@ -2,7 +2,7 @@ import axios from "axios";
 import Invitados from "./Invitados";
 import User from "./User";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import UnauthenticatedContent from "./authComponents/UnauthenticatedContent";
 
 function Home() {
   const [auth, setAuth] = useState(false);
@@ -47,16 +47,7 @@ function Home() {
           </header>
           :
           <div>
-            <div>
-              {message}
-            </div>
-            <div>
-              <Link to="/login">
-                    <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                        Inicia Sesión
-                    </button>
-                </Link>
-            </div>
+            <UnauthenticatedContent message={message} />
           </div>
       }
 
