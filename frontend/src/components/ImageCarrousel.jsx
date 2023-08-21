@@ -30,12 +30,20 @@ const ImageCarousel = ({ images }) => {
         >
 
             <div className="flex-1 flex items-center"> {/* Botones y links */}
-                <div className="text-center mx-auto flex flex-col items-center space-y-2">
-                    <h1 className="text-4xl font-semibold">Pescar 20 Años 🥳</h1>
+                <div className="text-center mx-auto flex flex-col items-center space-y-2 gap-2">
+                    <h1 className="text-4xl font-semibold">¡Fundación Pescar cumple 20 Años! 🥳</h1>
                     <p className="font-light text-2xl mt-5">¡Bienvenido!</p>
-                    <Link className="px-5 inline-block text-white transition-colors mt-1" to="https://www.pescar.org.ar/quienes-somos/">
-                        <button className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">¿Quiénes Somos?</button>
-                    </Link>
+                    <a
+                        className="px-5 inline-block text-white transition-colors mt-1"
+                        href="https://www.pescar.org.ar/quienes-somos/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <button className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                            ¿Quiénes Somos?
+                        </button>
+                    </a>
+
                     <Link to="/signin" className="text-center mx-auto">
                         <button className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">   
                             Iniciar Sesión
@@ -54,7 +62,7 @@ const ImageCarousel = ({ images }) => {
                 </div>
             </div>
 
-            <div className="carousel-container">
+            <div className="carousel-container"> {/* Carousel de imagenes */}
                 <div className="carousel" style={carouselStyles}>
                     {extendedImages.map((imageUrl, index) => (
                         <div

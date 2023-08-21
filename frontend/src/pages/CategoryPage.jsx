@@ -35,33 +35,43 @@ export const CategoryPage = () => {
         //console.log(questionsFiltered.length)
 
     return (
-        <div className='container flex flex-col items-center justify-center gap-10' style={{height: 'calc(100vh - 5rem)'}}>
-
-            {activeQuiz ? (<Question 
-                filteredQuestion={questionsFiltered[indexQuestion]} 
-                setIndexQuestion={setIndexQuestion}
-                indexQuestion={indexQuestion}
-                questionsFiltered={questionsFiltered}
-                setActiveQuiz={setActiveQuiz}
-            />) : (
+        <div 
+            className="container flex flex-col items-center justify-center gap-10 bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] bg-cover bg-center" 
+            style={{
+                height: '100vh', 
+                width: '100wh', 
+                margin: '0', 
+                backgroundSize: 'cover', 
+                // backgroundRepeat: 'no-repeat',
+                backgroundImage: `url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')`
+            }}>
+        {/* Contenido del div */}
+            {activeQuiz ? (
+                <Question 
+                    filteredQuestion={questionsFiltered[indexQuestion]} 
+                    setIndexQuestion={setIndexQuestion}
+                    indexQuestion={indexQuestion}
+                    questionsFiltered={questionsFiltered}
+                    setActiveQuiz={setActiveQuiz}
+                />
+            ) : (
                 <>
-                    <div className="flex flex-col gap-5">
+                    <div className="flex flex-col" style={{ height: 'auto', border: '1px solid teal', borderRadius: '15px', background: 'white' }}>
                         <h1 className="text-3xl text-teal-900 text-center font-bold">
                             {category}
                         </h1>
-                        
                         <div className="flex justify-center items-center">
                             <img src={imagenQuiz} alt={category} className='w-72' />
                         </div>
+                        <button
+                            className="text-white bg-blue-500 py-2 rounded-lg font-bold px-5 transition-all hover:bg-orange-500 hover:text-gray-900"
+                            onClick={() => setActiveQuiz(true)}
+                        >
+                            Iniciar Quiz
+                        </button>
                     </div>
-
-                    <button className="text-white bg-gray-900 py-2 rounded-lg font-bold px-5 transition-all hover:bg-yellow-500 hover:text-gray-900"
-                        onClick={() => setActiveQuiz(true)}>
-                        Iniciar Quiz
-                    </button>
                 </>
-            ) }
-            
+            )}
         </div>
     )
 }
