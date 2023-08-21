@@ -20,7 +20,7 @@ export const Login = () => {
         try {
             await axios.post(`${backendURL}/login`, data)
                 .then(res => {
-                    console.log('resLogin',res)
+                    console.log('resLogin', res)
                 })
 
             Swal.fire({

@@ -189,9 +189,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
-
-
 const port = process.env.PORT || 8082; // Puerto en el que se ejecutará la aplicación
 
 // Iniciar el servidor
