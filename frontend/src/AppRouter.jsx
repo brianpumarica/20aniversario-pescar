@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa BrowserRouter y Route
 import { HomePage, CategoryPage, SignIn , NotFound } from './pages';
 import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer'
 import Home from './components/Home';
 
 const AppRouter = () => {
@@ -16,7 +17,7 @@ const AppRouter = () => {
                     <Route path='*' element={<NotFound/>}/> {/* Ruta, en caso de que no exista la pagina */}
                 </Routes>
 
-                {/* Aquí se debería agregar el FOOTER */}
+                <Footer/>
             </>
         </Router>
     )
