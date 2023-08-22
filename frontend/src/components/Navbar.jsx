@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-export const Navbar = ({ auth }) => {
+export const Navbar = () => {
     return (
         <nav className="p-5 bg-white shadow md:flex md:items-center md:justify-between">
             <div className="flex justify-between items-center">
@@ -26,20 +25,10 @@ export const Navbar = ({ auth }) => {
                 <li className="mx-4 my-6 md:my-0">
                     <Link to="#" className="text-xl hover:text-cyan-500 duration-500">Contacto</Link>
                 </li>
-                <li className="mx-4 my-6 md:my-0">
-                    {auth ? (
-                        <Link to="/logout" className="text-xl hover:text-cyan-500 duration-500">Cerrar Sesión</Link>
-                    ) : (
-                        <Link to="/login" className="text-xl hover:text-cyan-500 duration-500">Iniciar Sesión</Link>
-                    )}
-                </li>
+
             </ul>
         </nav>
     );
-};
-
-Navbar.propTypes = {
-    auth: PropTypes.bool.isRequired,
 };
 
 export default Navbar;
