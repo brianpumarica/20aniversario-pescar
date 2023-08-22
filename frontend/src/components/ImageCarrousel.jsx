@@ -5,7 +5,6 @@ import './imageCarrousel.css'
 import ActionButtons from './shared/ActionButtons';
 
 const ImageCarousel = ({ images , auth}) => {
-    console.log(auth);
     const carouselRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
