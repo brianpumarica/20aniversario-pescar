@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { HomePage, CategoryPage, Login, Register, } from './pages';
+import { HomePage, CategoryPage, Register, } from './pages';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -43,7 +44,7 @@ const AppRouter = () => {
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/category/:category' element={<CategoryPage />} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={<Login auth={auth}/>} />
                     <Route
                         path='/dashboard'
                         element={<Dashboard auth={auth} message={message} />}

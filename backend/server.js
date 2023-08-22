@@ -166,7 +166,7 @@ app.post("/register", async (req, res) => {
 //POST ==>> login
 app.post("/login", async (req, res) => {
   try {
-    const sql = "SELECT * FROM usuarios WHERE user = ?";
+    const sql = "SELECT id, user, password FROM usuarios WHERE user = ?";
     const data = await db.query(sql, [req.body.user]);
 
     if (data.length > 0) {

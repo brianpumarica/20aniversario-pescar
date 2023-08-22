@@ -1,9 +1,18 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
 
-export const Login = () => {
+function Login({ auth }) {
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (auth) {
+            navigate('/dashboard');
+        }
+    }, [auth]);
     axios.defaults.withCredentials = true;
     let user = useRef()
     let password = useRef()
@@ -16,12 +25,16 @@ export const Login = () => {
             [user.current.name]: user.current.value,
             [password.current.name]: password.current.value
         }
-        console.log(data)
         try {
             await axios.post(`${backendURL}/login`, data)
                 .then(res => {
-                    console.log('resLogin', res)
-                })
+                    console.log(res);
+                // Agregar un retraso de 3 segundos antes de la navegación
+                setTimeout(() => {
+                    navigate('/dashboard');
+                    window.location.reload(); 
+                }, 1000);
+            });
 
             Swal.fire({
                 icon: 'success',
@@ -42,6 +55,7 @@ export const Login = () => {
 
 
     return (
+
         <div className="bg-gray-100 min-h-screen flex justify-center items-center">
             <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
                 <fieldset className="mb-4">
@@ -75,3 +89,8 @@ export const Login = () => {
         </div>
     )
 }
+
+Login.propTypes = {
+    auth: PropTypes.bool.isRequired,
+};
+export default Login;
