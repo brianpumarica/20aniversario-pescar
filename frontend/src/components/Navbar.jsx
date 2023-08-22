@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export const Navbar = () => {
+export const Navbar = ({ auth }) => {
     return (
         <nav className="p-5 bg-white shadow md:flex md:items-center md:justify-between">
             <div className="flex justify-between items-center">
                 <span className="text-2xl font-[Montserrat]">
                     <Link to='/'>
-                        <img className="h-14 inline" src="https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2021/10/Home-Boceto-Pescar-2021-312x96-1.png?resize=312%2C96&ssl=1" alt=""/>
+                        <img className="h-14 inline" src="https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2021/10/Home-Boceto-Pescar-2021-312x96-1.png?resize=312%2C96&ssl=1" alt="" />
                     </Link>
                 </span>
                 <span className="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -14,7 +15,7 @@ export const Navbar = () => {
                     <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
                 </span>
             </div>
-            
+
             <ul className="add-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 md:flex">
                 <li className="mx-4 my-6 md:my-0">
                     <Link to='/' className="text-xl hover:text-cyan-500 duration-500">Inicio</Link>
@@ -25,7 +26,20 @@ export const Navbar = () => {
                 <li className="mx-4 my-6 md:my-0">
                     <Link to="#" className="text-xl hover:text-cyan-500 duration-500">Contacto</Link>
                 </li>
+                <li className="mx-4 my-6 md:my-0">
+                    {auth ? (
+                        <Link to="/logout" className="text-xl hover:text-cyan-500 duration-500">Cerrar Sesión</Link>
+                    ) : (
+                        <Link to="/login" className="text-xl hover:text-cyan-500 duration-500">Iniciar Sesión</Link>
+                    )}
+                </li>
             </ul>
-    </nav>
-    )
-}
+        </nav>
+    );
+};
+
+Navbar.propTypes = {
+    auth: PropTypes.bool.isRequired,
+};
+
+export default Navbar;

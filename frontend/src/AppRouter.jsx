@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { HomePage, CategoryPage, Login, Register } from './pages';
+import { HomePage, CategoryPage, Login, Register, } from './pages';
 import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer'
-import UserDasboard from './components/Dashboard';
+import { Footer } from './components/Footer';
+import Dashboard from './pages/Dashboard';
+
 const AppRouter = () => {
     return (
         <Router basename="/">
@@ -12,7 +13,7 @@ const AppRouter = () => {
                     <Route path='/' element={<HomePage />} />
                     <Route path='/category/:category' element={<CategoryPage />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/dashboard' element={<UserDasboard />} />
+                    <Route path='/dashboard' element={<Dashboard />} />
                     <Route path='/register' element={<Register />} />
                 </Routes>
                 <Footer />

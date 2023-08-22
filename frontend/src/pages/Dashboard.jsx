@@ -1,10 +1,10 @@
 import axios from "axios";
-import Invitados from "./people/Invitados";
-import User from "./people/User";
+import Invitados from "../components/people/Invitados";
+import User from "../components/people/User";
 import { useEffect, useState } from "react";
-import UnauthenticatedContent from "./auth/UnauthenticatedContent";
+import UnauthenticatedContent from "../components/auth/UnauthenticatedContent";
 
-function UserDashboardComponent() {
+function Dashboard() {
   const [auth, setAuth] = useState(false);
   const [message, setMessage] = useState('');
   const backendURL = process.env.REACT_APP_BACKEND_URL;
@@ -55,4 +55,4 @@ function UserDashboardComponent() {
   );
 }
 
-export default UserDashboardComponent;
+export default Dashboard;
