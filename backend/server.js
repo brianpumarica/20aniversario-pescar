@@ -228,6 +228,11 @@ app.post("/saveId", (req, res) => {
     return res.json({ Error: "Error saving id in server" });
   }
 });
+app.get('/logout', (req,res)=>{
+  res.clearCookie('token');
+  return res.json({Status:"Success"});
+})
+
 
 const port = process.env.PORT || 8082; // Puerto en el que se ejecutará la aplicación
 

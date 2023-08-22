@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import CategoryList from '../components/CategoryList';
+import LogoutButton from '../components/LogoutComponent';
 
 export const HomePage = () => {
     return (
@@ -28,6 +29,8 @@ export const HomePage = () => {
                     </button>
                 </Link>
             </div>
+            <LogoutButton></LogoutButton>
+            
         </div>
     );
 }
