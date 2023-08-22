@@ -1,12 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './imageCarrousel.css'
-import RegisterButton from './shared/RegisterButton';
-import DashboardButton from './shared/DashboardButton';
-import QuienesSomosButton from './shared/QuienesSomosButton';
-import JugarButton from './shared/JugarButton';
 
-const ImageCarousel = ({ images }) => {
+import ActionButtons from './shared/ActionButtons';
+
+const ImageCarousel = ({ images , auth}) => {
+    console.log(auth);
     const carouselRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -35,10 +34,8 @@ const ImageCarousel = ({ images }) => {
                 <div className="text-center mx-auto flex flex-col items-center space-y-2 gap-2">
                     <h1 className="text-4xl font-semibold">¡Fundación Pescar cumple 20 Años! 🥳</h1>
                     <p className="font-light text-2xl mt-5">¡Bienvenido!</p>
-                    <QuienesSomosButton />
-                    <RegisterButton/>
-                    <JugarButton/>
-                    <DashboardButton/>
+                    
+                    <ActionButtons auth={auth} />                   
                 </div>
             </div>
 
@@ -59,8 +56,9 @@ const ImageCarousel = ({ images }) => {
     );
 }
 
+
 ImageCarousel.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    auth: PropTypes.bool.isRequired, // Agregar la validación para 'auth'
 };
-
-export default ImageCarousel;
+export default ImageCarousel;  

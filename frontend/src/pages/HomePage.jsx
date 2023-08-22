@@ -1,5 +1,6 @@
 import './homePageStyles.css'
 import ImageCarousel from '../components/ImageCarrousel';
+import PropTypes from 'prop-types';
 
 const imagenesCarrousel = [
     'https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2021/10/EquipoPescar_Silvia-web.jpg?fit=400%2C400&ssl=1',
@@ -23,12 +24,15 @@ const imagenesCarrousel = [
     'https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2023/06/Pau-M-web.png?fit=768%2C768&ssl=10',
 ]
 
-export const HomePage = () => {
+export const HomePage = ({auth}) => {
+    HomePage.propTypes = {
+        auth: PropTypes.bool.isRequired, // Agregar la validación para 'auth'
+        images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    };
     return (
         <div className="h-screen bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] bg-cover bg-no-repeat bg-center">
 
-            <ImageCarousel images={imagenesCarrousel} />
+            <ImageCarousel auth={auth} images={imagenesCarrousel} />
         </div>
     );
 }
-

@@ -42,7 +42,7 @@ const AppRouter = () => {
             <>
                 <Navbar auth={auth} setAuth={setAuth}  />
                 <Routes>
-                    <Route path='/' element={<HomePage />} />
+                    <Route path='/' element={<HomePage auth={auth} />} />
                     <Route path='/category/:category' element={<CategoryPage />} />
                     <Route path='/login' element={<Login auth={auth}/>} />
                     <Route
