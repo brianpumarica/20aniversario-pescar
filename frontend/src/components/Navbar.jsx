@@ -102,9 +102,15 @@ export const Navbar = ({ auth, setAuth }) => {
                                             </Menu.Item>
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <Link className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')} onClick={handleLogout}>Cerrar Sesión</Link>
+                                                    auth ? (
+                                                        <Link className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')} onClick={handleLogout}>Cerrar Sesión</Link>
+                                                    ) : (
+                                                        <Link to="/login" className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>Iniciar Sesión</Link>
+                                                    )
                                                 )}
                                             </Menu.Item>
+
+
                                         </Menu.Items>
                                     </Transition>
                                 </Menu>
@@ -131,8 +137,9 @@ export const Navbar = ({ auth, setAuth }) => {
                         </div>
                     </Disclosure.Panel>
                 </>
-            )}
-        </Disclosure>
+            )
+            }
+        </Disclosure >
     );
 };
 Navbar.propTypes = {
