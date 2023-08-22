@@ -35,16 +35,14 @@ export const CategoryPage = () => {
         //console.log(questionsFiltered.length)
 
     return (
-        <div 
-            className="container flex flex-col items-center justify-center gap-10 bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] bg-cover bg-center" 
+        <div
+            className="container flex flex-col items-center justify-center gap-10 h-screen"
             style={{
-                height: '100vh', 
-                width: '100wh', 
-                margin: '0', 
-                backgroundSize: 'cover', 
-                // backgroundRepeat: 'no-repeat',
-                backgroundImage: `url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')`
-            }}>
+                backgroundImage: "url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+        >
         {/* Contenido del div */}
             {activeQuiz ? (
                 <Question 

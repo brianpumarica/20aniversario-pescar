@@ -39,23 +39,23 @@ const ImageCarousel = ({ images }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <button className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                        <button className="w-full md:w-80 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                             ¿Quiénes Somos?
                         </button>
                     </a>
 
                     <Link to="/signin" className="text-center mx-auto">
-                        <button className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">   
+                        <button className="w-full md:w-80 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">   
                             Iniciar Sesión
                         </button>
                     </Link>
                     <Link to="/category/Pescar">
-                        <button className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                        <button className="w-full md:w-80 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                             Jugar
                         </button>
                     </Link>
                     <Link to="/home">
-                        <button className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                        <button className="w-full md:w-80 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                             Información de invitados
                         </button>
                     </Link>
