@@ -1,19 +1,14 @@
 import { Link } from 'react-router-dom';
 import CategoryList from '../components/CategoryList';
-import LogoutButton from '../components/LogoutComponent';
+import LogoutButton from '../components/logComponents/LogoutComponent';
+import LoginButton from '../components/logComponents/LogInComponent';
 
 export const HomePage = () => {
     return (
         <div className='container'>
             <CategoryList />
 
-            <div className="mt-4">
-                <Link to="/login">
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                        Ir a LOG IN
-                    </button>
-                </Link>
-            </div>
+            <LoginButton></LoginButton>
 
             <div className="mt-4">
                 <Link to="/home">
@@ -30,7 +25,6 @@ export const HomePage = () => {
                 </Link>
             </div>
             <LogoutButton></LogoutButton>
-            
         </div>
     );
 }
