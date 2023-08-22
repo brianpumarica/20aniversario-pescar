@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './imageCarrousel.css'
-import LoginButton from './log/LoginButton';
 import RegisterButton from './shared/RegisterButton';
 import DashboardButton from './shared/DashboardButton';
 import QuienesSomosButton from './shared/QuienesSomosButton';
@@ -37,7 +36,6 @@ const ImageCarousel = ({ images }) => {
                     <h1 className="text-4xl font-semibold">¡Fundación Pescar cumple 20 Años! 🥳</h1>
                     <p className="font-light text-2xl mt-5">¡Bienvenido!</p>
                     <QuienesSomosButton />
-                    <LoginButton/>
                     <RegisterButton/>
                     <JugarButton/>
                     <DashboardButton/>

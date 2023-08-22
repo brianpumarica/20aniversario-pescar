@@ -36,12 +36,6 @@ export const Navbar = ({ auth , setAuth}) => {
                     <Link to='/' className="text-xl hover:text-cyan-500 duration-500">Inicio</Link>
                 </li>
                 <li className="mx-4 my-6 md:my-0">
-                    <Link to="#" className="text-xl hover:text-cyan-500 duration-500">Sobre Nosotros</Link>
-                </li>
-                <li className="mx-4 my-6 md:my-0">
-                    <Link to="#" className="text-xl hover:text-cyan-500 duration-500">Contacto</Link>
-                </li>
-                <li className="mx-4 my-6 md:my-0">
                     {auth ? (
                         <Link className="text-xl hover:text-cyan-500 duration-500" onClick={handleLogout}>Cerrar Sesión</Link>
                     ) : (
