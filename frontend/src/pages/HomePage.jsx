@@ -1,5 +1,9 @@
 import './homePageStyles.css'
 import ImageCarousel from '../components/ImageCarrousel';
+import LogoutButton from '../components/log/LogoutButton';
+import LoginButton from '../components/log/LoginButton';
+import DashboardButton from '../components/dashboard/DashboardButton';
+import RegisterButton from '../components/register/RegisterButton';
 
 const imagenesCarrousel = [
     'https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2021/10/EquipoPescar_Silvia-web.jpg?fit=400%2C400&ssl=1',
@@ -28,7 +32,13 @@ export const HomePage = () => {
         <div className="h-screen bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] bg-cover bg-no-repeat bg-center">
 
             <ImageCarousel images={imagenesCarrousel} />
-
+            <div className='container'>
+                <CategoryList />
+                <LoginButton></LoginButton>
+                <DashboardButton></DashboardButton>
+                <RegisterButton></RegisterButton>
+                <LogoutButton></LogoutButton>
+            </div>
         </div>
     );
 }
