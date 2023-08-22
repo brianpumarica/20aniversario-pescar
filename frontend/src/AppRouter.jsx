@@ -39,12 +39,12 @@ const AppRouter = () => {
 
     return (
         <Router basename="/">
-            <>
-                <Navbar auth={auth} setAuth={setAuth}  />
+            <div className="min-h-screen">
+                <Navbar auth={auth} setAuth={setAuth} />
                 <Routes>
                     <Route path='/' element={<HomePage auth={auth} />} />
                     <Route path='/category/:category' element={<CategoryPage />} />
-                    <Route path='/login' element={<Login auth={auth}/>} />
+                    <Route path='/login' element={<Login auth={auth} />} />
                     <Route
                         path='/dashboard'
                         element={<Dashboard auth={auth} message={message} />}
@@ -52,7 +52,7 @@ const AppRouter = () => {
                     <Route path='/register' element={<Register />} />
                 </Routes>
                 <Footer />
-            </>
+            </div>
         </Router>
     )
 }
