@@ -1,0 +1,34 @@
+/* Estilos generales para el componente */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.text-container {
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 610px) {
+    .flex-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .button-container {
+        align-items: center;
+    }
+}
