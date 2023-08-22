@@ -3,17 +3,51 @@ import { HomePage, CategoryPage, Login, Register, } from './pages';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import Dashboard from './pages/Dashboard';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const AppRouter = () => {
+    const [auth, setAuth] = useState(false);
+    const [message, setMessage] = useState('');
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get(`${backendURL}/verify`)
+            .then(res => {
+                if (res.data.Status === "Success") {
+                    setMessage(res.data.Status);
+                    setAuth(true);
+                    return axios.post(`${backendURL}/saveId`, { id: res.data.id });
+                } else {
+                    setAuth(false);
+                    setMessage(res.data.Error);
+                }
+            })
+            .then(response => {
+                if (response) {
+                    console.log(response.data);
+                    setAuth(true);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }, [backendURL]);
+
     return (
         <Router basename="/">
             <>
-                <Navbar />
+                <Navbar auth={auth} setAuth={setAuth}  />
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/category/:category' element={<CategoryPage />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/dashboard' element={<Dashboard />} />
+                    <Route
+                        path='/dashboard'
+                        element={<Dashboard auth={auth} message={message} />}
+                    />
                     <Route path='/register' element={<Register />} />
                 </Routes>
                 <Footer />

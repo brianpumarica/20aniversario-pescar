@@ -4,7 +4,6 @@ import './imageCarrousel.css'
 import LoginButton from './log/LoginButton';
 import RegisterButton from './shared/RegisterButton';
 import DashboardButton from './shared/DashboardButton';
-import LogoutButton from './log/LogoutButton';
 import QuienesSomosButton from './shared/QuienesSomosButton';
 import JugarButton from './shared/JugarButton';
 
@@ -42,7 +41,6 @@ const ImageCarousel = ({ images }) => {
                     <RegisterButton/>
                     <JugarButton/>
                     <DashboardButton/>
-                    <LogoutButton/>
                 </div>
             </div>
 

@@ -1,6 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
+import axios from 'axios';
 
-export const Navbar = () => {
+export const Navbar = ({ auth , setAuth}) => {
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    const navitage = useNavigate();
+
+    const handleLogout = () => {
+        axios.get(`${backendURL}/logout`)
+        .then(res=>{
+            console.log(res);
+            setAuth(false);
+            navitage('/login');
+        }).catch(err => console.log(err));
+
+         // Redirigir a la página de inicio de sesión
+    };
+
     return (
         <nav className="p-5 bg-white shadow md:flex md:items-center md:justify-between">
             <div className="flex justify-between items-center">
@@ -25,10 +41,19 @@ export const Navbar = () => {
                 <li className="mx-4 my-6 md:my-0">
                     <Link to="#" className="text-xl hover:text-cyan-500 duration-500">Contacto</Link>
                 </li>
-
+                <li className="mx-4 my-6 md:my-0">
+                    {auth ? (
+                        <Link className="text-xl hover:text-cyan-500 duration-500" onClick={handleLogout}>Cerrar Sesión</Link>
+                    ) : (
+                        <Link to="/login" className="text-xl hover:text-cyan-500 duration-500">Iniciar Sesión</Link>
+                    )}
+                </li>
             </ul>
         </nav>
     );
 };
-
+Navbar.propTypes = {
+    auth: PropTypes.bool.isRequired,
+    setAuth: PropTypes.func.isRequired, // Define la validación de 'setAuth'
+};
 export default Navbar;
