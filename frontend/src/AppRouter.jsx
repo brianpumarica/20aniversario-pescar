@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa BrowserRouter y Route
 import { HomePage, CategoryPage, Login , Register} from './pages';
 import { Navbar } from './components/Navbar';
-import Home from './components/Home';
-
+import UserDasboard from './components/Dashboard';
 const AppRouter = () => {
     return (
         <Router basename="/">
@@ -12,7 +11,7 @@ const AppRouter = () => {
                     <Route path='/' element={<HomePage/>}/>
                     <Route path='/category/:category' element={<CategoryPage/>}/>
                     <Route path='/login' element={<Login/>} />
-                    <Route path='/home' element={<Home/>}/>
+                    <Route path='/dashboard' element={<UserDasboard/>}/>
                     <Route path='/register' element={<Register/>}/>
                 </Routes>
 

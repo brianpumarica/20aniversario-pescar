@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from "react";
-import AuthComponent from '../components/authComponents/authComponent';
-import UnauthenticatedContent from '../components/authComponents/UnauthenticatedContent';
+import AuthComponent from '../components/auth/authComponent';
+import UnauthenticatedContent from '../components/auth/UnauthenticatedContent';
 
 export const Register = () => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
