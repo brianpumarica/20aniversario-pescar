@@ -9,7 +9,6 @@ export const Register = () => {
     return (
         <div>
             {auth ?
-            
                 <div>
                     <RegisterForm/>
                 </div>
