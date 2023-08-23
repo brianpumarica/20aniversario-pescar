@@ -148,7 +148,7 @@ app.post("/register", async (req, res) => {
 
     const userResult = await db.query(userSql, userValues);
     const userId = userResult.insertId;
-    const invitadosNumber = req.body.listaInvitados;
+    const invitadosNumber = req.body.numeroinvitados;
     const invitadosInsertSql =
       "INSERT INTO invitados (idReferenciado) VALUES (?)";
 
