@@ -33,15 +33,15 @@ export default function RegisterForm() {
             * bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] 
             * bg-cover bg-no-repeat bg-center"
         >
-            <div className="flex min-h-full flex-1 flex-col justify-center px-20 py-12 lg:px-96">
-                <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col items-center p-8 justify-center">
+            <div className="flex min-h-full flex-1 flex-col justify-center mx-10 py-5  mb-14 lg:px-96">
+                <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col items-center p-5 justify-center">
 
                     <form onSubmit={handleSubmit} className="grid grid-cols-1  gap-x-8 gap-y-6">
                         <div className="space-y-6">
-                            <div className="border-b border-gray-900/10 pb-12">
+                            <div className="border-b border-gray-900/10 pb-1">
                                 <h2 className="text-base font-semibold leading-7 text-gray-900">Registrar nuevo usuario</h2>
                                 <p className="mt-1 text-sm leading-6 text-gray-600 sm:max-w-md">
-                                    El registro de usuario es para personas/entidades que han comprado una mesa o cubierto para la ceremonia.
+                                    El registro es para personas que han comprado una mesa o cubierto para la ceremonia.
                                 </p>
                                 <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
                                     <div className="col-span-full">
