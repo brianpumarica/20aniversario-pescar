@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios'
-import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
 
 function Login({ auth }) {
@@ -31,25 +30,13 @@ function Login({ auth }) {
                     console.log(res);
                     // Agregar un retraso de 3 segundos antes de la navegación
                     setTimeout(() => {
-                        navigate('/');
+                        navigate('/dashboard');
                         window.location.reload();
                     }, 1000);
                 });
 
-            Swal.fire({
-                icon: 'success',
-                title: 'GENIAL',
-                text: '¡Usuario online!'
-            })
-
         } catch (error) {
-            let err = error.response.data.message
-            console.log('Ocurrió un error')
-            Swal.fire({
-                icon: 'error',
-                title: '¡Lo sentimos!',
-                text: err
-            })
+            console.log('Ocurrió un error', error)
         }
     }
 
