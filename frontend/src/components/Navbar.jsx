@@ -94,12 +94,7 @@ export const Navbar = ({ auth, setAuth }) => {
                                                 {({ active }) => (
                                                     auth ? (
                                                         <div>
-                                                            <a
-                                                                href="/dashboard"
-                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                            >
-                                                                Mis datos
-                                                            </a>
+                                                            
                                                             <Link className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')} onClick={handleLogout}>Cerrar Sesión</Link>
                                                         </div>
                                                     ) : (
