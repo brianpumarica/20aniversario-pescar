@@ -2,6 +2,7 @@ import QuienesSomosButton from './QuienesSomosButton';
 import RegisterButton from './RegisterButton';
 import DashboardButton from './DashboardButton';
 import PropTypes from 'prop-types';
+import LoginButton from '../log/LoginButton';
 
 const ActionButtons = ({ auth }) => {
     return (
@@ -16,6 +17,7 @@ const ActionButtons = ({ auth }) => {
             : (
                 <div className="flex flex-col items-center space-y-2 gap-2">
                     <QuienesSomosButton />
+                    <LoginButton/>
                 </div>)
             }
         </div>
