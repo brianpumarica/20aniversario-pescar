@@ -192,7 +192,7 @@ app.post("/login", async (req, res) => {
     }
   } catch (error) {
     console.error("An error occurred:", error);
-    return res.status(401).json({ message: "Error en el servidor" });
+    return res.status(500).json({ message: "Error en el servidor" });
   }
 });
 
