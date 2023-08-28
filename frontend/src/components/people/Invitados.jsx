@@ -72,7 +72,7 @@ function Invitados() {
         <div className="flex items-center justify-center">
             <div className="xl:w-3/4  border-spacing-2 rounded-2xl border border-y-neutral-950 items-center">
                 <div className="flex flex-1 flex-col justify-center">
-                    <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col p-8">
+                    <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col p-4">
                         <h2 className="text-base font-semibold leading-7 text-gray-900">Invitados</h2>
                         <ul role="list" className="divide-y divide-gray-100">
                             {invitados.map((invitado) => (
@@ -89,8 +89,12 @@ function Invitados() {
                                                     onChange={handleInputChange}
                                                 />
                                             ) : (
-                                                <p className="text-sm font-semibold leading-6 text-gray-900">{invitado.nombreapellido ? invitado.nombreapellido : "Ingrese un nombre"}</p>
-
+                                                invitado.nombreapellido ? 
+                                                <p className="text-sm truncate leading-6">
+                                                    <span>Nombre: 
+                                                    </span> {invitado.nombreapellido}
+                                                </p> : 
+                                                <p className="text-sm leading-6 text-gray-500">Ingrese un nombre</p>
                                             )}
                                             {editingId === invitado.id ? (
                                                 <input
@@ -119,7 +123,16 @@ function Invitados() {
                                                 onChange={handleInputChange}
                                             />
                                         ) : (
-                                            invitado.empresa ? <p className="text-sm leading-6 text-gray-900"><span className="text-sm">Empresa: </span>{invitado.empresa}</p> : <p className="text-sm leading-6 text-gray-500">Ingrese una empresa</p>
+                                            invitado.empresa ? 
+                                            <p className="text-sm truncate leading-6">
+                                                <span className="text-sm">
+                                                    Empresa: 
+                                                    </span>{invitado.empresa}
+                                                </p> 
+                                                : 
+                                                <p className="text-sm leading-6 text-gray-500">
+                                                    Ingrese una empresa
+                                                </p>
                                         )}
 
                                         {editingId === invitado.id ? (
@@ -133,8 +146,8 @@ function Invitados() {
                                                 <option value="vegano">Vegano</option>
                                             </select>
                                         ) : (
-                                            <p className="mt-1 xt-sm leading-6 text-gray-900">
-                                                <span className="text-sm">Comida: </span>{invitado.comida}
+                                            <p className="text-sm truncate leading-6">
+                                                <span>Comida: </span>{invitado.comida}
                                             </p>
                                         )}
 
