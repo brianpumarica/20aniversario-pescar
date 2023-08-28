@@ -1,12 +1,10 @@
 import { Fragment, useRef, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
 import axios from "axios";
 
 export default function ModalEditComponent({ isOpen ,id}) {
   const backendURL = process.env.REACT_APP_BACKEND_URL;
-
     const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
     const dbUser = process.env.REACT_APP_DB_USER || "admin";
     const dbName = process.env.REACT_APP_DB_NAME || "db";
@@ -29,17 +27,20 @@ export default function ModalEditComponent({ isOpen ,id}) {
         .then((res) => setUsuarios(res.data))
         .catch((err) => console.log(err));
 }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
-//   const handleEdit = (id) => {
-//     setEditingId(id);
-//     const userToEdit = usuarios.find((user) => user.id === id);
-//     setEditedValues({
-//         nombreapellido: userToEdit.nombreapellido,
-//         telefono: userToEdit.telefono,
-//         comida: userToEdit.comida,
-//         empresa: userToEdit.empresa,
-//         habilitado: userToEdit.habilitado,
-//     });
-// };
+useEffect(() => {
+    const userToEdit = usuarios.find((user) => user.id === id);
+    if (userToEdit) {
+      setEditedValues({
+        nombreapellido: userToEdit.nombreapellido,
+        telefono: userToEdit.telefono,
+        comida: userToEdit.comida,
+        empresa: userToEdit.empresa,
+        habilitado: userToEdit.habilitado,
+      });
+    }
+  }, [usuarios, id]);
+  
+
 const handleInputChange = (event) => {
   const { name, value, type, checked } = event.target;
   setEditedValues((prevValues) => ({
@@ -47,6 +48,7 @@ const handleInputChange = (event) => {
       [name]: type === "checkbox" ? checked : value,
   }));
 };
+
 const handleSave = (id) => {
   axios
       .put(`${backendURL}/user/${id}`, {
@@ -105,9 +107,6 @@ const handleSave = (id) => {
                 <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col items-center p-5 justify-center">
 
                   <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
-                    </div>
                     <div className="grid grid-cols-1  gap-x-8 gap-y-6">
                         <div className="space-y-6">
                             <div className="border-b border-gray-900/10 pb-1">
@@ -118,14 +117,13 @@ const handleSave = (id) => {
                                 <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6">
                                     <div className="col-span-full">
                                         <label htmlFor="nombreapellido" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Nombre y apellido ----
-                                            {editingId}
+                                            Nombre y apellido
                                         </label>
                                         <div className="mt-2">
                                             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                                 <input
                                                     type="text"
-                                                    value={usuario.nombreapellido}
+                                                    value={editedValues.nombreapellido}
                                                     name="nombreapellido"
                                                     id="nombreapellido"
                                                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -136,7 +134,7 @@ const handleSave = (id) => {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* <div className="col-span-full">
+                                    <div className="col-span-full">
                                         <label htmlFor="telefono" className="block text-sm font-medium leading-6 text-gray-900">
                                             Teléfono
                                         </label>
@@ -148,7 +146,8 @@ const handleSave = (id) => {
                                                     id="telefono"
                                                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                                     placeholder="Ingrese el teléfono"
-                                                    onChange={handleChange}
+                                                    value={editedValues.telefono}
+                                                    onChange={handleInputChange}
                                                 />
                                             </div>
                                         </div>
@@ -162,33 +161,16 @@ const handleSave = (id) => {
                                                 id="comida"
                                                 name="comida"
                                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-md sm:text-sm sm:leading-6"
-                                                onChange={handleChange}
+                                                onChange={handleInputChange}
                                                 required
+                                                value={editedValues.comida}
                                             >
-                                                <option value="Sin restricciones" defaultValue>Sin restricciones</option>
+                                                <option value="Sin restricciones">Sin restricciones</option>
                                                 <option value="vegetariano">Vegetariano</option>
                                                 <option value="vegano">Vegano</option>                                    <option value="celiaco">Celiaco</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div className="col-span-full">
-                                        <label htmlFor="numeroinvitados" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Número de invitados
-                                        </label>
-                                        <div className="mt-2">
-                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                                <input
-                                                    type="number"
-                                                    name="numeroinvitados"
-                                                    id="numeroinvitados"
-                                                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                                    placeholder="Ingrese el número de invitados"
-                                                    onChange={handleChange}
-                                                    required
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </div>                                    
                                     <div className="col-span-full">
                                         <label htmlFor="empresa" className="block text-sm font-medium leading-6 text-gray-900">
                                             Empresa
@@ -201,77 +183,29 @@ const handleSave = (id) => {
                                                     id="empresa"
                                                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                                     placeholder="Ingrese la empresa"
-                                                    onChange={handleChange}
+                                                    onChange={handleInputChange}
+                                                    value={editedValues.empresa}
                                                 />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-span-full">
-                                        <h2 className="text-base font-semibold leading-7 text-gray-900">
-                                            Datos de usuario único
-                                        </h2>
-                                    </div>
-                                    <div className="col-span-full">
-                                        <label htmlFor="user" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Nombre de usuario
-                                        </label>
-                                        <div className="mt-2">
-                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                                <input
-                                                    type="text"
-                                                    name="user"
-                                                    id="user"
-                                                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                                    placeholder="Ingrese el nombre de usuario"
-                                                    onChange={handleChange}
-                                                    required
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-span-full">
-                                        <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Contraseña
-                                        </label>
-                                        <div className="mt-2">
-                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                                <input
-                                                    type="password"
-                                                    name="password"
-                                                    id="password"
-                                                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                                    placeholder="Ingrese la contraseña"
-                                                    onChange={handleChange}
-                                                    required
-                                                />
-                                            </div>
-                                        </div>
-                                    </div> */}
                                 </div>
                                 </div>
                                 ))}
-                            </div>
-                            <div className="mt-6 ">
-                                <button
-                                    type="submit"
-                                    className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
-                    mb-5"
-                                >
-                                    Registrar Usuario
-                                </button>
                             </div>
                         </div>
                     </div>
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    className="inline-flex w-full justify-center rounded-md bg-indigo-600 hover:bg-indigo-500 px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-white shadow-sm sm:ml-3 sm:w-auto"
                     onClick={() => handleSave(id)}
                   >
-                    guardar
-                  </button>
+                    Modificar
+                  </button>                  
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
