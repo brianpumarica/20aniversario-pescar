@@ -69,83 +69,90 @@ function Invitados() {
     };
 
     return (
-        <div className="xl:w-3/4 xl:p-10 xl:my-4 border-spacing-2 rounded-2xl border border-y-neutral-950">
-            <ul role="list" className="divide-y divide-gray-100">
-                {invitados.map((invitado) => (
-                    <li key={editingId === invitado.id ? `editing-${invitado.id}` : invitado.id} className="flex justify-between gap-x-6 py-5">
-                        <div className="flex min-w-0 gap-x-4">
-                            <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
-                            <div className="min-w-0 flex-auto">
-                                {editingId === invitado.id ? (
-                                    <input
-                                        type="text"
-                                        name="nombreapellido"
-                                        placeholder="Nombre y apellido"
-                                        value={editedValues.nombreapellido}
-                                        onChange={handleInputChange}
-                                    />
-                                ) : (
-                                    <p className="text-sm font-semibold leading-6 text-gray-900">{invitado.nombreapellido ? invitado.nombreapellido : "Ingrese un nombre"}</p>
+        <div className="flex items-center justify-center">
+            <div className="xl:w-3/4  border-spacing-2 rounded-2xl border border-y-neutral-950 items-center">
+                <div className="flex flex-1 flex-col justify-center">
+                    <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col p-8">
+                        <h2 className="text-base font-semibold leading-7 text-gray-900">Invitados</h2>
+                        <ul role="list" className="divide-y divide-gray-100">
+                            {invitados.map((invitado) => (
+                                <li key={editingId === invitado.id ? `editing-${invitado.id}` : invitado.id} className="flex justify-between gap-x-6 py-5">
+                                    <div className="flex min-w-0 gap-x-4">
+                                        <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
+                                        <div className="min-w-0 flex-auto">
+                                            {editingId === invitado.id ? (
+                                                <input
+                                                    type="text"
+                                                    name="nombreapellido"
+                                                    placeholder="Nombre y apellido"
+                                                    value={editedValues.nombreapellido}
+                                                    onChange={handleInputChange}
+                                                />
+                                            ) : (
+                                                <p className="text-sm font-semibold leading-6 text-gray-900">{invitado.nombreapellido ? invitado.nombreapellido : "Ingrese un nombre"}</p>
 
-                                )}
-                                {editingId === invitado.id ? (
-                                    <input
-                                        type="checkbox"
-                                        name="habilitado"
-                                        checked={editedValues.habilitado}
-                                        onChange={handleInputChange}
-                                    />
-                                ) : (
-                                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                                        <span style={{ color: invitado.habilitado ? 'green' : 'red' }}>{invitado.habilitado ? ' Estado: Habilitado' : 'Estado: No habilitado'}</span>
+                                            )}
+                                            {editingId === invitado.id ? (
+                                                <input
+                                                    type="checkbox"
+                                                    name="habilitado"
+                                                    checked={editedValues.habilitado}
+                                                    onChange={handleInputChange}
+                                                />
+                                            ) : (
+                                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                                                    <span style={{ color: invitado.habilitado ? 'green' : 'red' }}>{invitado.habilitado ? ' Estado: Habilitado' : 'Estado: No habilitado'}</span>
 
-                                    </p>
-                                )}
+                                                </p>
+                                            )}
 
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
 
-                        <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                            {editingId === invitado.id ? (
-                                <input
-                                    type="text"
-                                    name="empresa"
-                                    placeholder="Empresa"
-                                    value={editedValues.empresa}
-                                    onChange={handleInputChange}
-                                />
-                            ) : (
-                                invitado.empresa ? <p className="text-sm leading-6 text-gray-900">{invitado.empresa}</p> : <p className="text-sm leading-6 text-gray-500">Ingrese una empresa</p>
-                            )}
+                                    <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                                        {editingId === invitado.id ? (
+                                            <input
+                                                type="text"
+                                                name="empresa"
+                                                placeholder="Empresa"
+                                                value={editedValues.empresa}
+                                                onChange={handleInputChange}
+                                            />
+                                        ) : (
+                                            invitado.empresa ? <p className="text-sm leading-6 text-gray-900">{invitado.empresa}</p> : <p className="text-sm leading-6 text-gray-500">Ingrese una empresa</p>
+                                        )}
 
-                            {editingId === invitado.id ? (
-                                <select
-                                    name="comida"
-                                    value={editedValues.comida}
-                                    onChange={handleInputChange}
-                                >
-                                    <option value="Sin restricciones" defaultValue>Sin restricciones</option>
-                                    <option value="vegetariano">Vegetariano</option>
-                                    <option value="vegano">Vegano</option>
-                                </select>
-                            ) : (
-                                <p className="mt-1 xt-sm leading-6 text-gray-900">
-                                    <span className="text-sm">Comida: </span>{invitado.comida}
-                                </p>
-                            )}
+                                        {editingId === invitado.id ? (
+                                            <select
+                                                name="comida"
+                                                value={editedValues.comida}
+                                                onChange={handleInputChange}
+                                            >
+                                                <option value="Sin restricciones" defaultValue>Sin restricciones</option>
+                                                <option value="vegetariano">Vegetariano</option>
+                                                <option value="vegano">Vegano</option>
+                                            </select>
+                                        ) : (
+                                            <p className="mt-1 xt-sm leading-6 text-gray-900">
+                                                <span className="text-sm">Comida: </span>{invitado.comida}
+                                            </p>
+                                        )}
 
-                        </div>
-                        <div className="flex min-w-0 gap-x-4">
-                            {editingId === invitado.id ? (
-                                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleSave(invitado.id)}>Guardar</button>
-                            ) : (
-                                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleEdit(invitado.id)}>Editar</button>
-                            )}
-                        </div>
-                    </li>
+                                    </div>
+                                    <div className="flex min-w-0 gap-x-4">
+                                        {editingId === invitado.id ? (
+                                            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleSave(invitado.id)}>Guardar</button>
+                                        ) : (
+                                            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleEdit(invitado.id)}>Editar</button>
+                                        )}
+                                    </div>
+                                </li>
 
-                ))}
-            </ul>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
