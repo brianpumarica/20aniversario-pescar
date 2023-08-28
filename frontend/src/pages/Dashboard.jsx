@@ -8,16 +8,16 @@ function Dashboard({ auth, message }) {
     <div className="App">
       {
         auth ?
-          <header>
-            <div>
-              <h1 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Datos Personales</h1>
+          <div
+            className="h-screen 
+            * bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] 
+            * bg-cover bg-no-repeat bg-center"
+          >
+            <div className="pb-12">
               <User></User>
-            </div>
-            <div>
-              <h1 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Mis Invitados</h1>
               <Invitados></Invitados>
             </div>
-          </header>
+          </div>
           :
           <div>
             <UnauthenticatedContent message={message} />
