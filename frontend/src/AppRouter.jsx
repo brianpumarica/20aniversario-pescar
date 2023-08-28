@@ -44,7 +44,7 @@ const AppRouter = () => {
                 <Routes>
                     <Route path='/' element={<HomePage auth={auth} />} />
                     <Route path='/category/:category' element={<CategoryPage />} />
-                    <Route path='/login' element={<Login auth={auth} />} />
+                    <Route path='/login' element={<Login auth={auth} setAuth={setAuth}/>} />
                     <Route
                         path='/dashboard'
                         element={<Dashboard auth={auth} message={message} />}
