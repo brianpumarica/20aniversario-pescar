@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ModalEditComponent from "../shared/ModalEditComponent";
 
 function User() {
     const [usuarios, setUsuarios] = useState([]);
     const [editingId, setEditingId] = useState(null);
     const [editedValues, setEditedValues] = useState({});
-    
+
     const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
@@ -26,6 +27,7 @@ function User() {
             .catch((err) => console.log(err));
     }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
 
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const handleEdit = (id) => {
         setEditingId(id);
@@ -37,6 +39,7 @@ function User() {
             empresa: userToEdit.empresa,
             habilitado: userToEdit.habilitado,
         });
+        setModalIsOpen(true);
     };
 
     const handleInputChange = (event) => {
@@ -75,211 +78,118 @@ function User() {
     return (
         <div>
             <div className="flex items-center justify-center">
-            <div className="xl:w-3/4  border-spacing-2 rounded-2xl border border-y-neutral-950 items-center">
-                <div className="flex flex-1 flex-col justify-center">
-                    <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col p-4">
-                        <h2 className="text-base font-semibold leading-7 text-gray-900">Datos Personales</h2>
-                        <ul role="list" className="divide-y divide-gray-100">
-                            {usuarios.map((usuario) => (
-                                <li key={editingId === usuario.id ? `editing-${usuario.id}` : usuario.id} className="flex justify-between gap-x-6 py-5">
-                                    <div className="flex min-w-0 gap-x-4">
-                                        <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
-                                        <div className="min-w-0 flex-auto">
+                <div className="xl:w-3/4  border-spacing-2 rounded-2xl border border-y-neutral-950 items-center">
+                    <div className="flex flex-1 flex-col justify-center">
+                        <div className="text-center relative bg-white rounded-lg shadow-md flex flex-col p-4">
+                            <h2 className="text-base font-semibold leading-7 text-gray-900">Datos Personales</h2>
+                            <ul role="list" className="divide-y divide-gray-100">
+                                {usuarios.map((usuario) => (
+                                    <li key={editingId === usuario.id ? `editing-${usuario.id}` : usuario.id} className="flex justify-between gap-x-6 py-5">
+                                        <div className="flex min-w-0 gap-x-4">
+                                            <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
+                                            <div className="min-w-0 flex-auto">
+                                                {editingId === usuario.id ? (
+                                                    <input
+                                                        type="text"
+                                                        name="nombreapellido"
+                                                        placeholder="Nombre y apellido"
+                                                        value={editedValues.nombreapellido}
+                                                        onChange={handleInputChange}
+                                                    />
+                                                ) : (
+                                                    usuario.nombreapellido ?
+                                                        <p className="text-sm truncate leading-6">
+                                                            <span>Nombre:
+                                                            </span> {usuario.nombreapellido}
+                                                        </p> :
+                                                        <p className="text-sm leading-6 text-gray-500">Ingrese su nombre</p>
+                                                )}
+                                                {editingId === usuario.id ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        name="habilitado"
+                                                        checked={editedValues.habilitado}
+                                                        onChange={handleInputChange}
+                                                    />
+                                                ) : (
+                                                    <p className="text-sm truncate leading-6">
+                                                        <span style={{ color: usuario.habilitado ? 'green' : 'red' }}>{usuario.habilitado ? ' Estado: Habilitado' : 'Estado: No habilitado'}</span>
+
+                                                    </p>
+                                                )}
+
+                                            </div>
+                                        </div>
+
+                                        <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                                             {editingId === usuario.id ? (
                                                 <input
                                                     type="text"
-                                                    name="nombreapellido"
-                                                    placeholder="Nombre y apellido"
-                                                    value={editedValues.nombreapellido}
+                                                    name="empresa"
+                                                    placeholder="Empresa"
+                                                    value={editedValues.empresa}
                                                     onChange={handleInputChange}
                                                 />
                                             ) : (
-                                                usuario.nombreapellido ? 
+                                                usuario.empresa ?
+                                                    <p className="text-sm truncate leading-6">
+                                                        <span>
+                                                            Empresa:
+                                                        </span> {usuario.empresa}
+                                                    </p>
+                                                    :
+                                                    <p className="text-sm leading-6 text-gray-500">
+                                                        Ingrese una empresa
+                                                    </p>
+                                            )}
+
+                                            {editingId === usuario.id ? (
+                                                <select
+                                                    name="comida"
+                                                    value={editedValues.comida}
+                                                    onChange={handleInputChange}
+                                                >
+                                                    <option value="Sin restricciones" defaultValue>Sin restricciones</option>
+                                                    <option value="vegetariano">Vegetariano</option>
+                                                    <option value="vegano">Vegano</option>
+                                                </select>
+                                            ) : (
                                                 <p className="text-sm truncate leading-6">
-                                                    <span>Nombre: 
-                                                    </span> {usuario.nombreapellido}
-                                                </p> : 
-                                                <p className="text-sm leading-6 text-gray-500">Ingrese su nombre</p>
+                                                    <span>Comida: </span>{usuario.comida}
+                                                </p>
                                             )}
                                             {editingId === usuario.id ? (
                                                 <input
-                                                    type="checkbox"
-                                                    name="habilitado"
-                                                    checked={editedValues.habilitado}
+                                                    type="text"
+                                                    name="telefono"
+                                                    placeholder="Telefono"
+                                                    value={editedValues.telefono}
                                                     onChange={handleInputChange}
                                                 />
                                             ) : (
-                                                <p className="text-sm truncate leading-6">
-                                                    <span style={{ color: usuario.habilitado ? 'green' : 'red' }}>{usuario.habilitado ? ' Estado: Habilitado' : 'Estado: No habilitado'}</span>
-
-                                                </p>
+                                                usuario.telefono ?
+                                                    <p className="text-sm truncate leading-6">
+                                                        <span>Telefono:
+                                                        </span> {usuario.telefono}
+                                                    </p> :
+                                                    <p className="text-sm leading-6 text-gray-500">Ingrese su telefono</p>
                                             )}
-
                                         </div>
-                                    </div>
-
-                                    <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                                        {editingId === usuario.id ? (
-                                            <input
-                                                type="text"
-                                                name="empresa"
-                                                placeholder="Empresa"
-                                                value={editedValues.empresa}
-                                                onChange={handleInputChange}
-                                            />
-                                        ) : (
-                                            usuario.empresa ? 
-                                            <p className="text-sm truncate leading-6">
-                                                <span>
-                                                    Empresa: 
-                                                </span> {usuario.empresa}
-                                            </p> 
-                                            : 
-                                            <p className="text-sm leading-6 text-gray-500">
-                                                Ingrese una empresa
-                                            </p>
-                                        )}
-
-                                        {editingId === usuario.id ? (
-                                            <select
-                                                name="comida"
-                                                value={editedValues.comida}
-                                                onChange={handleInputChange}
-                                            >
-                                                <option value="Sin restricciones" defaultValue>Sin restricciones</option>
-                                                <option value="vegetariano">Vegetariano</option>
-                                                <option value="vegano">Vegano</option>
-                                            </select>
-                                        ) : (
-                                            <p className="text-sm truncate leading-6">
-                                                <span>Comida: </span>{usuario.comida}
-                                            </p>
-                                        )}
-                                        {editingId === usuario.id ? (
-                                            <input
-                                                type="text"
-                                                name="telefono"
-                                                placeholder="Telefono"
-                                                value={editedValues.telefono}
-                                                onChange={handleInputChange}
-                                            />
-                                        ) : (
-                                            usuario.telefono ? 
-                                            <p className="text-sm truncate leading-6">
-                                                <span>Telefono: 
-                                                </span> {usuario.telefono}
-                                            </p> : 
-                                            <p className="text-sm leading-6 text-gray-500">Ingrese su telefono</p>
-                                        )}
-                                    </div>
-                                    <div className="flex min-w-0 gap-x-4">
-                                        {editingId === usuario.id ? (
-                                            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleSave(usuario.id)}>Guardar</button>
-                                        ) : (
-                                            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleEdit(usuario.id)}>Editar</button>
-                                        )}
-                                    </div>
-                                </li>
-
-                            ))}
-                        </ul>
+                                        <div className="flex min-w-0 gap-x-4">
+                                            {editingId === usuario.id ? (
+                                                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleSave(usuario.id)}>Guardar</button>
+                                            ) : (
+                                                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleEdit(usuario.id)}>Editar</button>
+                                            )}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-            {/* <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Telefono</th>
-                        <th>Comida</th>
-                        <th>Empresa</th>
-                        <th>Habilitado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {usuarios.map((usuario) => (
-                        <tr key={editingId === usuario.id ? `editing-${usuario.id}` : usuario.id}>
-                            <td>{usuario.id}</td>
-                            <td>
-                                {editingId === usuario.id ? (
-                                    <input
-                                        type="text"
-                                        name="nombreapellido"
-                                        placeholder="Nombre y apellido"
-                                        value={editedValues.nombreapellido}
-                                        onChange={handleInputChange}
-                                    />
-                                ) : (
-                                    usuario.nombreapellido ? usuario.nombreapellido : "Ingrese un nombre"
-                                )}
-                            </td>
-                            <td>
-                                {editingId === usuario.id ? (
-                                    <input
-                                        type="text"
-                                        name="telefono"
-                                        placeholder="Telefono"
-                                        value={editedValues.telefono}
-                                        onChange={handleInputChange}
-                                    />
-                                ) : (
-                                    usuario.telefono ? usuario.telefono : "Ingrese un teléfono"
-                                )}
-                            </td>
-                            <td>
-                                {editingId === usuario.id ? (
-                                    <select
-                                        name="comida"
-                                        value={editedValues.comida}
-                                        onChange={handleInputChange}
-                                    >
-                                        <option value="Sin restricciones" defaultValue>Sin restricciones</option>
-                                        <option value="vegetariano">Vegetariano</option>
-                                        <option value="vegano">Vegano</option>                                        
-                                    </select>
-                                ) : (
-                                    usuario.comida
-                                )}
-                            </td>
-                            <td>
-                                {editingId === usuario.id ? (
-                                    <input
-                                        type="text"
-                                        name="empresa"
-                                        placeholder="Empresa"
-                                        value={editedValues.empresa}
-                                        onChange={handleInputChange}
-                                    />
-                                ) : (
-                                    usuario.empresa ? usuario.empresa : "Ingrese una empresa"
-                                )}
-                            </td>
-                            <td>
-                                {editingId === usuario.id ? (
-                                    <input
-                                        type="checkbox"
-                                        name="habilitado"
-                                        checked={editedValues.habilitado}
-                                        onChange={handleInputChange}
-                                    />
-                                ) : (
-                                    usuario.habilitado.toString()
-                                )}
-                            </td>
-                            <td>
-                                {editingId === usuario.id ? (
-                                    <button onClick={() => handleSave(usuario.id)}>Guardar</button>
-                                ) : (
-                                    <button onClick={() => handleEdit(usuario.id)}>Editar</button>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table> */}
+            <ModalEditComponent isOpen={modalIsOpen} />
         </div>
     );
 }
