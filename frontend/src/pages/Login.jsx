@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
 
-function Login({ auth }) {
+function Login({ auth, setAuth}) {
     const navigate = useNavigate();
 
     useEffect(() => {
         if (auth) {
             navigate('/dashboard');
         }
-    }, [auth]);
+    }, [auth, navigate]);
     axios.defaults.withCredentials = true;
     let user = useRef()
     let password = useRef()
@@ -25,16 +25,9 @@ function Login({ auth }) {
             [password.current.name]: password.current.value
         }
         try {
-            await axios.post(`${backendURL}/login`, data)
-                .then(res => {
-                    console.log(res);
-                    // Agregar un retraso de 3 segundos antes de la navegación
-                    setTimeout(() => {
-                        navigate('/dashboard');
-                        window.location.reload();
-                    }, 1000);
-                });
-
+            await axios.post(`${backendURL}/login`, data);
+            setAuth(true);
+            navigate('/dashboard');
         } catch (error) {
             console.log('Ocurrió un error', error)
         }
@@ -125,5 +118,6 @@ function Login({ auth }) {
 
 Login.propTypes = {
     auth: PropTypes.bool.isRequired,
+    setAuth: PropTypes.func.isRequired,
 };
 export default Login;
