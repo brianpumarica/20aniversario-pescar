@@ -189,7 +189,7 @@ function User() {
                     </div>
                 </div>
             </div>
-            <ModalEditComponent isOpen={modalIsOpen} />
+            <ModalEditComponent isOpen={modalIsOpen} id={editingId} />
         </div>
     );
 }
