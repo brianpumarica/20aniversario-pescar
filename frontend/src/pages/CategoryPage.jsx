@@ -31,7 +31,7 @@ export const CategoryPage = () => {
         const newQuestions = shuffleArray(questionsFiltered);
         setQuestionsFiltered(newQuestions);
         //console.log(newQuestions)
-    }, []);
+    }, [questionsFiltered]);
     //console.log(questionsFiltered.length)
     return (
         <div
