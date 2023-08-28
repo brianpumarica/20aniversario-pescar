@@ -119,7 +119,7 @@ function Invitados() {
                                                 onChange={handleInputChange}
                                             />
                                         ) : (
-                                            invitado.empresa ? <p className="text-sm leading-6 text-gray-900">{invitado.empresa}</p> : <p className="text-sm leading-6 text-gray-500">Ingrese una empresa</p>
+                                            invitado.empresa ? <p className="text-sm leading-6 text-gray-900"><span className="text-sm">Empresa: </span>{invitado.empresa}</p> : <p className="text-sm leading-6 text-gray-500">Ingrese una empresa</p>
                                         )}
 
                                         {editingId === invitado.id ? (
