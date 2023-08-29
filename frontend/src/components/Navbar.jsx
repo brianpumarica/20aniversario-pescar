@@ -12,6 +12,7 @@ const navigationAuth = [
 ]
 const navigationUnauth = [
     { name: 'Inicio', href: '/', current: true },
+    { name: 'Iniciar Sesión', href: '/login', current: false },
 ]
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -21,7 +22,6 @@ export const Navbar = ({ auth, setAuth }) => {
     const navitage = useNavigate();
 
     const handleLogout = () => {
-        console.log(auth);
         axios.get(`${backendURL}/logout`)
             .then(res => {
                 console.log(res);
@@ -86,7 +86,9 @@ export const Navbar = ({ auth, setAuth }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                            {
+                                (auth ? (
+                                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
                                     <div>
@@ -112,21 +114,19 @@ export const Navbar = ({ auth, setAuth }) => {
                                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    auth ? (
                                                         <div>
                                                             <Link className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')} onClick={handleLogout}>Cerrar Sesión</Link>
                                                         </div>
-                                                    ) : (
-                                                        <Link to="/login" className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>Iniciar Sesión</Link>
-                                                    )
                                                 )}
                                             </Menu.Item>
-
-
                                         </Menu.Items>
                                     </Transition>
                                 </Menu>
                             </div>
+                                ): null
+                                )
+                            }
+                            
                         </div>
                     </div>
 
