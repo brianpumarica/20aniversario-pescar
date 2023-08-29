@@ -53,11 +53,30 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/invitadoActual", async (req, res) => {
+  let conn;
+  const id = req.query.id;
+    try {
+    conn = await db.getConnection();
+    const sql = `SELECT * FROM invitados WHERE id = ${id}`;
+    const result = await conn.query(sql);
+    //console.log(result); // Imprime los resultados en la consola
+    res.json(result); // Devuelve los resultados como respuesta al cliente
+  } catch (err) {
+    console.error("Error inside server:", err);
+    res.json({ Message: "Error inside server" });
+  } finally {
+    if (conn) {
+      conn.release(); // Liberar la conexión al grupo
+    }
+  }
+});
 // Ruta para actualizar un usuario por su ID
 app.put("/user/:id", async (req, res) => {
   const id = req.body.id;
   const nombre = req.body.nombre;
   const telefono = req.body.telefono;
+  const empresa = req.body.empresa;
   const comida = req.body.comida;
   const habilitado = req.body.habilitado;
 
@@ -65,10 +84,11 @@ app.put("/user/:id", async (req, res) => {
   try {
     conn = await db.getConnection();
     const sql =
-      "UPDATE usuarios SET nombreapellido = ?, telefono = ?, comida = ?, habilitado = ? WHERE id = ?";
+      "UPDATE usuarios SET nombreapellido = ?, telefono = ?, empresa = ?, comida = ?, habilitado = ?  WHERE id = ?";
     const result = await conn.query(sql, [
       nombre,
       telefono,
+      empresa,
       comida,
       habilitado,
       id,
@@ -110,13 +130,14 @@ app.put("/invitados/:id", async (req, res) => {
   const nombre = req.body.nombre;
   const comida = req.body.comida;
   const habilitado = req.body.habilitado;
+  const empresa = req.body.empresa;
 
   let conn;
   try {
     conn = await db.getConnection();
     const sql =
-      "UPDATE invitados SET nombreapellido = ?, comida = ?, habilitado = ? WHERE id = ?";
-    const result = await conn.query(sql, [nombre, comida, habilitado, id]);
+      "UPDATE invitados SET nombreapellido = ?, empresa = ?,comida = ?, habilitado = ? WHERE id = ?";
+    const result = await conn.query(sql, [nombre, empresa, comida, habilitado, id]);
 
     //console.log(result); // Imprime los resultados en la consola
     res.json({ success: true, message: "Invitado actualizado con éxito" });
