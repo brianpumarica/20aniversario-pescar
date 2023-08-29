@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ModalEditComponent from "../shared/ModalEditComponent";
+import ModalEditUsuario from "../shared/ModalEditUsuario";
 
 function User() {
     const [usuarios, setUsuarios] = useState([]);
@@ -55,8 +55,8 @@ function User() {
                                                         <p className="text-sm leading-6 text-gray-500">Ingrese su nombre</p>
                                                 }
                                                 {
-                                                    <p className="text-sm truncate leading-6">
-                                                        <span style={{ color: usuario.habilitado ? 'green' : 'red' }}>{usuario.habilitado ? ' Estado: Habilitado' : 'Estado: No habilitado'}</span>
+                                                    <p className="mt-1 truncate text-xs leading-5">
+                                                        <span style={{ color: usuario.habilitado ? 'green' : 'red' }}>Estado: {usuario.habilitado ? ' Habilitado' : 'No habilitado'}</span>
 
                                                     </p>
                                                 }
@@ -104,7 +104,7 @@ function User() {
                     </div>
                 </div>
             </div>
-            <ModalEditComponent isOpen={modalIsOpen} id={editingId} setModalIsOpen={setModalIsOpen} />
+            <ModalEditUsuario isOpen={modalIsOpen} id={editingId} setModalIsOpen={setModalIsOpen} />
         </div>
     );
 }

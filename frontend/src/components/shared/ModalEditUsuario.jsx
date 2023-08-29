@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import PropTypes from "prop-types"; // Import PropTypes for prop type validation
 import axios from "axios";
 
-export default function ModalEditComponent({ isOpen, id, setModalIsOpen }) {
+export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
   const backendURL = process.env.REACT_APP_BACKEND_URL;
   const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
   const dbUser = process.env.REACT_APP_DB_USER || "admin";
@@ -33,8 +33,8 @@ export default function ModalEditComponent({ isOpen, id, setModalIsOpen }) {
       setEditedValues({
         nombreapellido: userToEdit.nombreapellido,
         telefono: userToEdit.telefono,
-        comida: userToEdit.comida,
         empresa: userToEdit.empresa,
+        comida: userToEdit.comida,
         habilitado: userToEdit.habilitado,
       });
     }
@@ -54,6 +54,7 @@ export default function ModalEditComponent({ isOpen, id, setModalIsOpen }) {
         id: id,
         nombre: editedValues.nombreapellido,
         telefono: editedValues.telefono,
+        empresa: editedValues.empresa,
         comida: editedValues.comida,
         habilitado: editedValues.habilitado,
       })
@@ -130,7 +131,7 @@ export default function ModalEditComponent({ isOpen, id, setModalIsOpen }) {
                           <h2 className="text-base font-semibold leading-7 text-gray-900">
                             Editar usuario
                           </h2>
-                          {usuarios.map((usuario) => (
+                          {usuarios.map((usuario) => (                            
                             <div
                               key={
                                 editingId === usuario.id
@@ -266,7 +267,7 @@ export default function ModalEditComponent({ isOpen, id, setModalIsOpen }) {
     </Transition.Root>
   );
 }
-ModalEditComponent.propTypes = {
+ModalEditUsuario.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
   setModalIsOpen: PropTypes.func.isRequired,
