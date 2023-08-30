@@ -19,7 +19,7 @@ function AuthComponent({ backendURL }) {
                 // Enviar res.data.id al backend
                 axios.post(`${backendURL}/saveId`, { id: res.data.id })
                     .then(response => {
-                        console.log(response.data); // Puedes manejar la respuesta del backend si es necesario
+                        console.log(response.data); 
                     })
                     .catch(error => {
                         console.error("Error al enviar id al backend:", error);

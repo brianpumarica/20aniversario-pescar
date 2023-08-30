@@ -2,6 +2,7 @@ import { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import PropTypes from "prop-types"; // Import PropTypes for prop type validation
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
   const backendURL = process.env.REACT_APP_BACKEND_URL;
@@ -66,11 +67,27 @@ export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
             )
           );
           setEditingId(null);
-          window.location.reload(); // Recargar la página
+          Swal.fire({
+            icon: 'success',
+            text: '¡Modificación exitosa!',
+            timer: 1500, // Configura el tiempo en milisegundos
+            timerProgressBar: true
+          }).then(() => {
+            window.location.reload();
+          });
         }
       })
       .catch((error) => {
         console.error("Error al actualizar usuario:", error);
+        Swal.fire({
+          icon: 'error',
+          title: '¡Lo sentimos!',
+          text: error.response.data.message,
+          timer: 1500, // Configura el tiempo en milisegundos
+          timerProgressBar: true
+      }).then(() => {
+        window.location.reload();
+      });
       });
   };
   const cancelButtonRef = useRef(null);

@@ -37,7 +37,7 @@ const AppRouter = () => {
             .catch(error => {
                 console.error("Error:", error);
             });
-    }, [backendURL,rol,setAuth, setRol]);
+    }, [backendURL,setAuth, setRol]);
 
     return (
         <Router basename="/">

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from "react";
+import Swal from 'sweetalert2';
 
 export default function RegisterForm() {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
@@ -24,8 +25,28 @@ export default function RegisterForm() {
         event.preventDefault();
         console.log(values);
         axios.post(`${backendURL}/register`, values)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+            .then((res)=>{
+                console.log(res)
+                Swal.fire({
+                    icon: 'success',
+                    text: '¡Usuario registrado!',
+                    timer: 1500, // Configura el tiempo en milisegundos
+                    timerProgressBar: true
+                }).then(() => {
+                    window.location.reload();
+                });
+            })
+            .catch((error) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Lo sentimos!',
+                    text: error.response.data.message,
+                    timer: 1500, // Configura el tiempo en milisegundos
+                    timerProgressBar: true
+                }).then(() => {
+                    window.location.reload();
+                });
+            });
     }
     return (
         <div

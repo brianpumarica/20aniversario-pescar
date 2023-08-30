@@ -210,7 +210,7 @@ app.post("/login", async (req, res) => {
         return res.status(401).json({ message: "Contraseña incorrecta" });
       }
     } else {
-      return res.status(401).json({ message: "User no existe" });
+      return res.status(401).json({ message: "Usuario no existe" });
     }
   } catch (error) {
     console.error("An error occurred:", error);
@@ -221,12 +221,12 @@ app.post("/login", async (req, res) => {
 const verifyUser = (req, res, next) =>{
   const token = req.cookies.token;
   if(!token){
-    return res.json({Error: "No estas autenticado"});
+    return res.status(401).json({ message: "No estas autenticado." });
   }
   else{
     jwt.verify(token, jwtSecretKey, (err,decoded)=>{
       if(err){
-        return res.json({Error: "Token is not ok"});
+        res.status(401).json({ message: "Token no es correcto." });
       }
       else{
         req.id = decoded.id;
@@ -248,7 +248,7 @@ app.post("/saveId", (req, res) => {
     return res.json({ Status: "Id saved successfully" });
   } catch (error) {
     console.error("An error occurred:", error);
-    return res.json({ Error: "Error saving id in server" });
+    res.status(401).json({ message: "Error guardando ID en el server." });;
   }
 });
 app.get('/logout', (req,res)=>{

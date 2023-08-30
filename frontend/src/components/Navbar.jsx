@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Swal from 'sweetalert2';
 
 const navigationAuth = [
     { name: 'Inicio', href: '/', current: true },
@@ -23,10 +24,16 @@ export const Navbar = ({ auth, setAuth }) => {
 
     const handleLogout = () => {
         axios.get(`${backendURL}/logout`)
-            .then(res => {
-                console.log(res);
+            .then(() => {
                 setAuth(false);
-                navitage('/login');
+                Swal.fire({
+                    icon: 'success',
+                    text: '¡Sesión cerrada!',
+                    timer: 1500, // Configura el tiempo en milisegundos
+                    timerProgressBar: true
+                }).then(() => {
+                    navitage('/login');
+                });
             }).catch(err => console.log(err));
 
         // Redirigir a la página de inicio de sesión
