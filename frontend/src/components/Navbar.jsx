@@ -9,6 +9,11 @@ import Swal from 'sweetalert2';
 const navigationAuth = [
     { name: 'Inicio', href: '/', current: true },
     { name: 'Dashboard', href: '/Dashboard', current: false },
+]
+
+const navigationAuthWithRol = [
+    { name: 'Inicio', href: '/', current: true },
+    { name: 'Dashboard', href: '/Dashboard', current: false },
     { name: 'Registrar', href: '/register', current: false },
 ]
 const navigationUnauth = [
@@ -18,21 +23,24 @@ const navigationUnauth = [
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-export const Navbar = ({ auth, setAuth }) => {
+export const Navbar = ({ auth, setAuth , rol, setRol}) => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
-    const navitage = useNavigate();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         axios.get(`${backendURL}/logout`)
             .then(() => {
                 setAuth(false);
+                if (rol === 'admin') {
+                    setRol('usuario'); // Set the role to 'usuario' only if it was 'admin'
+                }
                 Swal.fire({
                     icon: 'success',
                     text: '¡Sesión cerrada!',
                     timer: 1500, // Configura el tiempo en milisegundos
                     timerProgressBar: true
                 }).then(() => {
-                    navitage('/login');
+                    navigate('/login');
                 });
             }).catch(err => console.log(err));
 
@@ -61,35 +69,50 @@ export const Navbar = ({ auth, setAuth }) => {
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                     {auth ? (
-                                        navigationAuth.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
-                                                )}
-                                                aria-current={item.current ? 'page' : undefined}
-                                            >
-                                                {item.name}
-                                            </a>
-                                        ))
-                                    ) : (
-                                        navigationUnauth.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
-                                                )}
-                                                aria-current={item.current ? 'page' : undefined}
-                                            >
-                                                {item.name}
-                                            </a>
-                                        ))
-                                    )}
-                                        
+                                rol === "admin" ? (
+                                    navigationAuthWithRol.map((item) => (
+                                        <a
+                                            key={item.name}
+                                            href={item.href}
+                                            className={classNames(
+                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                'rounded-md px-3 py-2 text-sm font-medium'
+                                            )}
+                                            aria-current={item.current ? 'page' : undefined}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    ))
+                                ) : (
+                                    navigationAuth.map((item) => (
+                                        <a
+                                            key={item.name}
+                                            href={item.href}
+                                            className={classNames(
+                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                'rounded-md px-3 py-2 text-sm font-medium'
+                                            )}
+                                            aria-current={item.current ? 'page' : undefined}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    ))
+                                )
+                            ) : (
+                                navigationUnauth.map((item) => (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        className={classNames(
+                                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                            'rounded-md px-3 py-2 text-sm font-medium'
+                                        )}
+                                        aria-current={item.current ? 'page' : undefined}
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))
+                            )}
                                     </div>
                                 </div>
                             </div>
@@ -183,6 +206,8 @@ export const Navbar = ({ auth, setAuth }) => {
 };
 Navbar.propTypes = {
     auth: PropTypes.bool.isRequired,
-    setAuth: PropTypes.func.isRequired, // Define la validación de 'setAuth'
+    setAuth: PropTypes.func.isRequired,
+    rol: PropTypes.string.isRequired,
+    setRol: PropTypes.func.isRequired,
 };
 export default Navbar;

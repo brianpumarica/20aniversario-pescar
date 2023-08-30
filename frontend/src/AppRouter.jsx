@@ -14,43 +14,45 @@ const AppRouter = () => {
   const backendURL = process.env.REACT_APP_BACKEND_URL;
 
   axios.defaults.withCredentials = true;
-
+  
   useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        const response = await axios.get(`${backendURL}/verify`);
+  
+        if (response.data.Status === 'Success') {
+          setMessage(response.data.Status);
+          setRol(response.data.rol);
+          setAuth(true);
+          saveIdToServer(response.data.id);      
+        } else {
+          setAuth(false);
+          setMessage(response.data.Error);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setAuth(false);
+        setMessage('Error en el servidor');
+      }
+    };
+    const saveIdToServer = async (id) => {
+      try {
+        await axios.post(`${backendURL}/saveId`, { id });
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
     checkAuthentication();
   }, [backendURL]);
 
-  const checkAuthentication = async () => {
-    try {
-      const response = await axios.get(`${backendURL}/verify`);
 
-      if (response.data.Status === 'Success') {
-        setMessage(response.data.Status);
-        setRol(response.data.rol);
-        setAuth(true);
-        saveIdToServer(response.data.id);
-      } else {
-        setAuth(false);
-        setMessage(response.data.Error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setAuth(false);
-      setMessage('Error en el servidor');
-    }
-  };
 
-  const saveIdToServer = async (id) => {
-    try {
-      await axios.post(`${backendURL}/saveId`, { id });
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+  
 
   return (
     <Router basename="/">
       <div className="min-h-screen">
-        <Navbar auth={auth} setAuth={setAuth} />
+        <Navbar auth={auth} setAuth={setAuth} rol={rol} setRol={setRol}/>
         <Routes>
           <Route path="/" element={<HomePage auth={auth} />} />
           <Route path="/category/:category" element={<CategoryPage />} />
