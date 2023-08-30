@@ -25,10 +25,6 @@ const imagenesCarrousel = [
 ]
 
 export const HomePage = ({auth}) => {
-    HomePage.propTypes = {
-        auth: PropTypes.bool.isRequired, // Agregar la validación para 'auth'
-        images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    };
     return (
         <div className="h-screen bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] bg-cover bg-no-repeat bg-center">
 
@@ -36,3 +32,6 @@ export const HomePage = ({auth}) => {
         </div>
     );
 }
+HomePage.propTypes = {
+    auth: PropTypes.bool.isRequired, // Agregar la validación para 'auth'
+};
