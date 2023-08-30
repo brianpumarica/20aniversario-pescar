@@ -6,13 +6,41 @@ services:
     restart: always
     ports:
       - 3310:3306
-    networks:
-      - mynetwork
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: db
       MYSQL_USER: admin
+    networks:
+      - mynetwork
+
+  backend-app:
+    image: backend-app
+    build:
+      context: .
+      dockerfile: Backend.Dockerfile
+    restart: always
+    # corregir los puertos
+    ports:
+      - "5001:3001"
+    volumes:
+      - ./backend:/app
+    networks:
+      - mynetwork
+
+  frontend-app:
+    image: frontend-app
+    build:
+      context: .
+      dockerfile: Frontend.Dockerfile
+    restart: always
+    # el front va en el 80
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend/build:/var/www/html
+    networks:
+      - mynetwork
 
 networks:
   mynetwork:
