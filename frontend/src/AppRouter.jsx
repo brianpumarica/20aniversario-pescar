@@ -9,6 +9,7 @@ import axios from 'axios';
 
 const AppRouter = () => {
     const [auth, setAuth] = useState(false);
+    const [rol, setRol] = useState('usuario');
     const [message, setMessage] = useState('');
     const backendURL = process.env.REACT_APP_BACKEND_URL;
 
@@ -19,6 +20,7 @@ const AppRouter = () => {
             .then(res => {
                 if (res.data.Status === "Success") {
                     setMessage(res.data.Status);
+                    setRol(res.data.rol)
                     setAuth(true);
                     return axios.post(`${backendURL}/saveId`, { id: res.data.id });
                 } else {
@@ -35,7 +37,7 @@ const AppRouter = () => {
             .catch(error => {
                 console.error("Error:", error);
             });
-    }, [backendURL]);
+    }, [backendURL,rol,setAuth, setRol]);
 
     return (
         <Router basename="/">
@@ -49,7 +51,7 @@ const AppRouter = () => {
                         path='/dashboard'
                         element={<Dashboard auth={auth} message={message} />}
                     />
-                    <Route path='/register' element={<Register />} />
+                    <Route path='/register' element={<Register rol={rol} />} />
                 </Routes>
                 <Footer />
             </div>

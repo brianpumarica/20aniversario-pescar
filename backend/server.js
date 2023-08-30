@@ -187,7 +187,7 @@ app.post("/register", async (req, res) => {
 //POST ==>> login
 app.post("/login", async (req, res) => {
   try {
-    const sql = "SELECT id, user, password FROM usuarios WHERE user = ?";
+    const sql = "SELECT id, user, password, rol FROM usuarios WHERE user = ?";
     const data = await db.query(sql, [req.body.user]);
 
     if (data.length > 0) {
@@ -197,7 +197,8 @@ app.post("/login", async (req, res) => {
       );
       if (passwordMatched) {
         const id = data[0].id;
-        const token = jwt.sign({ id }, jwtSecretKey, {
+        const rol = data[0].rol;
+        const token = jwt.sign({ id, rol }, jwtSecretKey, {
           expiresIn: "1d",
         });
         res.cookie("token", token,{ 
@@ -229,6 +230,7 @@ const verifyUser = (req, res, next) =>{
       }
       else{
         req.id = decoded.id;
+        req.rol = decoded.rol;
         next();
       }
     })
@@ -236,7 +238,7 @@ const verifyUser = (req, res, next) =>{
 }
 
 app.get('/verify',verifyUser, (req,res)=>{
-  return res.json({Status:"Success",id:req.id})
+  return res.json({Status:"Success",id:req.id, rol:req.rol})
 })
 app.post("/saveId", (req, res) => {
   try {
