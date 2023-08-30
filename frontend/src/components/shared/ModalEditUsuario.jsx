@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 
 export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
-  const backendURL = process.env.REACT_APP_BACKEND_URL;
+  const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
   const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
   const dbUser = process.env.REACT_APP_DB_USER || "admin";
   const dbName = process.env.REACT_APP_DB_NAME || "db";

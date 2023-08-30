@@ -6,7 +6,7 @@ function User() {
     const [usuarios, setUsuarios] = useState([]);
     const [editingId, setEditingId] = useState(null);
 
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
 
     const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
     const dbUser = process.env.REACT_APP_DB_USER || "admin";

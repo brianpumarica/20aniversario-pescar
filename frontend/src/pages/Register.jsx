@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
 import WithoutPermissionComponent from '../components/WithoutPermissionComponent';
 
 export const Register = ({ rol }) => {
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
     const { auth, message } = AuthComponent({ backendURL });
 
     return (

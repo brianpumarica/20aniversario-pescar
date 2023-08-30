@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const LogoutButton = () => {
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
 
     const handleDelete = () => {
         axios.get(`${backendURL}/logout`)
