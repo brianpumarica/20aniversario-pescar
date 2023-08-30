@@ -26,7 +26,7 @@ function AuthComponent({ backendURL }) {
                     });
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [backendURL]);
 
     // Devolver auth y message como un objeto
     return { auth, message };
