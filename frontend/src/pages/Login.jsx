@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 import axios from 'axios'
 import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
@@ -27,9 +28,23 @@ function Login({ auth, setAuth}) {
         try {
             await axios.post(`${backendURL}/login`, data);
             setAuth(true);
+            Swal.fire({
+                icon: 'success',
+                text: '¡Usuario online!',
+                timer: 2000, // Configura el tiempo en milisegundos
+                timerProgressBar: true
+            })
             navigate('/dashboard');
+
         } catch (error) {
-            console.log('Ocurrió un error', error)
+            console.log('Ocurrió un error', error);
+            Swal.fire({
+                icon: 'error',
+                title: '¡Lo sentimos!',
+                text: error.response.data.message,
+                timer: 2000, // Configura el tiempo en milisegundos
+                timerProgressBar: true
+            })
         }
     }
 
