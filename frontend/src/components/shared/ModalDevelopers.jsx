@@ -62,7 +62,7 @@ export default function ModalDevelopers({ isOpen, setModalIsOpen }) {
                     <div className="grid grid-cols-1  gap-x-8 gap-y-6">
                       <div className="space-y-6">
                         <div className="border-b border-gray-900/10 pb-1 px-20">
-                          <div className="bg-gradient-to-r from-blue-100 to-blue-700 rounded-lg border-2 border-blue-100 rounded-lg  mb-4 px-20">
+                          <div className="bg-gradient-to-r from-blue-100 to-blue-700 border-2 border-blue-100 rounded-lg  mb-4 px-20">
                             <h2 className="text-base font-semibold leading-7 text-gray-700">
                               Developers
                             </h2>
