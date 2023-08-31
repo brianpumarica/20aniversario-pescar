@@ -111,6 +111,17 @@ export default function ModalDevelopers({ isOpen, setModalIsOpen }) {
                              LinkedIn
                             </a>
                           </div>
+                          <div className="font-semibold mb-4">
+                            <p>Maximiliano Dorado</p>
+                            <a
+                              href="https://www.linkedin.com/in/maximiliano-dorado/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-500 hover:underline"
+                            >
+                             LinkedIn
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
