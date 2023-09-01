@@ -11,7 +11,7 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: db
       MYSQL_USER: admin
-      DB_HOST: 174.25.0.2
+      DB_HOST: 174.25.0.3
       DB_USER: admin
       DB_PASSWORD: admin
       DB_NAME: db
@@ -19,7 +19,7 @@ services:
       - mariadb-data:/var/lib/mysql
     networks:
       mynetwork:
-        ipv4_address: 174.25.0.2
+        ipv4_address: 174.25.0.3
 
   backend-app:
     image: backend-app
@@ -33,7 +33,10 @@ services:
     volumes:
       - ./backend:/app/backend
     networks:
-      - mynetwork
+      mynetwork:
+        ipv4_address: 174.25.0.1
+    depends_on:
+      - mariadb
 
   frontend-app:
     image: frontend-app
@@ -47,7 +50,8 @@ services:
     volumes:
       - ./frontend/build:/var/www/html
     networks:
-      - mynetwork
+      mynetwork:
+        ipv4_address: 174.25.0.4
 
 networks:
   mynetwork:
