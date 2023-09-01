@@ -11,15 +11,11 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: db
       MYSQL_USER: admin
-      DB_HOST: mariadb #nombre del servicio
-      DB_USER: admin
-      DB_PASSWORD: admin
-      DB_NAME: db
     volumes:
       - mariadb-data:/var/lib/mysql
     networks:
       mynetwork:
-        ipv4_address: 174.25.0.3
+        ipv4_address: 174.25.0.3 #MARIADB
 
   backend-app:
     image: backend-app
