@@ -19,10 +19,10 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-const dbHost = process.env.DB_HOST || "174.25.0.3";
-const dbUser = process.env.DB_USER || "admin";
-const dbPassword = process.env.DB_PASSWORD || "admin";
-const dbName = process.env.DB_NAME || "db";
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER ;
+const dbPassword = process.env.DB_PASSWORD;
+const dbName = process.env.DB_NAME;
 
 const db = mariadb.createPool({
   host: dbHost,
