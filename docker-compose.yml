@@ -24,7 +24,7 @@ services:
     ports:
       - "5000:3001"
     volumes:
-      - ./backend:/app
+      - ./backend:/app/backend
     networks:
       - mynetwork
 
