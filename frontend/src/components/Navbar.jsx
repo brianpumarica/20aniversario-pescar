@@ -18,7 +18,7 @@ const navigationAuthWithRol = [
 ]
 const navigationUnauth = [
     { name: 'Inicio', href: '/', current: true },
-    { name: 'Iniciar Sesión', href: '/login', current: false },
+    { name: 'Iniciar Sesión', href: '/#/login', current: false },
 ]
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
