@@ -1,21 +1,21 @@
 version: '3.1'
 
 services:
-  # mariadb:
-  #   image: mariadb:latest
-  #   restart: always
-  #   ports:
-  #     - 3310:3306
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: admin
-  #     MYSQL_PASSWORD: admin
-  #     MYSQL_DATABASE: db
-  #     MYSQL_USER: admin
-  #   volumes:
-  #     - mariadb-data:/var/lib/mysql
-  #   networks:
-  #     mynetwork:
-  #       ipv4_address: 174.25.0.3 #MARIADB
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    networks:
+      mynetwork:
+        ipv4_address: 174.25.0.3 #MARIADB
 
   backend-app:
     image: backend-app
@@ -31,8 +31,8 @@ services:
     networks:
       mynetwork:
         ipv4_address: 174.25.0.2
-    # depends_on:
-    #   - mariadb
+    depends_on:
+      - mariadb
 
   frontend-app:
     image: frontend-app
