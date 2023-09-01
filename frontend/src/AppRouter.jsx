@@ -54,14 +54,11 @@ const AppRouter = () => {
       <div className="min-h-screen">
         <Navbar auth={auth} setAuth={setAuth} rol={rol} setRol={setRol}/>
         <Routes>
-          <Route path="/#" element={<HomePage auth={auth} />} />
-          <Route path="/#/category/:category" element={<CategoryPage />} />
-          <Route path="/#/login" element={<Login auth={auth} setAuth={setAuth} />} />
-          <Route
-            path="/#/dashboard"
-            element={<Dashboard auth={auth} message={message} />}
-          />
-          <Route path="/#/register" element={<Register rol={rol} />} />
+          <Route path="/" element={<HomePage auth={auth} />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
+          <Route path="/login" element={<Login auth={auth} setAuth={setAuth} />} />
+          <Route path="/dashboard" element={<Dashboard auth={auth} message={message} />} />
+          <Route path="/register" element={<Register rol={rol} />} />
         </Routes>
         <Footer />
       </div>
