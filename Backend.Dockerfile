@@ -2,9 +2,8 @@
 FROM node:18
 
 WORKDIR /app
-RUN ls /app/backend
-COPY ./backend/package*.json /app/
-COPY ./backend/ /app/
+COPY ./backend/package*.json ./app
+COPY ./backend/ ./app
 RUN ls /app/backend
 RUN npm install
 RUN ls /app/backend
