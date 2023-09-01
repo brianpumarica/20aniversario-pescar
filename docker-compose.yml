@@ -30,7 +30,7 @@ services:
       - ./backend:/app/backend
     networks:
       mynetwork:
-        ipv4_address: 174.25.0.2
+        ipv4_address: 174.25.0.3
     depends_on:
       - mariadb
 
