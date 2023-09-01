@@ -31,8 +31,8 @@ services:
     networks:
       mynetwork:
         ipv4_address: 174.25.0.2
-    depends_on:
-      - mariadb
+    # depends_on:
+    #   - mariadb
 
   frontend-app:
     image: frontend-app
