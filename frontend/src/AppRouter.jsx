@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { HomePage, CategoryPage, Register } from './pages';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -54,14 +54,14 @@ const AppRouter = () => {
       <div className="min-h-screen">
         <Navbar auth={auth} setAuth={setAuth} rol={rol} setRol={setRol}/>
         <Routes>
-          <Route path="/" element={<HomePage auth={auth} />} />
-          <Route path="/category/:category" element={<CategoryPage />} />
-          <Route path="/login" element={<Login auth={auth} setAuth={setAuth} />} />
+          <Route path="/#" element={<HomePage auth={auth} />} />
+          <Route path="/#/category/:category" element={<CategoryPage />} />
+          <Route path="/#/login" element={<Login auth={auth} setAuth={setAuth} />} />
           <Route
-            path="/dashboard"
+            path="/#/dashboard"
             element={<Dashboard auth={auth} message={message} />}
           />
-          <Route path="/register" element={<Register rol={rol} />} />
+          <Route path="/#/register" element={<Register rol={rol} />} />
         </Routes>
         <Footer />
       </div>
