@@ -4,12 +4,9 @@ FROM node:18
 WORKDIR /app
 
 COPY ./backend/package*.json /app/
-RUN npm install
-
-# Instala nodemon globalmente
-RUN npm install -g nodemon
-
 COPY ./backend/ /app/
+
+RUN npm install
 
 ENV PORT 3001
 EXPOSE $PORT
