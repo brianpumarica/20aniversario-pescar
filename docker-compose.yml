@@ -18,7 +18,8 @@ services:
     volumes:
       - mariadb-data:/var/lib/mysql
     networks:
-      - mynetwork
+      mynetwork:
+        ipv4_address: 174.25.0.2
 
   backend-app:
     image: backend-app
