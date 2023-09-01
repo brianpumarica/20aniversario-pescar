@@ -32,7 +32,11 @@ const db = mariadb.createPool({
 });
 const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
-app.get("/", async (req, res) => {
+app.get('/', (req, res) => {
+  res.send("Hello World from Docker NodeJS App")
+})
+
+app.get("/user", async (req, res) => {
   let conn;
   const token = req.cookies.token;
   const decodedToken = jwt.verify(token, jwtSecretKey);
