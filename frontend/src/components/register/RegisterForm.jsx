@@ -3,7 +3,7 @@ import { useState } from "react";
 import Swal from 'sweetalert2';
 
 export default function RegisterForm() {
-    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     const [values, setValues] = useState({
         nombreapellido: '',

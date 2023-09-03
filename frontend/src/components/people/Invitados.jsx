@@ -7,7 +7,7 @@ function Invitados() {
     const [editingId, setEditingId] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [invitadoEditar, setInvitadoEditar] = useState({});
-    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
     const dbUser = process.env.REACT_APP_DB_USER || "admin";

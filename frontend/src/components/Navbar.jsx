@@ -24,7 +24,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 export const Navbar = ({ auth, setAuth , rol, setRol}) => {
-    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
     const navigate = useNavigate();
 
     const handleLogout = () => {

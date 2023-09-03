@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 
 export default function ModalEditInvitado({ isOpen, invitado, setModalIsOpen }) {
-  const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [editedValues, setEditedValues] = useState({});
   const [editingId, setEditingId] = useState(null);
   const [open, setOpen] = useState(isOpen);
