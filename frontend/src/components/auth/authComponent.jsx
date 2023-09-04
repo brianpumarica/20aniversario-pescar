@@ -8,7 +8,7 @@ function AuthComponent({ backendURL }) {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
-        axios.get(`${backendURL}/verify`)
+        axios.get(`${backendURL}/api/verify`)
             .then(res => {
                 if (res.data.Status === "Success") {
                     setAuth(true)
@@ -17,7 +17,7 @@ function AuthComponent({ backendURL }) {
                     setMessage(res.data.Error)
                 }
                 // Enviar res.data.id al backend
-                axios.post(`${backendURL}/saveId`, { id: res.data.id })
+                axios.post(`${backendURL}/api/saveId`, { id: res.data.id })
                     .then(response => {
                         console.log(response.data); 
                     })

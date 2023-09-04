@@ -28,7 +28,7 @@ export const Navbar = ({ auth, setAuth , rol, setRol}) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        axios.get(`${backendURL}/logout`)
+        axios.get(`${backendURL}/api/logout`)
             .then(() => {
                 setAuth(false);
                 if (rol === 'admin') {

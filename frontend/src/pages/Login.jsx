@@ -26,7 +26,7 @@ function Login({ auth, setAuth}) {
             [password.current.name]: password.current.value
         }
         try {
-            await axios.post(`${backendURL}/login`, data);
+            await axios.post(`${backendURL}/api/login`, data);
             setAuth(true);
             Swal.fire({
                 icon: 'success',

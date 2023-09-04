@@ -21,7 +21,7 @@ function Invitados() {
             },
         };
         axios
-            .get(`${backendURL}/invitados`, config)
+            .get(`${backendURL}/api/invitados`, config)
             .then((res) => setInvitados(res.data))
             .catch((err) => console.log(err));
     }, [backendURL, dbHost, dbUser, dbName]);

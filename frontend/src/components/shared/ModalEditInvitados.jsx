@@ -26,7 +26,7 @@ useEffect(() => {
   // Fetch additional data only when editingId changes
   if (editingId) {
     axios
-      .get(`${backendURL}/invitadoActual`, { params: { id: editingId } })
+      .get(`${backendURL}/api/invitadoActual`, { params: { id: editingId } })
       .then((res) => {
         const fetchedInvitado = res.data;
         setInvitadoToEdit(fetchedInvitado);
@@ -52,7 +52,7 @@ useEffect(() => {
       habilitado: editedValues.habilitado,
     };
     axios
-      .put(`${backendURL}/invitados/${invitado.id}`, updatedInvitado)
+      .put(`${backendURL}/api/invitados/${invitado.id}`, updatedInvitado)
       .then((response) => {
         if (response.data.success) {
           setEditingId(null);

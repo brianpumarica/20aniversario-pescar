@@ -18,7 +18,7 @@ const AppRouter = () => {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get(`${backendURL}/verify`);
+        const response = await axios.get(`${backendURL}/api/verify`);
   
         if (response.data.Status === 'Success') {
           setMessage(response.data.Status);
@@ -37,7 +37,7 @@ const AppRouter = () => {
     };
     const saveIdToServer = async (id) => {
       try {
-        await axios.post(`${backendURL}/saveId`, { id });
+        await axios.post(`${backendURL}/api/saveId`, { id });
       } catch (error) {
         console.error('Error:', error);
       }

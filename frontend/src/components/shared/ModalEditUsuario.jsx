@@ -24,7 +24,7 @@ export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
       },
     };
     axios
-      .get(`${backendURL}/user`, config)
+      .get(`${backendURL}/api/user`, config)
       .then((res) => setUsuarios(res.data))
       .catch((err) => console.log(err));
   }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
@@ -51,7 +51,7 @@ export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
 
   const handleSave = (id) => {
     axios
-      .put(`${backendURL}/user/${id}`, {
+      .put(`${backendURL}/api/user/${id}`, {
         id: id,
         nombre: editedValues.nombreapellido,
         telefono: editedValues.telefono,

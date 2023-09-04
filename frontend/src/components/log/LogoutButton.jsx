@@ -4,7 +4,7 @@ const LogoutButton = () => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     const handleDelete = () => {
-        axios.get(`${backendURL}/logout`)
+        axios.get(`${backendURL}/api/logout`)
         .then(res=>{
             console.log(res);
             location.reload(true);

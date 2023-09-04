@@ -24,7 +24,7 @@ export default function RegisterForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(values);
-        axios.post(`${backendURL}/register`, values)
+        axios.post(`${backendURL}/api/register`, values)
             .then((res)=>{
                 console.log(res)
                 Swal.fire({

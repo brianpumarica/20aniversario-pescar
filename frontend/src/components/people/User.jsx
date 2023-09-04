@@ -21,7 +21,7 @@ function User() {
             },
         };
         axios
-            .get(backendURL, config)
+            .get(`${backendURL}/api/user`, config)
             .then((res) => setUsuarios(res.data))
             .catch((err) => console.log(err));
     }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
