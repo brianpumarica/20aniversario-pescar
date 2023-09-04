@@ -32,11 +32,11 @@ const db = mariadb.createPool({
 });
 const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
-app.get('/api/', (req, res) => {
+app.get('/', (req, res) => {
   res.send("Hello World from Docker NodeJS App")
 })
 
-app.get("/api/user", async (req, res) => {
+app.get("/user", async (req, res) => {
   let conn;
   const token = req.cookies.token;
   const decodedToken = jwt.verify(token, jwtSecretKey);
@@ -57,7 +57,7 @@ app.get("/api/user", async (req, res) => {
   }
 });
 
-app.get("/api/invitadoActual", async (req, res) => {
+app.get("/invitadoActual", async (req, res) => {
   let conn;
   const id = req.query.id;
     try {
@@ -76,7 +76,7 @@ app.get("/api/invitadoActual", async (req, res) => {
   }
 });
 // Ruta para actualizar un usuario por su ID
-app.put("/api/user/:id", async (req, res) => {
+app.put("/user/:id", async (req, res) => {
   const id = req.body.id;
   const nombre = req.body.nombre;
   const telefono = req.body.telefono;
@@ -109,7 +109,7 @@ app.put("/api/user/:id", async (req, res) => {
     }
   }
 });
-app.get("/api/invitados", async (req, res) => {
+app.get("/invitados", async (req, res) => {
   let conn;
   const token = req.cookies.token;
   const decodedToken = jwt.verify(token, jwtSecretKey);
@@ -129,7 +129,7 @@ app.get("/api/invitados", async (req, res) => {
   }
 });
 // Ruta para actualizar un usuario por su ID
-app.put("/api/invitados/:id", async (req, res) => {
+app.put("/invitados/:id", async (req, res) => {
   const id = req.body.id;
   const nombre = req.body.nombre;
   const comida = req.body.comida;
@@ -156,7 +156,7 @@ app.put("/api/invitados/:id", async (req, res) => {
 });
 
 //POST ==>> Register
-app.post("/api/register", async (req, res) => {
+app.post("/register", async (req, res) => {
   try {
     const hash = await bcrypt.hash(req.body.password.toString(), salt);
 
@@ -189,7 +189,7 @@ app.post("/api/register", async (req, res) => {
 });
 
 //POST ==>> login
-app.post("/api/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     const sql = "SELECT id, user, password, rol FROM usuarios WHERE user = ?";
     const data = await db.query(sql, [req.body.user]);
@@ -241,10 +241,10 @@ const verifyUser = (req, res, next) =>{
   }
 }
 
-app.get('/api/verify',verifyUser, (req,res)=>{
+app.get('/verify',verifyUser, (req,res)=>{
   return res.json({Status:"Success",id:req.id, rol:req.rol})
 })
-app.post("/api/saveId", (req, res) => {
+app.post("/saveId", (req, res) => {
   try {
     const idFromClient = req.body.id;
     id = idFromClient;
@@ -255,7 +255,7 @@ app.post("/api/saveId", (req, res) => {
     res.status(401).json({ message: "Error guardando ID en el server." });;
   }
 });
-app.get('/api/logout', (req,res)=>{
+app.get('/logout', (req,res)=>{
   res.clearCookie('token');
   return res.json({Status:"Success"});
 })
