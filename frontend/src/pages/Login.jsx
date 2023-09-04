@@ -31,7 +31,7 @@ function Login({ auth, setAuth}) {
             Swal.fire({
                 icon: 'success',
                 text: '¡Usuario online!',
-                timer: 1500, // Configura el tiempo en milisegundos
+                timer: 1501, // Configura el tiempo en milisegundos
                 timerProgressBar: true
             })
             navigate('/dashboard');
