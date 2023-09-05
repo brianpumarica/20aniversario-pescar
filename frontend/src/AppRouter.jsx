@@ -17,13 +17,33 @@ const AppRouter = () => {
   useEffect(() => {
     axios.get(`${backendURL}/api`)
       .then(response => {
-        console.log('Respuesta del servidor:', response.data);
+        console.log('1 Respuesta del servidor:', response.data);
         setMessage(response.data);
       })
       .catch(error => {
         console.error('Error al hacer la solicitud al backend:', error);
       });
-  }, []);
+  }, [backendURL]);
+  useEffect(() => {
+    axios.get(`${backendURL}/api/`)
+      .then(response => {
+        console.log('2 Respuesta del servidor:', response.data);
+        setMessage(response.data);
+      })
+      .catch(error => {
+        console.error('Error al hacer la solicitud al backend:', error);
+      });
+  }, [backendURL]);
+  useEffect(() => {
+    axios.get(`${backendURL}`)
+      .then(response => {
+        console.log('3 Respuesta del servidor:', response.data);
+        setMessage(response.data);
+      })
+      .catch(error => {
+        console.error('Error al hacer la solicitud al backend:', error);
+      });
+  }, [backendURL]);
 
   // useEffect(() => {
   //   const checkAuthentication = async () => {
