@@ -14,36 +14,46 @@ const AppRouter = () => {
   const backendURL = process.env.REACT_APP_BACKEND_URL;
 
   axios.defaults.withCredentials = true;
-  
   useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await axios.get(`${backendURL}/api/verify`);
+    axios.get(backendURL)
+      .then(response => {
+        console.log('Respuesta del servidor:', response.data);
+        setMessage(response.data);
+      })
+      .catch(error => {
+        console.error('Error al hacer la solicitud al backend:', error);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   const checkAuthentication = async () => {
+  //     try {
+  //       const response = await axios.get(`${backendURL}/api/verify`);
   
-        if (response.data.Status === 'Success') {
-          setMessage(response.data.Status);
-          setRol(response.data.rol);
-          setAuth(true);
-          saveIdToServer(response.data.id);      
-        } else {
-          setAuth(false);
-          setMessage(response.data.Error);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        setAuth(false);
-        setMessage('Error en el servidor');
-      }
-    };
-    const saveIdToServer = async (id) => {
-      try {
-        await axios.post(`${backendURL}/api/saveId`, { id });
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    checkAuthentication();
-  }, [backendURL]);
+  //       if (response.data.Status === 'Success') {
+  //         setMessage(response.data.Status);
+  //         setRol(response.data.rol);
+  //         setAuth(true);
+  //         saveIdToServer(response.data.id);      
+  //       } else {
+  //         setAuth(false);
+  //         setMessage(response.data.Error);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //       setAuth(false);
+  //       setMessage('Error en el servidor');
+  //     }
+  //   };
+  //   const saveIdToServer = async (id) => {
+  //     try {
+  //       await axios.post(`${backendURL}/api/saveId`, { id });
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   };
+  //   checkAuthentication();
+  // }, [backendURL]);
 
 
 
