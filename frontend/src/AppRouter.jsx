@@ -15,7 +15,7 @@ const AppRouter = () => {
 
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get(backendURL)
+    axios.get(`${backendURL}/api`)
       .then(response => {
         console.log('Respuesta del servidor:', response.data);
         setMessage(response.data);
