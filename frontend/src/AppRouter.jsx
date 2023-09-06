@@ -24,6 +24,7 @@ const AppRouter = () => {
         console.error('Error al hacer la solicitud al backend:', error);
       });
   }, [backendURL]);
+  
   useEffect(() => {
     axios.get(`${backendURL}/api/`)
       .then(response => {
@@ -34,6 +35,7 @@ const AppRouter = () => {
         console.error('Error al hacer la solicitud al backend:', error);
       });
   }, [backendURL]);
+
   useEffect(() => {
     axios.get(`${backendURL}`)
       .then(response => {
