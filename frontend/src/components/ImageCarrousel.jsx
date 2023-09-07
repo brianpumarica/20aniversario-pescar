@@ -27,14 +27,14 @@ const ImageCarousel = ({ images }) => {
             ref={carouselRef}
             className="flex flex-col h-4/5 text-white bg-fixed"
         >
-            <div className="flex-1 flex items-center"> {/* Botones y links */}
+            <div className="flex-1 flex items-center"> 
                 <div className="text-center mx-auto flex flex-col items-center space-y-2 gap-2">
                     <h1 className="text-4xl font-semibold">¡Fundación Pescar cumple 20 Años! 🥳</h1>
                     <p className="font-light text-2xl mt-5">¡Bienvenido!</p>
 
-                    <ActionButtons />
                 </div>
             </div>
+            <ActionButtons />
 
             <div className="carousel-container"> {/* Carousel de imágenes */}
                 <div className="carousel" style={carouselStyles}>

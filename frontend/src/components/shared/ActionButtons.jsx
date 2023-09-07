@@ -1,31 +1,18 @@
-import QuienesSomosButton from './QuienesSomosButton';
-import RegisterButton from './RegisterButton';
-import DashboardButton from './DashboardButton';
+import LinkButton from './LinkButton';
+
 // import PropTypes from 'prop-types';
 // import LoginButton from '../log/LoginButton';
 
 // const ActionButtons = ({ auth }) => {
 const ActionButtons = () => {
-        return (
+    return (
         <div>
             <div className="flex flex-col items-center space-y-2 gap-2">
-                <QuienesSomosButton />
-                <RegisterButton />
-                <DashboardButton />
+                <LinkButton text="Trivia" link="/#/category/Pescar"/>
+                <LinkButton text="MemoTest" link="/#/memoryTest"/>
+                <LinkButton text="Emprendimientos" link="/#/emprendimientos"/>
+                <LinkButton text="Quienes somos" link="https://www.pescar.org.ar/quienes-somos/"/>
             </div>
-            {/* {auth ? (
-                <div className="flex flex-col items-center space-y-2 gap-2">
-                    <QuienesSomosButton />
-                    <RegisterButton />
-                    <DashboardButton />
-                </div>
-            )
-            : (
-                <div className="flex flex-col items-center space-y-2 gap-2">
-                    <QuienesSomosButton />
-                    <LoginButton/>
-                </div>)
-            } */}
         </div>
     );
 };
