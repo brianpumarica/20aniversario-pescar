@@ -16,7 +16,7 @@ function Login({ auth, setAuth}) {
     axios.defaults.withCredentials = true;
     let user = useRef()
     let password = useRef()
-    const backendURL = "https://magicstream.ddns.net/api";
+    const backendURL = "https://magicstream.ddns.net";
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -41,11 +41,11 @@ function Login({ auth, setAuth}) {
             Swal.fire({
                 icon: 'error',
                 title: '¡Lo sentimos!',
-                text: error.response.data.message,
+                text: error?.response?.data?.message,
                 timer: 1500, // Configura el tiempo en milisegundos
                 timerProgressBar: true
             }).then(() => {
-                window.location.reload();
+                //window.location.reload();
             });
         }
     }
