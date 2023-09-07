@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import './imageCarrousel.css';
-import ActionButtons from './shared/ActionButtons';
+import { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
+import "./imageCarrousel.css";
+import ActionButtons from "./shared/ActionButtons";
+import BannerBienvenida from "./shared/BannerBienvenida";
 
 const ImageCarousel = ({ images }) => {
     const carouselRef = useRef(null);
@@ -19,30 +20,23 @@ const ImageCarousel = ({ images }) => {
 
     const carouselStyles = {
         transform: `translateX(-${currentIndex * (800 / images.length)}%)`,
-        transition: 'transform 1s linear', // Añadimos una transición CSS para un movimiento suave.
+        transition: "transform 1s linear", // Añadimos una transición CSS para un movimiento suave.
     };
 
     return (
         <section
             ref={carouselRef}
-            className="flex flex-col h-4/5 text-white bg-fixed"
+            className="flex flex-col mt-5 text-white bg-fixed"
         >
-            <div className="flex-1 flex items-center"> 
-                <div className="text-center mx-auto flex flex-col items-center space-y-2 gap-2">
-                    <h1 className="text-4xl font-semibold">¡Fundación Pescar cumple 20 Años! 🥳</h1>
-                    <p className="font-light text-2xl mt-5">¡Bienvenido!</p>
-
-                </div>
-            </div>
+            <BannerBienvenida />
             <ActionButtons />
 
-            <div className="carousel-container"> {/* Carousel de imágenes */}
+            <div className="carousel-container mt-5">
+                {" "}
+                {/* Carousel de imágenes */}
                 <div className="carousel" style={carouselStyles}>
                     {images.map((imageUrl, index) => (
-                        <div
-                            key={index}
-                            className="carousel-image"
-                        >
+                        <div key={index} className="carousel-image">
                             <img src={imageUrl} alt={`img-${index}`} draggable="false" />
                         </div>
                     ))}
@@ -50,7 +44,7 @@ const ImageCarousel = ({ images }) => {
             </div>
         </section>
     );
-}
+};
 
 ImageCarousel.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
