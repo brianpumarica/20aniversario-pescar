@@ -15,7 +15,7 @@ export const questions = [
     {
         id: 1,
         difficulty: 'Fácil',
-        question: '¿Cuántos años cumple Pescar?',
+        question: '¿Cuántos años cumple la Fundación Pescar en Argentina?',
         category: pescar,
         correct_answer: '20 años',
         incorrect_answers: ['10 años', '18 años', '25 años'],
@@ -23,9 +23,9 @@ export const questions = [
     {
         id: 2,
         difficulty: 'Fácil',
-        question: '¿Cuántos centros Pescar hay en todo el país?',
+        question: '¿Cuántos programas de formacion intensiva hay en todo el pais en 2023?',
         category: pescar,
-        correct_answer: '48',
+        correct_answer: '60',
         incorrect_answers: ['25', '36', '52'],
     },
     {
