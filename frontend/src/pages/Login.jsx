@@ -16,7 +16,7 @@ function Login({ auth, setAuth}) {
     axios.defaults.withCredentials = true;
     let user = useRef()
     let password = useRef()
-    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -26,12 +26,12 @@ function Login({ auth, setAuth}) {
             [password.current.name]: password.current.value
         }
         try {
-            await axios.post(`${backendURL}/login`, data);
+            await axios.post(`${backendURL}/api/login`, data);
             setAuth(true);
             Swal.fire({
                 icon: 'success',
                 text: '¡Usuario online!',
-                timer: 1500, // Configura el tiempo en milisegundos
+                timer: 1501, // Configura el tiempo en milisegundos
                 timerProgressBar: true
             })
             navigate('/dashboard');

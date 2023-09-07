@@ -1,8 +1,12 @@
 import './homePageStyles.css'
 import ImageCarousel from '../components/ImageCarrousel';
 import PropTypes from 'prop-types';
+import imagen1 from '../assets/imagenesCarrusel/descarga (1).png'
+import imagen2 from '../assets/imagenesCarrusel/descarga (2).png'
 
-const imagenesCarrousel = [
+const imagenesCarrousel = [ //Subir las imagenes a 
+    imagen1,
+    imagen2,
     'https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2021/10/EquipoPescar_Silvia-web.jpg?fit=400%2C400&ssl=1',
     'https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2021/10/EquipoPescar-9073-web.jpg?fit=400%2C400&ssl=1',
     'https://i0.wp.com/www.pescar.org.ar/wp-content/uploads/2021/10/EquipoPescar-8994-web.jpg?fit=400%2C400&ssl=1',

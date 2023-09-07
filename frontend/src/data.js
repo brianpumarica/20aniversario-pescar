@@ -1,8 +1,8 @@
-import imagenPescar from './assets/favicon.png';
+// import imagenPescar from '../public/favicon.png';
 
-export const imgs = [
-	imagenPescar,
-];
+// export const imgs = [
+// 	imagenPescar,
+// ];
 
 export const categories = {
 	pescar: 'Pescar', 

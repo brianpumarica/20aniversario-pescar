@@ -7,24 +7,15 @@ function Invitados() {
     const [editingId, setEditingId] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [invitadoEditar, setInvitadoEditar] = useState({});
-    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
 
-    const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
-    const dbUser = process.env.REACT_APP_DB_USER || "admin";
-    const dbName = process.env.REACT_APP_DB_NAME || "db";
+    
     useEffect(() => {
-        const config = {
-            params: {
-                server: dbHost,
-                username: dbUser,
-                db: dbName,
-            },
-        };
         axios
-            .get(`${backendURL}/invitados`, config)
+            .get(`${backendURL}/api/invitados`)
             .then((res) => setInvitados(res.data))
             .catch((err) => console.log(err));
-    }, [backendURL, dbHost, dbUser, dbName]);
+    }, [backendURL]);
 
     const handleEdit = (invitado) => {
         setEditingId(invitado.id);

@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+
 import axios from 'axios';
 
-function AuthComponent({ backendURL }) {
-    const [auth, setAuth] = useState(false);
-    const [message, setMessage] = useState('');
+function AuthComponent() {
+   const auth = true
+   const message = "a"
 
     axios.defaults.withCredentials = true;
 
-    useEffect(() => {
-        axios.get(`${backendURL}/verify`)
+/*     useEffect(() => {
+        axios.get(`${backendURL}/api/verify`)
             .then(res => {
                 if (res.data.Status === "Success") {
                     setAuth(true)
@@ -17,7 +17,7 @@ function AuthComponent({ backendURL }) {
                     setMessage(res.data.Error)
                 }
                 // Enviar res.data.id al backend
-                axios.post(`${backendURL}/saveId`, { id: res.data.id })
+                axios.post(`${backendURL}/api/saveId`, { id: res.data.id })
                     .then(response => {
                         console.log(response.data); 
                     })
@@ -26,7 +26,7 @@ function AuthComponent({ backendURL }) {
                     });
             })
             .catch(err => console.log(err));
-    }, [backendURL]);
+    }, [backendURL]); */
 
     // Devolver auth y message como un objeto
     return { auth, message };

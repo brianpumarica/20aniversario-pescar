@@ -5,10 +5,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 
 export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
-  const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
-  const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
-  const dbUser = process.env.REACT_APP_DB_USER || "admin";
-  const dbName = process.env.REACT_APP_DB_NAME || "db";
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
 
   const [usuarios, setUsuarios] = useState([]);
   const [editedValues, setEditedValues] = useState({});
@@ -16,18 +13,11 @@ export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
   const [editingId, setEditingId] = useState(id);
   const [open, setOpen] = useState(isOpen);
   useEffect(() => {
-    const config = {
-      params: {
-        server: dbHost,
-        username: dbUser,
-        db: dbName,
-      },
-    };
     axios
-      .get(`${backendURL}/user`, config)
+      .get(`${backendURL}/api/user`)
       .then((res) => setUsuarios(res.data))
       .catch((err) => console.log(err));
-  }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
+  }, [backendURL]); // Incluye las variables en el array de dependencias
   useEffect(() => {
     const userToEdit = usuarios.find((user) => user.id === id);
     if (userToEdit) {
@@ -51,7 +41,7 @@ export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
 
   const handleSave = (id) => {
     axios
-      .put(`${backendURL}/user/${id}`, {
+      .put(`${backendURL}/api/user/${id}`, {
         id: id,
         nombre: editedValues.nombreapellido,
         telefono: editedValues.telefono,

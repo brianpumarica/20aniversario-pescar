@@ -6,26 +6,14 @@ function User() {
     const [usuarios, setUsuarios] = useState([]);
     const [editingId, setEditingId] = useState(null);
 
-    const backendURL = process.env.REACT_APP_BACKEND_URL||'aniversariopescar.com.ar/api/';
-
-    const dbHost = process.env.REACT_APP_DB_HOST || "174.25.0.2";
-    const dbUser = process.env.REACT_APP_DB_USER || "admin";
-    const dbName = process.env.REACT_APP_DB_NAME || "db";
-
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
     useEffect(() => {
-        const config = {
-            params: {
-                server: dbHost,
-                username: dbUser,
-                db: dbName,
-            },
-        };
         axios
-            .get(backendURL, config)
+            .get(`${backendURL}/api/user`)
             .then((res) => setUsuarios(res.data))
             .catch((err) => console.log(err));
-    }, [backendURL, dbHost, dbUser, dbName]); // Incluye las variables en el array de dependencias
-
+    }, [backendURL]); 
+    
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const handleEdit = (id) => {
