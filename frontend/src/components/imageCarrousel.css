@@ -15,13 +15,13 @@
 
 .carousel-image {
     min-width: calc(100% / 6); /* Muestra 6 imágenes a la vez en tamaños medianos */
-    padding: 1px; /* Espaciado entre imágenes */
+    padding: 10px; /* Espaciado entre imágenes */
 }
 
 .carousel-image img {
-    min-width: 100px;
+    min-width: 175px;
     max-width: 100%;
-    height: 150px; /* Ajusta la altura según tus necesidades */
+    height: 200px; /* Ajuste de altura */
     display: block;
     object-fit: cover; /* Ajusta la forma en que la imagen llena el contenedor */
 }
@@ -52,7 +52,7 @@
 
 @media (min-width: 1024px) {
     .carousel-image {
-        min-width: calc(100% / 8); /* Muestra 8 imágenes a la vez en tamaños grandes */
+        min-width: calc(100% / 6); /* Muestra 6 imágenes a la vez en tamaños grandes */
     }
 }
 
