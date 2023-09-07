@@ -31,7 +31,6 @@ const ImageCarousel = ({ images }) => {
                 <div className="text-center mx-auto flex flex-col items-center space-y-2 gap-2">
                     <h1 className="text-4xl font-semibold">¡Fundación Pescar cumple 20 Años! 🥳</h1>
                     <p className="font-light text-2xl mt-5">¡Bienvenido!</p>
-
                 </div>
             </div>
             <ActionButtons />
