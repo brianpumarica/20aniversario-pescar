@@ -4,7 +4,8 @@ import './imageCarrousel.css'
 
 import ActionButtons from './shared/ActionButtons';
 
-const ImageCarousel = ({ images , auth}) => {
+// const ImageCarousel = ({ images , auth}) => {
+    const ImageCarousel = ({ images }) => {
     const carouselRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -34,7 +35,8 @@ const ImageCarousel = ({ images , auth}) => {
                     <h1 className="text-4xl font-semibold">¡Fundación Pescar cumple 20 Años! 🥳</h1>
                     <p className="font-light text-2xl mt-5">¡Bienvenido!</p>
                     
-                    <ActionButtons auth={auth} />                   
+                    {/* <ActionButtons auth={auth} />                    */}
+                    <ActionButtons />                   
                 </div>
             </div>
 
@@ -58,6 +60,6 @@ const ImageCarousel = ({ images , auth}) => {
 
 ImageCarousel.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    auth: PropTypes.bool.isRequired, // Agregar la validación para 'auth'
+    // auth: PropTypes.bool.isRequired, // Agregar la validación para 'auth'
 };
 export default ImageCarousel;  

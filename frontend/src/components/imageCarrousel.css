@@ -19,8 +19,8 @@
 }
 
 .carousel-image img {
-    min-width: 150px;
-    max-width: 150%;
+    min-width: 100px;
+    max-width: 100%;
     height: 150px; /* Ajusta la altura según tus necesidades */
     display: block;
     object-fit: cover; /* Ajusta la forma en que la imagen llena el contenedor */
@@ -52,7 +52,7 @@
 
 @media (min-width: 1024px) {
     .carousel-image {
-        min-width: calc(100% / 6); /* Muestra 8 imágenes a la vez en tamaños grandes */
+        min-width: calc(100% / 8); /* Muestra 8 imágenes a la vez en tamaños grandes */
     }
 }
 

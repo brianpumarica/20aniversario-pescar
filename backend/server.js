@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-const dbHost = process.env.DB_HOST||'174.25.0.3';
+const dbHost = 'mariadb';
 const dbUser = process.env.DB_USER||'admin';
 const dbPassword = process.env.DB_PASSWORD||'admin';
 const dbName = process.env.DB_NAME||'db';
@@ -32,8 +32,14 @@ const db = mariadb.createPool({
 });
 const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
+app.get('/api', (req, res) => {
+  res.send("Hello World from Docker NodeJS App 1")
+})
 app.get('/', (req, res) => {
-  res.send("Hello World from Docker NodeJS App")
+  res.send("Hello World from Docker NodeJS App 2")
+})
+app.get('/api/', (req, res) => {
+  res.send("Hello World from Docker NodeJS App 3")
 })
 
 app.get("/user", async (req, res) => {

@@ -1,13 +1,13 @@
-
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function AuthComponent() {
-   const auth = true
-   const message = "a"
+function AuthComponent({ backendURL }) {
+    const [auth, setAuth] = useState(false);
+    const [message, setMessage] = useState('');
 
     axios.defaults.withCredentials = true;
 
-/*     useEffect(() => {
+    useEffect(() => {
         axios.get(`${backendURL}/api/verify`)
             .then(res => {
                 if (res.data.Status === "Success") {
@@ -26,7 +26,7 @@ function AuthComponent() {
                     });
             })
             .catch(err => console.log(err));
-    }, [backendURL]); */
+    }, [backendURL]);
 
     // Devolver auth y message como un objeto
     return { auth, message };

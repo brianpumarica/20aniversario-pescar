@@ -15,7 +15,7 @@ services:
       - mariadb-data:/var/lib/mysql
     networks:
       mynetwork:
-        ipv4_address: 174.25.0.3 #MARIADB
+        ipv4_address: 174.25.0.2 #MARIADB
 
   backend-app:
     image: backend-app
@@ -30,7 +30,7 @@ services:
       - ./backend:/app/backend
     networks:
       mynetwork:
-        ipv4_address: 174.25.0.2
+        ipv4_address: 174.25.0.3
     depends_on:
       - mariadb
 
@@ -43,6 +43,7 @@ services:
     # el front va en el 80
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./frontend/build:/var/www/html
     networks:
