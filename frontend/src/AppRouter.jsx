@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import { useEffect, useState } from 'react';
+// import axios from 'axios';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { HomePage, CategoryPage, Register } from './pages';
 import { Navbar } from './components/Navbar';
@@ -8,44 +8,44 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 
 const AppRouter = () => {
-  const [auth, setAuth] = useState(false);
-  const [rol, setRol] = useState('usuario');
-  const [message, setMessage] = useState('');
-  const backendURL = process.env.REACT_APP_BACKEND_URL;
+  // const [auth, setAuth] = useState(false);
+  // const [rol, setRol] = useState('usuario');
+  // const [message, setMessage] = useState('');
+  // const backendURL = process.env.REACT_APP_BACKEND_URL;
 
-  axios.defaults.withCredentials = true;
-  useEffect(() => {
-    axios.get(`${backendURL}/api`)
-      .then(response => {
-        console.log('1 Respuesta del servidor:', response.data);
-        setMessage(response.data);
-      })
-      .catch(error => {
-        console.error('Error al hacer la solicitud al backend:', error);
-      });
-  }, [backendURL]);
+  // axios.defaults.withCredentials = true;
+  // useEffect(() => {
+  //   axios.get(`${backendURL}/api`)
+  //     .then(response => {
+  //       console.log('1 Respuesta del servidor:', response.data);
+  //       setMessage(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error al hacer la solicitud al backend:', error);
+  //     });
+  // }, [backendURL]);
   
-  useEffect(() => {
-    axios.get(`${backendURL}/api/`)
-      .then(response => {
-        console.log('2 Respuesta del servidor:', response.data);
-        setMessage(response.data);
-      })
-      .catch(error => {
-        console.error('Error al hacer la solicitud al backend:', error);
-      });
-  }, [backendURL]);
+  // useEffect(() => {
+  //   axios.get(`${backendURL}/api/`)
+  //     .then(response => {
+  //       console.log('2 Respuesta del servidor:', response.data);
+  //       setMessage(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error al hacer la solicitud al backend:', error);
+  //     });
+  // }, [backendURL]);
 
-  useEffect(() => {
-    axios.get(`${backendURL}`)
-      .then(response => {
-        console.log('3 Respuesta del servidor:', response.data);
-        setMessage(response.data);
-      })
-      .catch(error => {
-        console.error('Error al hacer la solicitud al backend:', error);
-      });
-  }, [backendURL]);
+  // useEffect(() => {
+  //   axios.get(`${backendURL}`)
+  //     .then(response => {
+  //       console.log('3 Respuesta del servidor:', response.data);
+  //       setMessage(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error al hacer la solicitud al backend:', error);
+  //     });
+  // }, [backendURL]);
 
   // useEffect(() => {
   //   const checkAuthentication = async () => {
@@ -84,13 +84,18 @@ const AppRouter = () => {
   return (
     <Router basename="/">
       <div className="min-h-screen">
-        <Navbar auth={auth} setAuth={setAuth} rol={rol} setRol={setRol}/>
+        {/* <Navbar auth={auth} setAuth={setAuth} rol={rol} setRol={setRol}/> */}
+        <Navbar/>
         <Routes>
-          <Route path="/" element={<HomePage auth={auth} />} />
+          {/* <Route path="/" element={<HomePage auth={auth} />} /> */}
+          <Route path="/" element={<HomePage/>} />
           <Route path="/category/:category" element={<CategoryPage />} />
-          <Route path="/login" element={<Login auth={auth} setAuth={setAuth} />} />
-          <Route path="/dashboard" element={<Dashboard auth={auth} message={message} />} />
-          <Route path="/register" element={<Register rol={rol} />} />
+          {/* <Route path="/login" element={<Login auth={auth} setAuth={setAuth} />} /> */}
+          <Route path="/login" element={<Login/>}/>
+          {/* <Route path="/dashboard" element={<Dashboard auth={auth} message={message} />} /> */}
+          <Route path="/dashboard" element={<Dashboard/>} />
+          {/* <Route path="/register" element={<Register rol={rol} />} /> */}
+          <Route path="/register" element={<Register/>} />
         </Routes>
         <Footer />
       </div>

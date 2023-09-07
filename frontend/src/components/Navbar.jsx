@@ -1,51 +1,59 @@
-import { useNavigate, Link } from 'react-router-dom';
-import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
-import axios from 'axios';
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+// import { useNavigate, Link } from 'react-router-dom';
+// import { useNavigate} from 'react-router-dom';
+// import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
+// import axios from 'axios';
+// import { Fragment, useState } from 'react'
+// import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
-const navigationAuth = [
-    { name: 'Inicio', href: '/', current: true },
-    { name: 'Dashboard', href: '/Dashboard', current: false },
-]
+// const navigationAuth = [
+//     { name: 'Inicio', href: '/', current: true },
+//     { name: 'Dashboard', href: '/Dashboard', current: false },
+// ]
 
 const navigationAuthWithRol = [
     { name: 'Inicio', href: '/', current: true },
-    { name: 'Dashboard', href: '/Dashboard', current: false },
-    { name: 'Registrar', href: '/register', current: false },
+    { name: 'Dashboard', href: '/#/Dashboard', current: false },
+    { name: 'Registrar', href: '/#/register', current: false },
+    { name: 'Trivia', href: '/#/category/Pescar', current: false },
 ]
-const navigationUnauth = [
-    { name: 'Inicio', href: '/', current: true },
-    { name: 'Iniciar Sesión', href: '/#/login', current: false },
-]
+// const navigationUnauth = [
+//     { name: 'Inicio', href: '/', current: true },
+//     { name: 'Iniciar Sesión', href: '/#/login', current: false },
+// ]
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-export const Navbar = ({ auth, setAuth , rol, setRol}) => {
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
-    const navigate = useNavigate();
+// export const Navbar = ({ auth, setAuth , rol, setRol}) => {
+export const Navbar = () => {
+        // const backendURL = process.env.REACT_APP_BACKEND_URL;
+    // const navigate = useNavigate();
+    // const [auth, setAuth] = useState(true);
+    // const [rol, setRol] = useState('usuario');
+    // setAuth(true);
+    // setRol('usuario');
+    // const handleLogout = () => {
+    //     // axios.get(`${backendURL}/api/logout`)
+    //     //     .then(() => {
+    //     //         setAuth(false);
+    //     //         if (rol === 'admin') {
+    //     //             setRol('usuario'); // Set the role to 'usuario' only if it was 'admin'
+    //     //         }
+    //     //         Swal.fire({
+    //     //             icon: 'success',
+    //     //             text: '¡Sesión cerrada!',
+    //     //             timer: 1500, // Configura el tiempo en milisegundos
+    //     //             timerProgressBar: true
+    //     //         }).then(() => {
+    //     //             navigate('/login');
+    //     //         });
+    //     //     }).catch(err => console.log(err));
 
-    const handleLogout = () => {
-        axios.get(`${backendURL}/api/logout`)
-            .then(() => {
-                setAuth(false);
-                if (rol === 'admin') {
-                    setRol('usuario'); // Set the role to 'usuario' only if it was 'admin'
-                }
-                Swal.fire({
-                    icon: 'success',
-                    text: '¡Sesión cerrada!',
-                    timer: 1500, // Configura el tiempo en milisegundos
-                    timerProgressBar: true
-                }).then(() => {
-                    navigate('/login');
-                });
-            }).catch(err => console.log(err));
-
-        // Redirigir a la página de inicio de sesión
-    };
+    //     // Redirigir a la página de inicio de sesión
+    //     navigate('/login');
+    // };
 
     return (
         <Disclosure as="nav" className="bg-gray-800">
@@ -68,7 +76,20 @@ export const Navbar = ({ auth, setAuth , rol, setRol}) => {
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
-                                    {auth ? (
+                                    {navigationAuthWithRol.map((item) => (
+                                        <a
+                                            key={item.name}
+                                            href={item.href}
+                                            className={classNames(
+                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                'rounded-md px-3 py-2 text-sm font-medium'
+                                            )}
+                                            aria-current={item.current ? 'page' : undefined}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    ))}
+                                    {/* {auth ? (
                                 rol === "admin" ? (
                                     navigationAuthWithRol.map((item) => (
                                         <a
@@ -112,14 +133,13 @@ export const Navbar = ({ auth, setAuth , rol, setRol}) => {
                                         {item.name}
                                     </a>
                                 ))
-                            )}
+                            )} */}
                                     </div>
                                 </div>
                             </div>
-                            {
+                            {/* {
                                 (auth ? (
                                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
                                     <div>
                                         <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -155,12 +175,12 @@ export const Navbar = ({ auth, setAuth , rol, setRol}) => {
                             </div>
                                 ): null
                                 )
-                            }
+                            } */}
                             
                         </div>
                     </div>
 
-                    <Disclosure.Panel className="sm:hidden">
+                    {/* <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
                             {auth?(
                                 navigationAuth.map((item) => (
@@ -197,17 +217,17 @@ export const Navbar = ({ auth, setAuth , rol, setRol}) => {
 
                             }
                         </div>
-                    </Disclosure.Panel>
+                    </Disclosure.Panel> */}
                 </>
             )
             }
         </Disclosure >
     );
 };
-Navbar.propTypes = {
-    auth: PropTypes.bool.isRequired,
-    setAuth: PropTypes.func.isRequired,
-    rol: PropTypes.string.isRequired,
-    setRol: PropTypes.func.isRequired,
-};
+// Navbar.propTypes = {
+//     auth: PropTypes.bool.isRequired,
+//     setAuth: PropTypes.func.isRequired,
+//     rol: PropTypes.string.isRequired,
+//     setRol: PropTypes.func.isRequired,
+// };
 export default Navbar;

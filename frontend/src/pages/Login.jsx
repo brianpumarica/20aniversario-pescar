@@ -1,39 +1,39 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import axios from 'axios'
-import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
-
-function Login({ auth, setAuth}) {
+// import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
+// function Login({ auth, setAuth}) {
+function Login() {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (auth) {
-            navigate('/dashboard');
-        }
-    }, [auth, navigate]);
+    // useEffect(() => {
+    //     if (auth) {
+    //         navigate('/dashboard');
+    //     }
+    // }, [auth, navigate]);
     axios.defaults.withCredentials = true;
     let user = useRef()
     let password = useRef()
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    // const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     async function handleSubmit(event) {
         event.preventDefault()
 
-        let data = {
-            [user.current.name]: user.current.value,
-            [password.current.name]: password.current.value
-        }
+        // let data = {
+        //     [user.current.name]: user.current.value,
+        //     [password.current.name]: password.current.value
+        // }
         try {
-            await axios.post(`${backendURL}/api/login`, data);
-            setAuth(true);
-            Swal.fire({
-                icon: 'success',
-                text: '¡Usuario online!',
-                timer: 1501, // Configura el tiempo en milisegundos
-                timerProgressBar: true
-            })
+            // await axios.post(`${backendURL}/api/login`, data);
+            // setAuth(true);
+            // Swal.fire({
+            //     icon: 'success',
+            //     text: '¡Usuario online!',
+            //     timer: 1501, // Configura el tiempo en milisegundos
+            //     timerProgressBar: true
+            // })
             navigate('/dashboard');
 
         } catch (error) {
@@ -133,8 +133,8 @@ function Login({ auth, setAuth}) {
     )
 }
 
-Login.propTypes = {
-    auth: PropTypes.bool.isRequired,
-    setAuth: PropTypes.func.isRequired,
-};
+// Login.propTypes = {
+//     auth: PropTypes.bool.isRequired,
+//     setAuth: PropTypes.func.isRequired,
+// };
 export default Login;
