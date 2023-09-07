@@ -15,9 +15,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigationAuthWithRol = [
     { name: 'Inicio', href: '/', current: true },
-    { name: 'Dashboard', href: '/#/Dashboard', current: false },
-    { name: 'Registrar', href: '/#/register', current: false },
     { name: 'Trivia', href: '/#/category/Pescar', current: false },
+    { name: 'Emprendimientos', href: '/#/emprendimientos', current: false },
 ]
 // const navigationUnauth = [
 //     { name: 'Inicio', href: '/', current: true },

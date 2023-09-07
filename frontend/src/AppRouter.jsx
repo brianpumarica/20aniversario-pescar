@@ -6,6 +6,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Emprendimientos from './pages/Emprendimientos';
 
 const AppRouter = () => {
   // const [auth, setAuth] = useState(false);
@@ -96,6 +97,7 @@ const AppRouter = () => {
           <Route path="/dashboard" element={<Dashboard/>} />
           {/* <Route path="/register" element={<Register rol={rol} />} /> */}
           <Route path="/register" element={<Register/>} />
+          <Route path="/emprendimientos" element={<Emprendimientos/>} />
         </Routes>
         <Footer />
       </div>
