@@ -11,7 +11,7 @@ const AppRouter = () => {
   const [auth, setAuth] = useState(false);
   const [rol, setRol] = useState('usuario');
   const [message, setMessage] = useState('');
-  const backendURL = process.env.REACT_APP_BACKEND_URL;
+  const backendURL = "https://magicstream.ddns.net";
 
   axios.defaults.withCredentials = true;
   useEffect(() => {

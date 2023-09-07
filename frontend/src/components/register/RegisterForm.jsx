@@ -3,7 +3,7 @@ import { useState } from "react";
 import Swal from 'sweetalert2';
 
 export default function RegisterForm() {
-    const backendURL = "https://magicstream.ddns.net/api";
+    const backendURL = "https://magicstream.ddns.net";
 
     const [values, setValues] = useState({
         nombreapellido: '',

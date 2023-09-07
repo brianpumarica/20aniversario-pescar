@@ -7,7 +7,7 @@ function Invitados() {
     const [editingId, setEditingId] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [invitadoEditar, setInvitadoEditar] = useState({});
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    const backendURL = "https://magicstream.ddns.net";
 
     
     useEffect(() => {

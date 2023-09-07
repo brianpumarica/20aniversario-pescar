@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const LogoutButton = () => {
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    const backendURL = "https://magicstream.ddns.net";
 
     const handleDelete = () => {
         axios.get(`${backendURL}/api/logout`)

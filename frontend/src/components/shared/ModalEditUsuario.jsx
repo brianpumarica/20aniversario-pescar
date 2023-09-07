@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 
 export default function ModalEditUsuario({ isOpen, id, setModalIsOpen }) {
-  const backendURL = process.env.REACT_APP_BACKEND_URL;
+  const backendURL = "https://magicstream.ddns.net";
 
   const [usuarios, setUsuarios] = useState([]);
   const [editedValues, setEditedValues] = useState({});

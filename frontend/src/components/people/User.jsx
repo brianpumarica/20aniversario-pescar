@@ -6,7 +6,7 @@ function User() {
     const [usuarios, setUsuarios] = useState([]);
     const [editingId, setEditingId] = useState(null);
 
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    const backendURL = "https://magicstream.ddns.net";
     useEffect(() => {
         axios
             .get(`${backendURL}/api/user`)
