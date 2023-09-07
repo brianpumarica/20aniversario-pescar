@@ -46,13 +46,13 @@
 
 @media (min-width: 769px) and (max-width: 1023px) {
     .carousel-image {
-        min-width: calc(100% / 6); /* Muestra 6 imágenes a la vez en tamaños medianos */
+        min-width: calc(100% / 3); /* Muestra 6 imágenes a la vez en tamaños medianos */
     }
 }
 
 @media (min-width: 1024px) {
     .carousel-image {
-        min-width: calc(100% / 6); /* Muestra 6 imágenes a la vez en tamaños grandes */
+        min-width: calc(100% / 5); /* Muestra 6 imágenes a la vez en tamaños grandes */
     }
 }
 
