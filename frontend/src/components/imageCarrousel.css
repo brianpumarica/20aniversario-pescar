@@ -1,0 +1,63 @@
+/* ImageCarousel.css */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 90vw; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    min-width: calc(100% / 6); /* Muestra 6 imágenes a la vez en tamaños medianos */
+    padding: 1px; /* Espaciado entre imágenes */
+}
+
+.carousel-image img {
+    min-width: 100px;
+    max-width: 100%;
+    height: 150px; /* Ajusta la altura según tus necesidades */
+    display: block;
+    object-fit: cover; /* Ajusta la forma en que la imagen llena el contenedor */
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1;
+}
+
+.left {
+    left: 10px;
+}
+
+.right {
+    right: 10px;
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+    .carousel-image {
+        min-width: calc(100% / 6); /* Muestra 6 imágenes a la vez en tamaños medianos */
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel-image {
+        min-width: calc(100% / 8); /* Muestra 8 imágenes a la vez en tamaños grandes */
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        display: none;
+    }
+}

@@ -1,0 +1,45 @@
+version: '3.5'
+
+services:
+  frontend-app:
+    image: frontend-app
+    build:
+      context: .
+      dockerfile: Frontend.Dockerfile
+    restart: always
+    # el front va en el 80
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - ./frontend/.env
+    volumes:
+      - ./frontend/build:/var/www/html
+
+  backend-app:
+    image: backend-app
+    build:
+      context: .
+      dockerfile: Backend.Dockerfile
+    restart: always
+    # corregir los puertos
+    ports:
+      - "8082:8082"
+    env_file:
+      - ./backend/.env
+
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    
+volumes:
+  mariadb-data:
