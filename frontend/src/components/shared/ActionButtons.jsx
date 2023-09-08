@@ -11,7 +11,6 @@ const ActionButtons = () => {
                 <LinkButton text="Trivia" link="/#/category/Pescar"/>
                 <LinkButton text="MemoTest" link="/#/memoryTest"/>
                 <LinkButton text="Emprendimientos" link="/#/emprendimientos"/>
-                <LinkButton text="Quienes somos" link="https://www.pescar.org.ar/quienes-somos/"/>
             </div>
         </div>
     );
