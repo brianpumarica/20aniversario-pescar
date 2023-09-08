@@ -42,7 +42,7 @@ function Emprendimientos() {
                     <Estudiante 
                         nombre="Maximiliano Dorado" 
                         linkedin="https://www.linkedin.com/in/maximiliano-dorado/" 
-                        descripción="RESUMEN." 
+                        descripción="Desarrollador Web capacitado en React, Node, Python, Git y apasionado por el rubro IT y las Ciencias Agrarias y Forestales." 
                         imagen={imagen5}
                     />
                 </div>
