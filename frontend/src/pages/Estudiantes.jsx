@@ -1,4 +1,8 @@
 import imagen1 from "../assets/estudiantes/brian.jpg";
+import imagen2 from "../assets/estudiantes/rodrigo.jpeg";
+import imagen3 from "../assets/estudiantes/martin.jpg";
+
+import imagen5 from "../assets/estudiantes/maxi.jpg";
 import Estudiante from "../components/shared/Estudiante";
 
 function Emprendimientos() {
@@ -17,15 +21,15 @@ function Emprendimientos() {
                     <Estudiante 
                         nombre="Rodrigo Cabrera" 
                         linkedin="https://www.linkedin.com/in/brian-martin-pumarichttps://www.linkedin.com/in/rodrigo-cabrera-developer/" 
-                        descripción="RESUMEN." 
-                        imagen={imagen1}
+                        descripción="Desarrollador Web Full-Stack MERN y estudiante de Desarrollo de Software. Tecnologías: React, React Native, Node.js, MongoDB, PHP, entre otras." 
+                        imagen={imagen2}
                     />
                     {/* Estudiante 3 */}
                     <Estudiante 
                         nombre="Martin Virun" 
                         linkedin="https://www.linkedin.com/in/martin-virun-1b5a20220/" 
-                        descripción="RESUMEN." 
-                        imagen={imagen1}
+                        descripción="Estudiante de programación en la UTN Avellaneda y alumno de la fundación Pescar, y me sueño es trabajar de lo que le apasiona y llegar a ser un gran profesional." 
+                        imagen={imagen3}
                     />
                     {/* Estudiante 4 */}
                     <Estudiante 
@@ -39,7 +43,7 @@ function Emprendimientos() {
                         nombre="Maximiliano Dorado" 
                         linkedin="https://www.linkedin.com/in/maximiliano-dorado/" 
                         descripción="RESUMEN." 
-                        imagen={imagen1}
+                        imagen={imagen5}
                     />
                 </div>
             </section>

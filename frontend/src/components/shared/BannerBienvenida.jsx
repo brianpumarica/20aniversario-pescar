@@ -25,7 +25,7 @@ const BannerBienvenida = () => {
                             <div>
                                 Esta página web que estás viendo, fue desarrollada por <span className="italic"> estudiantes</span> de la Fundación Pescar.
                             </div>
-                            <a href="/#/estudiantes" target="_blank" rel="noopener noreferrer" className=" text-blue-300 font-bold">
+                            <a href="/#/estudiantes" rel="noopener noreferrer" className=" text-blue-300 font-bold">
                                 Conocelos acá
                             </a>
                         </p>
