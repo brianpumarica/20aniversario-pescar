@@ -67,14 +67,11 @@ export const imagenesCarrousel = [
 // export const HomePage = ({auth}) => {
 export const HomePage = () => {
         return (
-        <div className="h-screen bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] bg-cover bg-no-repeat bg-center">
-
-            {/* <ImageCarousel auth={auth} images={imagenesCarrousel} /> */}
+        <div 
+        // className="min-h-[80vh] bg-[url('https://www.pescar.org.ar/wp-content/uploads/2021/10/Home-slider1.jpg')] bg-cover bg-no-repeat bg-center"
+        > {/* Este lo DEJO COMENTADO porque en Home aparecia con un fondo duplicado. REVISAR */}
             
             <ImageCarousel images={imagenesCarrousel} />
         </div>
     );
 }
-// HomePage.propTypes = {
-//     auth: PropTypes.bool.isRequired, // Agregar la validación para 'auth'
-// };

@@ -67,12 +67,12 @@ const Question = ({ filteredQuestion, setIndexQuestion, indexQuestion, questions
   };
 
   return (
-    <>
+    <div className="flex-container items-center justify-center">
 
     {activeResults ? (
       <Results questionsFiltered={questionsFiltered} score={score} onReset={onReset}/>
     ) : (
-      <div className="flex-container">
+      <div className="flex-container center-mobile">
         <span className="text-xl font-bold">
           {/* numero de pregunta actual y numero de preguntas totales. */}
           {indexQuestion + 1} / {questionsFiltered.length}
@@ -84,12 +84,6 @@ const Question = ({ filteredQuestion, setIndexQuestion, indexQuestion, questions
         </div>
 
         <div className="button-container">
-          <button
-              className="border  border-yellow-600 px-5 py-2 rounded-lg font-bold transition-all hover:bg-yellow-500 hover:text-gray-900"
-              onClick={onReset}
-          >
-              Reiniciar
-          </button>
             <div>
               <h1 className="font-bold">
                 {filteredQuestion.question}
@@ -138,10 +132,16 @@ const Question = ({ filteredQuestion, setIndexQuestion, indexQuestion, questions
                   Siguiente Pregunta
               </button>
               )}
+                        <button
+              className="border  border-yellow-600 px-5 py-2 rounded-lg font-bold transition-all hover:bg-yellow-500 hover:text-gray-900"
+              onClick={onReset}
+          >
+              Reiniciar
+          </button>
           </div>
       </div>
       ) }
-    </>
+    </div>
   )
 }
 
