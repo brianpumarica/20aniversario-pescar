@@ -54,7 +54,7 @@ export const Navbar = () => {
 
                         </div>
                     </div>
-
+                    {/* Mobile menu options*/}
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
 
