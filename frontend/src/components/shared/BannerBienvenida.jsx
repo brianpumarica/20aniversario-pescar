@@ -19,11 +19,11 @@ const BannerBienvenida = () => {
 
                     <blockquote className="relative p-4">
                         <h4 className="text-xl font-bold text-white">
-                            Anuncio:
+                            Sabias que...
                         </h4>
                         <p className="text-md font-light mt-2 text-white">
                             <div>
-                                Esta página web que estás viendo, fue desarrollada por <span className="italic"> estudiantes</span> de la Fundación Pescar.
+                                Esta página web que estás viendo, fue desarrollada por <span className="italic"> alumnos y egresados</span> de los centros Pescar con orientación en programación.
                             </div>
                             <a href="/#/estudiantes" rel="noopener noreferrer" className=" text-blue-300 font-bold">
                                 Conocelos acá

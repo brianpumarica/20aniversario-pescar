@@ -3,4 +3,5 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Esto mantiene la imagen fija mientras se desplaza */
+    background-position: center center; 
   }
