@@ -4,6 +4,7 @@
     position: relative;
     width: 100%;
     max-width: 90vw; /* Ajusta el ancho máximo según tus necesidades */
+    /* max-height: 50vh; */
     margin: 0 auto;
     overflow: hidden;
 }
@@ -58,6 +59,9 @@
 
 @media (max-width: 768px) {
     .carousel-container {
-        display: none;
+        height: auto;
+    }
+    .carousel-image {
+        min-width: calc(100% / 1); /* Muestra 6 imágenes a la vez en tamaños medianos */
     }
 }
