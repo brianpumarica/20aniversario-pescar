@@ -20,7 +20,7 @@ const ImageCarousel = ({ images }) => {
 
     const carouselStyles = {
         transform: `translateX(-${currentIndex * (800 / images.length)}%)`,
-        transition: "transform 1s linear", // Añadimos una transición CSS para un movimiento suave.
+        transition: "transform 0.5s linear", // Añadimos una transición CSS para un movimiento suave.
     };
 
     return (
