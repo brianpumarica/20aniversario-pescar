@@ -3,6 +3,7 @@ import imagen2 from "../assets/estudiantes/rodrigo.jpeg";
 import imagen3 from "../assets/estudiantes/martin.jpg";
 
 import imagen5 from "../assets/estudiantes/maxi.jpg";
+import imagen6 from "../assets/estudiantes/alex.jpeg";
 import Estudiante from "../components/shared/Estudiante";
 
 function Emprendimientos() {
@@ -42,12 +43,22 @@ function Emprendimientos() {
                     <Estudiante 
                         nombre="Maximiliano Dorado" 
                         linkedin="https://www.linkedin.com/in/maximiliano-dorado/" 
-                        descripción="Desarrollador Web capacitado en React, Node, Python, Git y apasionado por el rubro IT y las Ciencias Agrarias y Forestales." 
+                        descripción="Estudiante de Analista Programador Universitario en la UNLP, egresado de la Fundacion Pescar como Full Stack MERN, profundizando en Python actualmente, en busca de seguir aprendiendo." 
                         imagen={imagen5}
+                    />
+                    {/* Estudiante 6 */}
+                    <Estudiante 
+                        nombre="Alexander Mamani" 
+                        linkedin="https://www.linkedin.com/in/alexander-mamani/" 
+                        descripción="Desarrollador Web Fullstack Estudiante de Ingeniería en sistemas en la UTN, Tecnologías: NextJS, Nodejs, MongoDB, MySQL, Typescript, React Native." 
+                        imagen={imagen6}
                     />
                 </div>
             </section>
         </div>
     );
 }
+/**
+ * Desarrollador Web Fullstack Estudiante de Ingeniería en sistemas en la UTN, Tecnologías: NextJS, Nodejs, MongoDB, MySQL, Typescript, React Native
+ */
 export default Emprendimientos;
