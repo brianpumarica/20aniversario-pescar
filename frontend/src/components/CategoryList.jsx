@@ -7,7 +7,7 @@ const [
 
 const CategoryList = () => {
     return (
-        <div className='flex flex-wrap flex-row justify-center gap-4 mt-10'>
+        <div className='flex flex-wrap flex-row justify-center gap-4 mt-2'>
 
             {/* Category Link Kanto */}
             <CategoryCard 
