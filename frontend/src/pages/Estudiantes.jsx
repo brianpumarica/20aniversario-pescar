@@ -4,6 +4,7 @@ import imagen3 from "../assets/estudiantes/martin.jpg";
 
 import imagen5 from "../assets/estudiantes/maxi.jpg";
 import imagen6 from "../assets/estudiantes/alex.jpeg";
+import imagen7 from "../assets/estudiantes/tadeo.jpg"
 import Estudiante from "../components/shared/Estudiante";
 
 function Emprendimientos() {
@@ -36,8 +37,8 @@ function Emprendimientos() {
                     <Estudiante 
                         nombre="Tadeo Abbruzzese" 
                         linkedin="https://www.linkedin.com/in/tadeo-abbruzzese" 
-                        descripción="RESUMEN." 
-                        imagen={imagen1}
+                        descripción="Estudiante de Ingenieria Informática y alumno de la Fundación Pescar. Me especializo en el Desarrollo Web Full stack MERN y en Ciencia de Datos con Python y R" 
+                        imagen={imagen7}
                     />
                     {/* Estudiante 5 */}
                     <Estudiante 
