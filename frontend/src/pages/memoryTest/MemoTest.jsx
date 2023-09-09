@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import imagenPescar from '../../assets/pescarLogo.jpg';
+import Swal from 'sweetalert2';
+
 function MemoryTest() {
   const [intentos, setIntentos] = useState(0);
   const [cartasSeleccionadas, setCartasSeleccionadas] = useState([]);
@@ -47,7 +49,7 @@ function MemoryTest() {
     return shuffledArray;
   }
 
-  
+
   function handleCardClick(card, index) {
     console.log(intentos)
     if (cartasSeleccionadas.length === 2 || card === null || card.isFlipped) {
@@ -63,7 +65,7 @@ function MemoryTest() {
     setCartasSeleccionadas(cartasSeleccionadasActual);
     // Incrementa el número de intentos
     setIntentos(intentos + 1);
-    
+
     function sonCartasIguales() {
       if (cartasSeleccionadasActual.length === 2) {
         const carta1 = cartasSeleccionadasActual[0];
@@ -71,9 +73,9 @@ function MemoryTest() {
         // Verifica si ambos objetos tienen las propiedades 'id' antes de comparar
         const idCarta1 = carta1.id.substring(0, 8);
         const idCarta2 = carta2.id.substring(0, 8);
-  
+
         return idCarta1 === idCarta2;
-  
+
       }
       return false;
     }
@@ -90,9 +92,17 @@ function MemoryTest() {
       if (sonCartasIguales()) {
         setCartasSeleccionadas([]);
         setContadorCartasIguales(contadorCartasIguales + 1);
-        console.log('contador iguales',contadorCartasIguales);
+        console.log('contador iguales', contadorCartasIguales);
         if (contadorCartasIguales === 7) {
-          alert(`¡Has ganado en ${intentos} intentos! ¡Vuelve a jugar!`);
+          Swal.fire({
+            icon: 'success',
+            title: '¡Ganaste!',
+                text: `Luego de ${intentos} intentos...`,
+                timer: 5000, // Configura el tiempo en milisegundos
+                timerProgressBar: true
+          }).then(() => {
+            window.location.reload();
+          });
           reiniciarJuego();
         }
       } else {
@@ -110,40 +120,40 @@ function MemoryTest() {
 
           // Luego, limpia las cartas seleccionadas
           setCartasSeleccionadas([]);
-        }, 800); 
+        }, 800);
       }
     }
   }
 
 
-  
+
 
 
   return (
-<div className='h-screen'>
-    <div className="grid grid-cols-4 gap-4 mx-4 sm:mx-36">
-      {imgs.map((image,index) => (
-        <li 
-          key={index} 
-          name={image.id} 
-          onClick={() => handleCardClick(image, index)}>
+    <div className='h-screen'>
+      <div className="grid grid-cols-4 gap-4 mx-4 sm:mx-36">
+        {imgs.map((image, index) => (
+          <li
+            key={index}
+            name={image.id}
+            onClick={() => handleCardClick(image, index)}>
 
-          <div className='flex justify-center'>
-            {image.isFlipped ? (
-              <div className='bg-cover bg-center'>
-                <img className="object-cover" src={image.src} alt={`Carta ${image.id}`} />
-              </div>
-            ) : (
-              <div className='flex justify-center'>
-              <div className='bg-cover bg-center'>
-                <img className="object-cover" src={imagenPescar} alt="Reverso de la carta" />
-              </div>
-              </div>
-            )}
-          </div>
-        </li>
-      ))}
-    </div>
+            <div className='flex justify-center'>
+              {image.isFlipped ? (
+                <div className='bg-cover bg-center'>
+                  <img className="object-cover" src={image.src} alt={`Carta ${image.id}`} />
+                </div>
+              ) : (
+                <div className='flex justify-center'>
+                  <div className='bg-cover bg-center'>
+                    <img className="object-cover" src={imagenPescar} alt="Reverso de la carta" />
+                  </div>
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </div>
     </div>
 
   );
