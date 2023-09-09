@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Emprendimientos from './pages/Emprendimientos';
 import Estudiantes from './pages/Estudiantes';
+import MemoryTest from './pages/memoryTest/MemoTest';
 const AppRouter = () => {
   // const [auth, setAuth] = useState(false);
   // const [rol, setRol] = useState('usuario');
@@ -99,6 +100,7 @@ const AppRouter = () => {
           <Route path="/register" element={<Register/>} />
           <Route path="/emprendimientos" element={<Emprendimientos/>} />
           <Route path="/estudiantes" element={<Estudiantes/>} />
+          <Route path="/memoryTest" element={<MemoryTest/>} />
         </Routes>
         <Footer />
       </div>
