@@ -8,7 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Emprendimientos from './pages/Emprendimientos';
 import Estudiantes from './pages/Estudiantes';
-import Testimonios from './pages/Testimonios';
+import Testimonios from './pages/testimonios/Testimonios';
 
 import MemoryTest from './pages/memoryTest/MemoTest';
 const AppRouter = () => { 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import logoLinkedin from "../../assets/LinkedinLogo.png";
+import logoLinkedin from "../../assets/logos/linkedin.png";
 
 const Estudiante = ({ nombre, linkedin, descripción, imagen }) => {
     return (

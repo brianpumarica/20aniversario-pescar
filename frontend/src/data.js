@@ -39,7 +39,7 @@ export const questions = [
     {
         id: 4,
         difficulty: 'Moderado',
-        question: '¿En qué año se funda el Proyeco Pescar? (¡Ojo! El proyecto, no la fundación.)',
+        question: '¿En qué año se funda el Projeto pescar? (¡Ojo! El projeto, no la fundación.)',
         category: pescar,
         correct_answer: '1988',
         incorrect_answers: ['1995', '2003', '2015'],
