@@ -1,4 +1,4 @@
-import imagen1 from "../assets/estudiantes/brian.jpg";
+import imagen1 from "../assets/estudiantes/brian.png";
 import imagen2 from "../assets/estudiantes/rodrigo.jpeg";
 import imagen3 from "../assets/estudiantes/martin.jpg";
 
