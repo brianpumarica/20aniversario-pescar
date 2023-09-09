@@ -10,79 +10,8 @@ import Emprendimientos from './pages/Emprendimientos';
 import Estudiantes from './pages/Estudiantes';
 import Testimonios from './pages/Testimonios';
 
-const AppRouter = () => {
-  // const [auth, setAuth] = useState(false);
-  // const [rol, setRol] = useState('usuario');
-  // const [message, setMessage] = useState('');
-  // const backendURL = process.env.REACT_APP_BACKEND_URL;
-
-  // axios.defaults.withCredentials = true;
-  // useEffect(() => {
-  //   axios.get(`${backendURL}/api`)
-  //     .then(response => {
-  //       console.log('1 Respuesta del servidor:', response.data);
-  //       setMessage(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error al hacer la solicitud al backend:', error);
-  //     });
-  // }, [backendURL]);
-  
-  // useEffect(() => {
-  //   axios.get(`${backendURL}/api/`)
-  //     .then(response => {
-  //       console.log('2 Respuesta del servidor:', response.data);
-  //       setMessage(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error al hacer la solicitud al backend:', error);
-  //     });
-  // }, [backendURL]);
-
-  // useEffect(() => {
-  //   axios.get(`${backendURL}`)
-  //     .then(response => {
-  //       console.log('3 Respuesta del servidor:', response.data);
-  //       setMessage(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error al hacer la solicitud al backend:', error);
-  //     });
-  // }, [backendURL]);
-
-  // useEffect(() => {
-  //   const checkAuthentication = async () => {
-  //     try {
-  //       const response = await axios.get(`${backendURL}/api/verify`);
-  
-  //       if (response.data.Status === 'Success') {
-  //         setMessage(response.data.Status);
-  //         setRol(response.data.rol);
-  //         setAuth(true);
-  //         saveIdToServer(response.data.id);      
-  //       } else {
-  //         setAuth(false);
-  //         setMessage(response.data.Error);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error:', error);
-  //       setAuth(false);
-  //       setMessage('Error en el servidor');
-  //     }
-  //   };
-  //   const saveIdToServer = async (id) => {
-  //     try {
-  //       await axios.post(`${backendURL}/api/saveId`, { id });
-  //     } catch (error) {
-  //       console.error('Error:', error);
-  //     }
-  //   };
-  //   checkAuthentication();
-  // }, [backendURL]);
-
-
-
-  
+import MemoryTest from './pages/memoryTest/MemoTest';
+const AppRouter = () => { 
 
   return (
     <Router basename="/">
@@ -102,6 +31,7 @@ const AppRouter = () => {
           <Route path="/emprendimientos" element={<Emprendimientos/>} />
           <Route path="/estudiantes" element={<Estudiantes/>} />
           <Route path="/testimonios" element={<Testimonios/>} />
+          <Route path="/memoryTest" element={<MemoryTest/>} />
         </Routes>
         <Footer />
       </div>

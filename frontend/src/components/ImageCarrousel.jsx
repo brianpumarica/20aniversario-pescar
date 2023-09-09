@@ -31,7 +31,7 @@ const ImageCarousel = ({ images }) => {
             <BannerBienvenida />
             <ActionButtons />
 
-            <div className="carousel-container mt-5">
+            <div className="carousel-container mt-5 mb-10">
                 {" "}
                 {/* Carousel de imágenes */}
                 <div className="carousel" style={carouselStyles}>

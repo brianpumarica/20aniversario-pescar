@@ -7,7 +7,7 @@ import LogoYoutube from "../assets/logos/youtube.png";
 
 export const Footer = () => {
     return (
-        <div className='bottom-0 bg-slate-800 text-white w-full overflow-x-hidden lg:fixed lg:bottom-0'>
+        <div className='bottom-0 bg-slate-800 text-white w-full overflow-x-hidden fixed'>
             <div style={{ height: '8vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <p className="font-bold hidden sm:block mx-2">Celebrando 20 años en línea </p>
                 <div className="flex" >
