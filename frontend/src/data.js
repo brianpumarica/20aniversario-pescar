@@ -23,7 +23,7 @@ export const questions = [
     {
         id: 2,
         difficulty: 'Fácil',
-        question: '¿Cuántos programas de formacion intensiva hay en todo el pais en 2023?',
+        question: '¿Cuántos programas de formación intensiva hay en todo el pais en 2023?',
         category: pescar,
         correct_answer: '60',
         incorrect_answers: ['25', '36', '52'],
