@@ -120,7 +120,7 @@ function MemoryTest() {
 
 
   return (
-
+<div className='h-screen'>
     <div className="grid grid-cols-4 gap-4 mx-4 sm:mx-36">
       {imgs.map((image,index) => (
         <li 
@@ -143,6 +143,7 @@ function MemoryTest() {
           </div>
         </li>
       ))}
+    </div>
     </div>
 
   );
