@@ -4,8 +4,10 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 const navigation = [
     { name: 'Inicio', href: '/', current: true },
     { name: 'Trivia', href: '/#/category/Pescar', current: false },
+    { name: 'MemoTest', href: '/#/memoryTest', current: false },
     { name: 'Emprendimientos', href: '/#/emprendimientos', current: false },
     { name: 'Estudiantes', href: '/#/estudiantes', current: false },
+    { name: 'Testimonios', href: '/#/testimonios', current: false },
 ]
 
 function classNames(...classes) {
