@@ -80,11 +80,6 @@ function MemoryTest() {
       return false;
     }
 
-    function reiniciarJuego() {
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    }
     if (cartasSeleccionadasActual.length === 2) {
       const carta1 = cartasSeleccionadasActual[0];
       const carta2 = cartasSeleccionadasActual[1];
@@ -92,7 +87,6 @@ function MemoryTest() {
       if (sonCartasIguales()) {
         setCartasSeleccionadas([]);
         setContadorCartasIguales(contadorCartasIguales + 1);
-        console.log('contador iguales', contadorCartasIguales);
         if (contadorCartasIguales === 7) {
           Swal.fire({
             icon: 'success',
@@ -103,7 +97,6 @@ function MemoryTest() {
           }).then(() => {
             window.location.reload();
           });
-          reiniciarJuego();
         }
       } else {
         setTimeout(() => {
@@ -136,16 +129,22 @@ function MemoryTest() {
           <li
             key={index}
             name={image.id}
-            onClick={() => handleCardClick(image, index)}>
+            onClick={() => handleCardClick(image, index)}
+            >
 
             <div className='flex justify-center'>
               {image.isFlipped ? (
-                <div className='bg-cover bg-center'>
+                <div className={`transition-opacity duration-1000 ${
+                  image.isFlipped ? 'opacity-100' : 'opacity-0'
+                } bg-cover bg-center`}>
                   <img className="object-cover" src={image.src} alt={`Carta ${image.id}`} />
                 </div>
               ) : (
                 <div className='flex justify-center'>
-                  <div className='bg-cover bg-center'>
+                  <div className={`transition-opacity duration-1000 ${
+                  image.isFlipped ? 'opacity-0' : 'opacity-100'
+                } flex justify-center`}
+>
                     <img className="object-cover" src={imagenPescar} alt="Reverso de la carta" />
                   </div>
                 </div>
