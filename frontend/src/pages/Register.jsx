@@ -1,16 +1,18 @@
-import AuthComponent from '../components/auth/authComponent';
-import UnauthenticatedContent from '../components/auth/UnauthenticatedContent';
+// import AuthComponent from '../components/auth/authComponent';
+// import UnauthenticatedContent from '../components/auth/UnauthenticatedContent';
 import RegisterForm from '../components/register/RegisterForm';
-import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
-import WithoutPermissionComponent from '../components/WithoutPermissionComponent';
+// import PropTypes from 'prop-types'; // Import PropTypes for prop type validation
+// import WithoutPermissionComponent from '../components/WithoutPermissionComponent';
 
-export const Register = ({ rol }) => {
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
-    const { auth, message } = AuthComponent({ backendURL });
+// export const Register = ({ rol }) => {
+export const Register = () => {
+    // const backendURL = process.env.REACT_APP_BACKEND_URL;
+    // const { auth, message } = AuthComponent({ backendURL });
 
     return (
         <div>
-            {auth ? (
+            <RegisterForm />
+            {/* {auth ? (
                 rol === 'admin' ? (
                     <RegisterForm />
                 ) : (
@@ -20,10 +22,10 @@ export const Register = ({ rol }) => {
                 :
                 <div>
                     <UnauthenticatedContent message={message} />
-                </div>}
+                </div>} */}
         </div>
     );
 }
-Register.propTypes = {
-    rol: PropTypes.string.isRequired,
-};
+// Register.propTypes = {
+//     rol: PropTypes.string.isRequired,
+// };

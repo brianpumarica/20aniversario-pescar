@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200;400&family=Montserrat:wght@300;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.container-tadeo{
+    height: 100vh;
+    width: 100%;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    background-color: #e3f2fd;
+}
+
+.testimonial{
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    padding: 50px 0 ;
+
+    
+}
+
+.testimonio{
+    text-align: center;
+}
+
+.testimonial .image{
+    height: 170px;
+    width: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+.testimonial .slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.slide p{
+    text-align: center;
+    padding: 0 160px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.slide .quote-icon{
+    font-size: 30px;
+    color: #4070f4;
+
+}
+
+.slide .details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details .name{
+    font-size: 14px;
+    font-weight: 600;
+    color: #333
+}
+
+.details .job {
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+}
+
+.details a{
+    font-size: 12px;
+    font-weight: 400;
+    color: #4070f4;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .slide p{
+        padding: 0 20px;
+       
+    }
+  }
+
+.details .testimonio{
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    text-shadow: #FC0 1px 0 10px;
+}

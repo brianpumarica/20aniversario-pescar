@@ -1,14 +1,15 @@
-import axios from 'axios';
+//import axios from 'axios';
 
 const LogoutButton = () => {
-    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    //const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     const handleDelete = () => {
-        axios.get(`${backendURL}/api/logout`)
-        .then(res=>{
-            console.log(res);
-            location.reload(true);
-        }).catch(err => console.log(err));
+        // axios.get(`${backendURL}/api/logout`)
+        // .then(res=>{
+        //     console.log(res);
+        //     location.reload(true);
+        // }).catch(err => console.log(err));
+        location.reload(true);
     };
 
     return (

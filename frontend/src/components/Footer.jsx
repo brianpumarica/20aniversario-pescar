@@ -1,18 +1,36 @@
-import ModalDevelopers from "./shared/ModalDevelopers"
-import { useState} from "react";
+import LogoPescar from "../assets/pescarLogo.jpg";
+import LogoFacebook from "../assets/logos/facebook.png";
+import LogoInstagram from "../assets/logos/instagram.png";
+import LogoLinkedin from "../assets/logos/linkedin.png";
+import LogoTwitter from "../assets/logos/twitter.png";
+import LogoYoutube from "../assets/logos/youtube.png";
 
 export const Footer = () => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-
     return (
-        <div className='fixed bottom-0 bg-slate-800 text-white w-full overflow-x-hidden'>
+        <div className='bottom-0 bg-slate-800 text-white w-full overflow-x-hidden fixed'>
             <div style={{ height: '8vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <p> Página hecha por </p>
-                <a className="bg-transparent  text-blue-700 font-semibold hover:bg-blue-700 hover:text-white border-blue-500 hover:border-transparent rounded p-1" onClick={() => setModalIsOpen(true)}>alumnos</a> 
-                <p> de Pescar 2023.</p>
+                <p className="font-bold hidden sm:block mx-2">Celebrando 20 años en línea </p>
+                <div className="flex" >
+                    <a rel="noreferrer" href="https://www.facebook.com/pescarargentina" target="_blank">
+                        <img className="h-8 w-8 mx-2" src={LogoFacebook}></img>
+                    </a>
+                    <a rel="noreferrer" href="https://www.instagram.com/fundacionpescar/" target="_blank">
+                    <img className="h-8 w-8 mx-2" src={LogoInstagram}></img>
+                    </a>
+                    <a rel="noreferrer" href="https://www.linkedin.com/company/fundacionpescar/" target="_blank">
+                    <img className="h-8 w-8 mx-2" src={LogoLinkedin}></img>
+                    </a>
+                    <a rel="noreferrer" href="https://twitter.com/FundacionPescar" target="_blank">
+                    <img className="h-8 w-8 mx-2" src={LogoTwitter}></img>
+                    </a>
+                    <a rel="noreferrer" href="https://www.youtube.com/user/fundacionpescarargen" target="_blank">
+                    <img className="h-8 w-8 mx-2" src={LogoYoutube}></img>
+                    </a>
+                    <a rel="noreferrer" href="https://www.pescar.org.ar/" target="_blank">
+                    <img className="h-8 w-8 mx-2" src={LogoPescar}></img>
+                    </a>
+                </div>
             </div>
-            <ModalDevelopers isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}></ModalDevelopers>
         </div>
     )
 }
-
