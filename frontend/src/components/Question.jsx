@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import Results from './Results'
 import './questions.css'
+import logoPescar from '../assets/favicon.png'
 
 const Question = ({ filteredQuestion, setIndexQuestion, indexQuestion, questionsFiltered, setActiveQuiz,
 }) => {
@@ -78,9 +79,10 @@ const Question = ({ filteredQuestion, setIndexQuestion, indexQuestion, questions
           {indexQuestion + 1} / {questionsFiltered.length}
         </span>
 
-        <div className="text-container">
-          <span className="font-semibold">Dificultad: </span>
-          <span className="font-bold">{filteredQuestion.difficulty}</span>
+        <div className="text-container flex justify-center items-center">
+          {/* <span className="font-semibold">Dificultad: </span>
+          <span className="font-bold">{filteredQuestion.difficulty}</span> */}
+          <img src={logoPescar} alt="" className="h-32"/>
         </div>
 
         <div className="button-container">
