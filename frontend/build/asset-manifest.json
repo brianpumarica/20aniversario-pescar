@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.91e32f9f.css",
-    "main.js": "/static/js/main.82197b16.js",
+    "main.js": "/static/js/main.43e1a1fc.js",
     "static/js/787.9e9ad512.chunk.js": "/static/js/787.9e9ad512.chunk.js",
     "static/media/logros-pescar.png": "/static/media/logros-pescar.8cac78027c09bb0ecf88.png",
     "static/media/maxi.png": "/static/media/maxi.ff41d9c8a771b52e73b2.png",
@@ -36,11 +36,11 @@
     "static/media/facebook.png": "/static/media/facebook.a5def58db1e9c1b38269.png",
     "index.html": "/index.html",
     "main.91e32f9f.css.map": "/static/css/main.91e32f9f.css.map",
-    "main.82197b16.js.map": "/static/js/main.82197b16.js.map",
+    "main.43e1a1fc.js.map": "/static/js/main.43e1a1fc.js.map",
     "787.9e9ad512.chunk.js.map": "/static/js/787.9e9ad512.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.91e32f9f.css",
-    "static/js/main.82197b16.js"
+    "static/js/main.43e1a1fc.js"
   ]
 }

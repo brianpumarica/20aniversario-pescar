@@ -64,7 +64,7 @@ function MemoryTest() {
 
     setCartasSeleccionadas(cartasSeleccionadasActual);
     // Incrementa el número de intentos
-    setIntentos(intentos + 1);
+    // setIntentos(intentos + 1);
 
     function sonCartasIguales() {
       if (cartasSeleccionadasActual.length === 2) {
@@ -83,6 +83,7 @@ function MemoryTest() {
     if (cartasSeleccionadasActual.length === 2) {
       const carta1 = cartasSeleccionadasActual[0];
       const carta2 = cartasSeleccionadasActual[1];
+      setIntentos(intentos + 1);
 
       if (sonCartasIguales()) {
         setCartasSeleccionadas([]);
