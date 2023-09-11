@@ -34,7 +34,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={imagen3} alt="" className="image" />
-                  <p className='text-white'>Estoy súper contento y súper feliz por toda la experiencia que me dio Pescar, que me enorgullece y tambien enorgullece a toda mi familia...</p>
+                  <p className='text-white'>Estoy súper contento y súper feliz por toda la experiencia que me dio Pescar, lo cual me enorgullece y también enorgullece a toda mi familia...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Augusto Blanco</span>
@@ -52,7 +52,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={imagen4} alt="" className="image" />
-                  <p>Le quiero dar las gracias a Salesforce y a Pescar por haberme dado esta maravillosa oportunidad, me ayudó a poder definir mi futuro...</p>
+                  <p>Le quiero dar las gracias a Salesforce y a Pescar por haberme dado esta maravillosa oportunidad, que me ayudó a poder definir mi futuro...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Francisco Encalada</span>
@@ -70,7 +70,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={imagen2} alt="" className="image" />
-                  <p>La llegada de los chicos la verdad que revolucionó la empresa. Es un programa donde realmente implica que hayan muchas personas y una gran responsabilidad detrás de ello...</p>
+                  <p>La llegada de los chicos, la verdad, que revolucionó la empresa. Es un programa donde realmente implica que haya muchas personas y una gran responsabilidad detrás de ello...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Patricio Castañero</span>
@@ -88,7 +88,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={imagen1} alt="" className="image" />
-                  <p>Un pequeño recorrido de todos los logros que hemos adquirido este último año...</p>
+                  <p>Un pequeño recorrido de todos los logros que hemos adquirido en este último año...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Fundación Pescar</span>
@@ -114,7 +114,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={empleo1} alt="" className="image" />
-                  <p>Me llamo la atención que era un programa para personas sin experiencia y aparte por los requerimientos del puesto, yo sentí que era compatible...</p>
+                  <p>Me llamó la atención que era un programa para personas sin experiencia y, además, por los requerimientos del puesto, yo sentí que era compatible...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Alan Barraza</span>
@@ -133,7 +133,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={empleo2} alt="" className="image" />
-                  <p>Esta oportunidad de pasantía me pareció interesante por que es una gran propuesta darle a los chicos su primer experiencia laboral porque sabemos que el primer trabajo es el que mas cuesta...</p>
+                  <p>Esta oportunidad de pasantía me pareció interesante porque es una gran propuesta darles a los chicos su primera experiencia laboral, ya que sabemos que el primer trabajo es el que más cuesta...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Nicolas Rios</span>
@@ -152,7 +152,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={empleo3} alt="" className="image" />
-                  <p>Lo que puedo destacar del puesto es la predisposición del trabajo, valoro mucho en el puesto en el que estoy...</p>
+                  <p>Lo que puedo destacar del puesto es la predisposición al trabajo, valoro mucho en el puesto en el que estoy...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Oscar Quispe</span>
@@ -171,7 +171,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={empleo4} alt="" className="image" />
-                  <p>Esta primera experiencia se siente enriquecedora, a nivel personal, se complementa mucho con mi carrera. Te abre la puerta a profesionalizarte y poder crecer también en lo que uno hace...</p>
+                  <p>Esta primera experiencia se siente enriquecedora, a nivel personal. Se complementa mucho con mi carrera y abre la puerta a profesionalizarme, además de permitirme crecer en lo que uno hace...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Magali Gamecho</span>
@@ -190,7 +190,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={empleo5} alt="" className="image" />
-                  <p>Lo que mas me llevo de esta experiencia fue el poder conocer a la gente. Todos trabajan mucho en equipo y ayudan con el conocimiento, también aportan mucho para que uno pueda crecer...  </p>
+                  <p>Lo que más me llevo de esta experiencia fue el poder conocer a la gente. Todos trabajan mucho en equipo y ayudan con el conocimiento, también aportan mucho para que uno pueda crecer...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Keila Rojas</span>
