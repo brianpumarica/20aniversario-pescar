@@ -1,9 +1,13 @@
 import imagen1 from "../assets/emprendedores/img1.jpg";
 import imagen2 from "../assets/emprendedores/img2.jpeg";
 import imagen3 from "../assets/emprendedores/img3.jpeg";
+import imagen4 from "../assets/emprendedores/img4.jpeg";
+import imagen5 from "../assets/emprendedores/img5.jpeg";
+import imagen6 from "../assets/emprendedores/img6.jpeg";
 import logo1 from "../assets/emprendedores/logo1.jpg";
 import logo2 from "../assets/emprendedores/logo2.jpg";
 import logo3 from "../assets/emprendedores/logo3.jpg";
+import logo4 from "../assets/emprendedores/logo4.jpg";
 
 function Emprendimientos() {
     return (
@@ -14,6 +18,79 @@ function Emprendimientos() {
         >
             <section>
                 <div className="container mx-auto px-4">
+                    {/* Emprendimiento 4 */}
+                    <div className="flex flex-wrap items-center mt-8 mb-10">
+                        <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                            <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full" style={{
+                                backgroundImage: `url(${imagen4})`,
+                                backgroundSize: "cover", // Ajusta el tamaño de la imagen al div
+                                backgroundRepeat: "no-repeat", // Evita que la imagen se repita
+                            }}>
+                            </div>
+                            <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full" style={{
+                                backgroundImage: `url(${imagen5})`,
+                                backgroundSize: "cover", // Ajusta el tamaño de la imagen al div
+                                backgroundRepeat: "no-repeat", // Evita que la imagen se repita
+                            }}>
+                            </div>
+                            <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full" style={{
+                                backgroundImage: `url(${imagen6})`,
+                                backgroundSize: "cover", // Ajusta el tamaño de la imagen al div
+                                backgroundRepeat: "no-repeat", // Evita que la imagen se repita
+                            }}>
+                            </div>
+                            <h3 className="text-3xl mb-2 font-semibold leading-normal text-gray-100">
+                            by_lasfridas
+                            </h3>
+                            <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-100">
+                            Un emprendimiento dedicado a realzar la belleza natural de cada persona. Nuestro objetivo principal es ayudar a nuestros clientes a sentirse y verse mejor a través de una variedad de servicios y productos relacionados con el maquillaje y la belleza.
+                            </p>
+                        </div>
+
+                        <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                            <div className="relative flex flex-col min-w-0 break-word w-full mb-6 shadow-lg rounded-lg bg-pink-600">
+                                <img
+                                    alt="..."
+                                    src={logo4}
+                                    className="w-full align-middle rounded-t-lg"
+                                />
+                                <blockquote className="relative p-4">
+                                    <svg
+                                        preserveAspectRatio="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 583 95"
+                                        className="absolute left-0 w-full block"
+                                        style={{
+                                            height: "95px",
+                                            top: "-94px"
+                                        }}
+                                    >
+                                        <polygon
+                                            points="-30,95 583,95 583,65"
+                                            className="text-pink-600 fill-current"
+                                        ></polygon>
+                                    </svg>
+                                    <h4 className="text-xl font-bold text-white">
+                                        Contactate
+                                    </h4>
+                                    <p className="text-md font-light mt-2 text-white">
+                                        <div>
+                                            Instagram:
+                                            <br />
+                                            <a href="https://www.instagram.com/by_lasfridas/" target="_blank" rel="noopener noreferrer" className=" text-blue-600 font-bold">
+                                                Ingresa a nuestro IG
+                                            </a>
+                                        </div>
+                                        <div>
+                                            Correo:
+                                            <br />
+                                                Somoslasfridasok@gmail.com
+                                        </div>
+                                    </p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
                     {/* Emprendimiento 1 */}
                     <div className="flex flex-wrap items-center mt-8">
                         <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
@@ -192,6 +269,7 @@ function Emprendimientos() {
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </section>
         </div>
