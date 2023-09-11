@@ -17,6 +17,11 @@ function Emprendimientos() {
         // * bg-cover bg-no-repeat bg-center"
         >
             <section>
+                <div className="text-center px-4 py-6 mt-5 bg-white max-w-4xl text-black rounded-3xl shadow-2xl xl:w-fit w-[80%] mx-auto">
+                    <h2 className="text-xl md:text-2xl font-semibold mb-2">¿Sabías Que...?</h2>
+                    <p className="md:text-xl">Los llaveros y pines que ves en la celebración fueron diseñados y creados por nuestros egresados.</p>
+                    <p className="md:text-xl">te invitamos a conocerlos.</p>
+                </div>
                 <div className="container mx-auto px-4">
                     {/* Emprendimiento 4 */}
                     <div className="flex flex-wrap items-center mt-8 mb-10">
