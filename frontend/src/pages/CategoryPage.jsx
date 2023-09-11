@@ -42,6 +42,7 @@ export const CategoryPage = () => {
         >
             {/* Contenido del div */}
             {activeQuiz ? (
+                <div className='flex items-center justify-center h-screen -mt-16'>
                 <Question
                     filteredQuestion={questionsFiltered[indexQuestion]}
                     setIndexQuestion={setIndexQuestion}
@@ -49,9 +50,10 @@ export const CategoryPage = () => {
                     questionsFiltered={questionsFiltered}
                     setActiveQuiz={setActiveQuiz}
                 />
+                </div>
             ) : (
                 <>
-                    <div className="flex items-center justify-center h-screen" >
+                    <div className="flex items-center justify-center h-screen -mt-20" >
                         <div className="flex items-center justify-center h-screen">
                             <div className="container bg-white p-6 border-2 border-teal-500 rounded-lg inline-block">
                                 <div className="flex flex-col items-center justify-center h-full">

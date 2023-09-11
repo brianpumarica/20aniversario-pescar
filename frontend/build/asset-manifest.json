@@ -1,19 +1,42 @@
 {
   "files": {
-    "main.css": "/static/css/main.0aa40225.css",
-    "main.js": "/static/js/main.468a314b.js",
+    "main.css": "/static/css/main.13caa8a1.css",
+    "main.js": "/static/js/main.8d4fdc7c.js",
     "static/js/787.9e9ad512.chunk.js": "/static/js/787.9e9ad512.chunk.js",
+    "static/media/logros-pescar.png": "/static/media/logros-pescar.8cac78027c09bb0ecf88.png",
+    "static/media/maxi.png": "/static/media/maxi.ff41d9c8a771b52e73b2.png",
+    "static/media/martin.png": "/static/media/martin.f8d8f9d2a4cd6ed6f97e.png",
+    "static/media/brian.png": "/static/media/brian.93db4fe7660be9e5a478.png",
     "static/media/img1.jpg": "/static/media/img1.6f2f739d52031d0f5ff4.jpg",
+    "static/media/tadeo.jpg": "/static/media/tadeo.ac3cd3c4def2777bf8a8.jpg",
+    "static/media/testimonio-mentor.png": "/static/media/testimonio-mentor.5958ec19677b4e9e5d84.png",
+    "static/media/testimonio-saleforce.png": "/static/media/testimonio-saleforce.18e3d659ec546d8a0255.png",
+    "static/media/testimonio-saleforce2.png": "/static/media/testimonio-saleforce2.cf76626e66dfc23fa4c7.png",
+    "static/media/primer-empleo-puente.png": "/static/media/primer-empleo-puente.0ba19d7fccfbd3735619.png",
+    "static/media/primer-empleo-puente3.png": "/static/media/primer-empleo-puente3.1573d9b1d9dab379661e.png",
+    "static/media/primer-empleo-puente2.png": "/static/media/primer-empleo-puente2.12db140a22742845fb2e.png",
+    "static/media/rodrigo.jpeg": "/static/media/rodrigo.d71c77bef07e70a368a5.jpeg",
+    "static/media/primer-empleo-puente5.png": "/static/media/primer-empleo-puente5.7ba5214635e28ad77653.png",
+    "static/media/primer-empleo-puente4.png": "/static/media/primer-empleo-puente4.56e804fc0cdfcb11655d.png",
+    "static/media/alex.jpeg": "/static/media/alex.e3143bc2d6ea97b6a5a6.jpeg",
     "static/media/favicon.png": "/static/media/favicon.504fc9fee9848f6b80cb.png",
+    "static/media/logo2.jpg": "/static/media/logo2.6b02347c86ad270cb48e.jpg",
     "static/media/img2.jpeg": "/static/media/img2.a66f76c0a661bd8566ce.jpeg",
+    "static/media/instagram.png": "/static/media/instagram.e719d8b29f452a16302d.png",
+    "static/media/logo3.jpg": "/static/media/logo3.1a57052b8322be96082d.jpg",
     "static/media/img3.jpeg": "/static/media/img3.f68d724c5d3b83a48054.jpeg",
+    "static/media/youtube.png": "/static/media/youtube.d8e92a61cf9a150a72ec.png",
+    "static/media/logo1.jpg": "/static/media/logo1.1dda1b890194b94c8371.jpg",
+    "static/media/twitter.png": "/static/media/twitter.93ac3f9a344ecd5d01a4.png",
+    "static/media/imagen02.png": "/static/media/imagen02.b5fe2d4d55ed293996af.png",
+    "static/media/facebook.png": "/static/media/facebook.a5def58db1e9c1b38269.png",
     "index.html": "/index.html",
-    "main.0aa40225.css.map": "/static/css/main.0aa40225.css.map",
-    "main.468a314b.js.map": "/static/js/main.468a314b.js.map",
+    "main.13caa8a1.css.map": "/static/css/main.13caa8a1.css.map",
+    "main.8d4fdc7c.js.map": "/static/js/main.8d4fdc7c.js.map",
     "787.9e9ad512.chunk.js.map": "/static/js/787.9e9ad512.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0aa40225.css",
-    "static/js/main.468a314b.js"
+    "static/css/main.13caa8a1.css",
+    "static/js/main.8d4fdc7c.js"
   ]
 }

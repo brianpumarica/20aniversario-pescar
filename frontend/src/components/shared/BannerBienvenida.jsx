@@ -8,9 +8,9 @@ const BannerBienvenida = () => {
         // </div>
         <div className="flex flex-wrap items-center">
             <div className="w-full md:w-5/12 px-4 mr-auto ml-auto text-center">
-                <h1 className="text-4xl font-semibold">¡Cumplimos 20 Años! 🥳</h1>
+                <h1 className="text-4xl font-semibold">CUMPLIMOS 20 AÑOS! 🥳</h1>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-100">
-                    Bienvenido
+                    B I E N V E N I D O
                 </p>
             </div>
 
@@ -19,14 +19,14 @@ const BannerBienvenida = () => {
 
                     <blockquote className="relative p-4">
                         <h4 className="text-xl font-bold text-white">
-                            Anuncio:
+                            ¿SABÍAS QUÉ?
                         </h4>
                         <p className="text-md font-light mt-2 text-white">
                             <div>
-                                Esta página web que estás viendo, fue desarrollada por <span className="italic"> estudiantes</span> de la Fundación Pescar.
+                                Esta página web fue desarrollada por <span className="italic">alumnos y egresados</span> de los Centros Pescar con orientación en Programación.
                             </div>
-                            <a href="/#/estudiantes" target="_blank" rel="noopener noreferrer" className=" text-blue-300 font-bold">
-                                Conocelos acá
+                            <a href="/#/estudiantes" rel="noopener noreferrer" className=" text-blue-300 font-bold">
+                                CONOCELOS ACÁ
                             </a>
                         </p>
                     </blockquote>
