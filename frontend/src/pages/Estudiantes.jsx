@@ -1,8 +1,8 @@
 import imagen1 from "../assets/estudiantes/brian.png";
 import imagen2 from "../assets/estudiantes/rodrigo.jpeg";
-import imagen3 from "../assets/estudiantes/martin.jpg";
+import imagen3 from "../assets/estudiantes/martin.png";
 
-import imagen5 from "../assets/estudiantes/maxi.jpg";
+import imagen5 from "../assets/estudiantes/maxi.png";
 import imagen6 from "../assets/estudiantes/alex.jpeg";
 import imagen7 from "../assets/estudiantes/tadeo.jpg"
 import Estudiante from "../components/shared/Estudiante";
