@@ -19,7 +19,8 @@ function Emprendimientos() {
             <section>
                 <div className="text-center px-4 py-6 mt-5 bg-white max-w-4xl text-black rounded-3xl shadow-2xl xl:w-fit w-[80%] mx-auto">
                     <h2 className="text-xl md:text-2xl font-semibold mb-2">¿Sabías Que...?</h2>
-                    <p className="md:text-lg">Los llaveros y pines que ves en la celebración fueron diseñados y creados por nuestros egresados.</p>
+                    <p className="md:text-lg">Esta noche nos acompañan emprendimientos de Egresados de la Fundación.
+                    Son productos y servicios únicos, desde llaveros y pines hasta un deslumbrante glitter bar. Apoya a estos talentosos emprendedores y su creatividad en acción.</p>
                     <p className="md:text-lg">Te invitamos a conocerlos.</p>
                 </div>
                 <div className="container mx-auto px-4">
