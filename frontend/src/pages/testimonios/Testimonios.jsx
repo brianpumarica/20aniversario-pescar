@@ -88,7 +88,7 @@ const Testimonios = () => {
               <div className="testi-content">
                 <div className="slide">
                   <img src={imagen1} alt="" className="image" />
-                  <p>“Un pequeño recorrido de todos los logros que hemos adquirido en este último año...</p>
+                  <p>Un pequeño recorrido de todos los logros que hemos adquirido en este último año...</p>
                   <i className='bx bxs-quote-alt-left quote-icon'></i>
                   <div className="details">
                     <span className="name">Fundación Pescar</span>
